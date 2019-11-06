@@ -16,6 +16,7 @@ function get_menu(){
 
             $options = DB::table('sub_departments')
                 ->where('id_depart', $u->id)
+                ->Orderby('sub_depart_sort', 'asc')
                 ->get();
 
                 if($check_count > 0){

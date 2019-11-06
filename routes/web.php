@@ -29,6 +29,9 @@ Route::get('/privacy_policy', 'HomeController@privacy_policy')->name('privacy_po
 Route::get('/terms_conditions', 'HomeController@terms_conditions')->name('terms_conditions');
 Route::get('/returns_exchanges', 'HomeController@returns_exchanges')->name('returns_exchanges');
 
+Route::get('/blog', 'HomeController@blog')->name('blog');
+Route::get('/blog/{id}', 'HomeController@blog_detail')->name('blog_detail');
+
 
 
 

@@ -7,6 +7,7 @@ use App\course;
 use App\coupon_user;
 use App\Http\Requests;
 use Session;
+use App\blog;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -52,6 +53,44 @@ class HomeController extends Controller
 
     public function returns_exchanges(){
       return view('returns_exchanges');
+    }
+
+    public function blog(){
+
+
+
+      $objs = DB::table('blogs')
+          ->orderBy('id', 'desc')
+          ->paginate(15);
+
+      $data['objs'] = $objs;
+      return view('blog', $data);
+    }
+
+
+    public function blog_detail($id){
+
+      $package = blog::find($id);
+      $package->view += 1;
+      $package->save();
+
+      $objs = DB::table('blogs')->select(
+          'blogs.*'
+          )
+          ->where('id', $id)
+          ->first();
+
+          $man = explode(',', $objs->tags);
+          $count_tags = count($man);
+
+          $data['man'] = $man;
+          $data['count_tags'] = $count_tags;
+
+      //    dd($objs);
+
+          $data['objs'] = $objs;
+    return view('blog_detail',$data);
+
     }
 
 

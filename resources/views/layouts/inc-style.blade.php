@@ -19,6 +19,32 @@
     <!-- end inject -->
 </head>
 <style>
+.theme-btn {
+
+    background-color: #3F51B5;
+
+}
+.course-area .course-tab-wrap .course-tab-list.nav-tabs li a.active {
+    background-color: #3F51B5;
+    color: #fff;
+}
+
+.benefit-area .benefit-course-box .benefit-item .benefit__icon {
+    color: #3F51B5;
+}
+.benefit-area .benefit-course-box .benefit-item:hover .benefit__icon {
+    background-color: #3F51B5;
+    color: #fff;
+}
+.slider-area2 .single-slide-item .how-we-work-content {
+    background: #429b85;
+    background: -moz-linear-gradient(-45deg, #429b85 0%, #5f7b8c 100%);
+    background: -webkit-linear-gradient(-45deg, #429b85 0%, #5f7b8c 100%);
+    background: linear-gradient(135deg, #607D8B 0%, #5f7b8c 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#429b85', endColorstr='#5f7b8c',GradientType=1 );
+
+}
+
 .breadcrumb-area:before {
     position: absolute;
     content: '';

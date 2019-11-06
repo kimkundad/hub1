@@ -124,21 +124,7 @@
 
 
 
-              <?php
-              function DateThai($strDate)
-              {
-              $strYear = date("Y",strtotime($strDate))+543;
-              $strMonth= date("n",strtotime($strDate));
-              $strDay= date("j",strtotime($strDate));
-              $strHour= date("H",strtotime($strDate));
-              $strMinute= date("i",strtotime($strDate));
-              $strSeconds= date("s",strtotime($strDate));
-              $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-              $strMonthThai=$strMonthCut[$strMonth];
-              return "$strDay $strMonthThai $strYear";
-              }
-               ?>
-
+            
 
 
 
@@ -167,7 +153,7 @@
                            @foreach($coursess as $course_success)
                            <tr>
                              <td><a href="{{url('admin/play_student/'.$course_success->Oid.'/edit')}}">{{$course_success->title_course}}</a></td>
-                             <td><?php echo DateThai($course_success->created_at_user); ?></td>
+                             <td><?php echo ($course_success->created_at_user); ?></td>
 														 <td>
 															<a target="_blank" class="btn btn-warning btn-xs" href="{{url('admin/play_student/'.$course_success->Oid.'/print')}}" role="button"><i class="fa fa-print"></i> </a>
 														 </td>
@@ -214,7 +200,7 @@
 
                               </td>
                             <td>{{$suc->money}}</td>
-                            <td><?php echo DateThai($suc->created_at); ?></td>
+                            <td><?php echo ($suc->created_at); ?></td>
                           </tr>
                           @endforeach
                           @endif

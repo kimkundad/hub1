@@ -58,13 +58,7 @@
                 margin-right: 10px;
                 width: 85px;
             }
-            .header .logo-container {
-    background-color: #32d191;
-    background-image: -webkit-linear-gradient(#f6f6f6 0%, #32d191 45%);
-    background-image: linear-gradient(#32d191 0%, #32d191 45%);
-    border-bottom: 1px solid #32d191;
-    border-top: 3px solid #32d191;
-}
+
 
         </style>
 

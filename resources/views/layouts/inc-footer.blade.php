@@ -19,15 +19,11 @@
                         <li>
                             <a href="#"><i class="fa fa-facebook"></i></a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
+
                         <li>
                             <a href="#"><i class="fa fa-instagram"></i></a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
+
                         <li>
                             <a href="#"><i class="fa fa-google-plus"></i></a>
                         </li>
@@ -43,7 +39,7 @@
                         <li><a href="{{url('teachers')}}">รู้จักอาจารย์</a></li>
                         <li><a href="{{url('contact')}}">ติดต่อเรา</a></li>
                         <li><a href="{{url('faq')}}">คำถามที่พบบ่อย</a></li>
-                        <li><a href="#">บทความ</a></li>
+                        <li><a href="{{url('blog')}}">บทความ</a></li>
                     </ul>
                 </div><!-- end footer-widget -->
             </div><!-- end col-lg-3 -->
@@ -81,7 +77,7 @@
         <div class="row copyright-content align-items-center" style="margin-top: 20px;">
 
             <div class="col-lg-10">
-                <p class="copy__desc">&copy; 2019 Aduca. All Rights Reserved. by <a href="#">TechyDevs.</a></p>
+                <p class="copy__desc">&copy; 2019 Hubjung. All Rights Reserved. by <a href="#">Alphagram.</a></p>
             </div><!-- end col-lg-9 -->
             <div class="col-lg-2">
                 <div class="language-select">

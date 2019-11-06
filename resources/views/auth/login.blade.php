@@ -14,7 +14,7 @@
 <section class="form-shared">
     <div class="container">
         <div class="row">
-            <div class="col-lg-7 mx-auto">
+            <div class="col-lg-6 mx-auto">
                 <div class="contact-form-action">
                     <div class="form-heading text-center">
                         <h3 class="form__title">Login to your account!</h3>
@@ -24,16 +24,17 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
                         <div class="row">
+                          <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
+                              <button class="theme-btn sign-btn btn__facebook" >
+                                  <i class="fa fa-facebook"></i> Facebook
+                              </button>
+                          </div><!-- end col-lg-4 -->
                             <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
                                 <button class="theme-btn sign-btn btn__google" >
                                     <i class="fa fa-google"></i> Google
                                 </button>
                             </div><!-- end col-lg-4 -->
-                            <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
-                                <button class="theme-btn sign-btn btn__facebook" >
-                                    <i class="fa fa-facebook"></i> Facebook
-                                </button>
-                            </div><!-- end col-lg-4 -->
+
 
                             <div class="col-lg-12 col-sm-12 col-xs-12 account-assist text-center">
                                 <p class="account__desc account__desc2">or</p>

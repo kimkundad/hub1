@@ -31,10 +31,10 @@
     <section class="body">
 
 
-        <header class="header" style="background-color: #32d191 !important; background-image:none;     border-bottom: 1px solid #E9E9E6; border-bottom: 1px solid #32d191; border-top: 3px solid #32d191;">
+        <header class="header" >
                 <div class="logo-container">
                     <a href="#" class="logo pull-left">
-                    <img src="{{asset('./assets/image/logo/Learnsbuy_new_web_logo.png')}}" height="40"  />
+                    <img src="{{url('home/images/logo_v2.png')}}" height="40"  />
                 </a>
                     <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened"
                     data-target="html" data-fire-event="sidebar-left-opened">

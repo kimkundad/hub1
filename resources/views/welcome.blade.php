@@ -50,8 +50,8 @@
                                     <div class="how-we-work-item">
                                         <span class="la la-mouse-pointer"></span>
                                         <div class="how-work__text">
-                                            <h4 class="hww__sub-title">100,000 หลักสูตรออนไลน์</h4>
-                                            <p class="hww__sub-desc">สำรวจหัวข้อสดใหม่อันหลากหลาย</p>
+                                            <h4 class="hww__sub-title">ความรู้ทั้งหมดจาก HubJung</h4>
+                                            <p class="hww__sub-desc">ฟรี !!!  ฉลองเปิดตัว</p>
                                         </div><!-- how-work__text -->
                                     </div><!-- how-we-work-item -->
                                 </div><!-- col-lg-4 -->
@@ -59,8 +59,8 @@
                                     <div class="how-we-work-item">
                                         <span class="la la-users"></span>
                                         <div class="how-work__text">
-                                            <h4 class="hww__sub-title">การสอนโดยผู้เชี่ยวชาญ</h4>
-                                            <p class="hww__sub-desc">ค้นหาวิทยากรที่เหมาะกับคุณ</p>
+                                            <h4 class="hww__sub-title">อัพเดท เนื้อหาใหม่ทุกวัน</h4>
+                                            <p class="hww__sub-desc">สอนโดยครูผู้เชี่ยวชาญ</p>
                                         </div><!-- how-work__text -->
                                     </div><!-- how-we-work-item -->
                                 </div><!-- col-lg-4 -->
@@ -68,8 +68,8 @@
                                     <div class="how-we-work-item">
                                         <span class="la la-graduation-cap"></span>
                                         <div class="how-work__text">
-                                            <h4 class="hww__sub-title">การเข้าถึงตลอดชีวิต</h4>
-                                            <p class="hww__sub-desc">เรียนตามตารางเวลาของคุณเอง</p>
+                                            <h4 class="hww__sub-title">เรียนได้ทุกที่ ตลอด 24 ชม</h4>
+                                            <p class="hww__sub-desc">ยกเลิกได้ทุกเมื่อ</p>
                                         </div><!-- how-work__text -->
                                     </div><!-- how-we-work-item -->
                                 </div><!-- col-lg-4 -->
@@ -322,7 +322,7 @@
     overflow: hidden;
 }
 .category-area2 .category-wrapper .category-item .category-content .la {
-    color: #51be78;
+    color: #3F51B5;
 
     width: 50px;
     height: 50px;
@@ -367,7 +367,7 @@
                 <div class="section-heading ">
 
                     <h2 class="section__title" style="font-size: 35px;">หมวดหมู่ยอดนิยม</h2>
-                    <span class="section__divider"></span>
+
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-6 -->
         </div><!-- end row -->
@@ -414,7 +414,7 @@
                     <div class="section-heading">
 
                         <h2 class="section__title" style="font-size: 35px;">การเรียนรู้ในช่วงเวลาที่สำคัญ</h2>
-                        <span class="section__divider"></span>
+                        <!-- <span class="section__divider"></span> -->
                         <p class="section__desc">
                           เรียนตามตารางเวลาของคุณเอง  ศึกษาหัวข้อใดก็ได้ทุกเวลา เลือกจากหลักสูตรโดยผู้เชี่ยวชาญหลายพันหลักสูตร สอนในสิ่งที่คุณรัก Udemy พร้อมเป็นเครื่องมือในการสร้างหลักสูตรออนไลน์ให้กับคุณ
                         </p>

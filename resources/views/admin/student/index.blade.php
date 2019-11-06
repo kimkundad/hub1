@@ -71,20 +71,7 @@
                   </div>
 
                 </div>
-                <?php
-                function DateThai($strDate)
-                {
-                $strYear = date("Y",strtotime($strDate))+543;
-                $strMonth= date("n",strtotime($strDate));
-                $strDay= date("j",strtotime($strDate));
-                $strHour= date("H",strtotime($strDate));
-                $strMinute= date("i",strtotime($strDate));
-                $strSeconds= date("s",strtotime($strDate));
-                $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-                $strMonthThai=$strMonthCut[$strMonth];
-                return "$strDay $strMonthThai $strYear";
-                }
-                 ?>
+
                 <br>
                 <div class="table-responsive">
                 <table class="table table-bordered table-striped mb-none dataTable " >
@@ -118,7 +105,7 @@
                       <td>{{$u->email}}</td>
                       <td>{{$u->line_id}}</td>
                       <td>{{$u->phone}}</td>
-                      <td><?php echo DateThai($u->hbd); ?></td>
+                      <td><?php echo ($u->hbd); ?></td>
 
 
                       <td>
@@ -126,8 +113,7 @@
 
 
 
-                        <a style="float:left; margin-right:3px;" class="btn btn-success btn-xs" href="{{url('admin/inbox_chat/'.$u->id)}}"
-                          role="button"><i class="fa fa-commenting-o"></i> </a>
+                      
 
                        <a style="float:left; margin-right:3px;" class="btn btn-primary btn-xs" href="{{url('admin/student/'.$u->id)}}"
                           role="button"><i class="fa fa-wrench"></i> </a>

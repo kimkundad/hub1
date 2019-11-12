@@ -49,7 +49,7 @@
 
                     <ul class="footer-link">
                         <li><a href="{{url('privacy_policy')}}">นโยบายความเป็นส่วนตัว</a></li>
-                        <li><a href="#">ยืนยันการชำระเงิน</a></li>
+                        <li><a href="{{url('payment')}}">ยืนยันการชำระเงิน</a></li>
 
                         <li><a href="{{url('terms_conditions')}}">ข้อตกลงและเงื่อนไข</a></li>
                         <li><a href="{{url('returns_exchanges')}}">นโยบายการคืนเงิน</a></li>
@@ -82,8 +82,9 @@
             <div class="col-lg-2">
                 <div class="language-select">
                     <select class="target-lang">
+                      <option value="14">ภาษาไทย</option>
                         <option value="1">English</option>
-                        <option value="14">ภาษาไทย</option>
+
                     </select>
                 </div>
             </div>

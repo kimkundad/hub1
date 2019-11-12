@@ -77,7 +77,7 @@
                         <div class="form-group">
 													<label class="col-md-3 control-label" for="profileAddress">ภาควิชา*</label>
 													<div class="col-md-8">
-														<select name="department_id" class="form-control mb-md" required>
+														<select name="department_id" class="form-control mb-md" >
 
 								                      <option value="">-- เลือกภาควิชา --</option>
 								                      @foreach($department as $departments)
@@ -94,7 +94,7 @@
                         <div class="form-group">
 													<label class="col-md-3 control-label" for="profileAddress">ปิดใช้งาน / เปิดใช้งาน*</label>
 													<div class="col-md-8">
-														<select name="package_status" class="form-control mb-md" required>
+														<select name="package_status" class="form-control mb-md" >
 
 								                      <option value="0" @if($objs->package_status == 0)
                                       selected='selected'
@@ -113,15 +113,15 @@
 													<div class="col-md-8">
 														<select name="package_day" class="form-control mb-md" required>
 
-								                      <option value="7" @if($objs->package_day == 7)
+								                      <option value="60" @if($objs->package_day == 60)
                                       selected='selected'
-                                      @endif>-- 7 วัน  --</option>
+                                      @endif>-- ทดลองเรียนฟรี  --</option>
+
                                       <option value="30" @if($objs->package_day == 30)
                                       selected='selected'
                                       @endif>-- 30 วัน / 1 เดือน  --</option>
-                                      <option value="60" @if($objs->package_day == 60)
-                                      selected='selected'
-                                      @endif>-- 60 วัน / 2 เดือน  --</option>
+
+
                                       <option value="90" @if($objs->package_day == 90)
                                       selected='selected'
                                       @endif>-- 90 วัน / 3 เดือน  --</option>
@@ -156,7 +156,7 @@
                         <div class="form-group">
 													<label class="col-md-3 control-label" for="profileFirstName">รูปภาพ</label>
 													<div class="col-md-8">
-														<img src="{{url('web_stream/img/package/'.$objs->package_image)}}" class="img-responsive" />
+														<img src="{{url('assets/image/package/'.$objs->package_image)}}" class="img-responsive" />
 														</div>
 												</div>
 

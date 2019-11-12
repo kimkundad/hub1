@@ -15,7 +15,7 @@
 <!-- ================================
     START BREADCRUMB AREA
 ================================= -->
-<section class="breadcrumb-area breadcrumb-area2">
+<section class="breadcrumb-area breadcrumb-area2" style="background-image: url({{url('assets/images/breadcrumb-bg.jpg')}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -224,7 +224,13 @@
 
                                     <div class="preview-course-incentives">
 
+
+
                                         <p class="preview-course-incentives__title">หลักสูตรนี้รวมถึง</p>
+
+
+
+
                                         <ul class="preview-course-incentives__list">
                                             <li><span class="la la-play-circle-o"></span>{{$objs->time_course_text}} on-demand video</li>
                                             <li><span class="la la-file"></span>{{$objs->count_video}} Video</li>

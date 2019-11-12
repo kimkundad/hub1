@@ -44,8 +44,12 @@
                 @if($objs)
                   @foreach($objs as $u)
                   <div class="col-md-3">
+
                     <a href="{{url('admin/package_product/'.$u->id.'/edit')}}">
-                      <img src="{{url('web_stream/img/package/'.$u->package_image)}}" class="img-responsive" />
+                      <p>
+                        {{$u->package_name}}
+                      </p>
+                      <img src="{{url('assets/image/package/'.$u->package_image)}}" class="img-responsive" />
 
                     </a>
                     <p>

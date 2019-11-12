@@ -9,6 +9,10 @@ use App\Http\Requests;
 use Session;
 use App\blog;
 use Auth;
+use App\bank;
+use App\teacher;
+
+use App\user_payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -38,6 +42,218 @@ class HomeController extends Controller
     public function about(){
       return view('about');
     }
+
+    public function payment(){
+
+      $objs = bank::all();
+
+      $data['objs'] = $objs;
+
+      return view('payment', $data);
+    }
+
+    public function teacher_detail($id){
+
+      $package = teacher::find($id);
+      $package->te_view += 1;
+      $package->save();
+
+      $get_data = DB::table('teachers')->select(
+            'teachers.*',
+            'departments.*'
+            )
+            ->leftjoin('departments', 'departments.id',  'teachers.depart_id')
+            ->where('teachers.id', $id)
+            ->first();
+
+            $data['objs'] = $get_data;
+
+
+
+            $count_c = DB::table('courses')
+                  ->where('te_study', $id)
+                  ->count();
+
+            $data['count_c'] = $count_c;
+
+
+            $get_course = DB::table('courses')
+                ->select(
+                'courses.*',
+                'courses.id as A',
+                'typecourses.*',
+                'departments.*',
+                'teachers.*'
+                )
+                ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+                ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
+                ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
+                ->where('courses.te_study', $id)
+                ->where('courses.ch_status', 1)
+                ->orderBy('sort_corse', 'asc')
+                ->paginate(15);
+
+                if(isset($get_course)){
+                  foreach($get_course as $u){
+
+                    $count_video = DB::table('video_lists')
+                          ->where('course_id', $u->A)
+                          ->count();
+                          $u->count_video = $count_video;
+
+
+                  }
+                }
+
+
+
+            $data['get_course'] = $get_course;
+
+
+      return view('teacher_detail', $data);
+    }
+
+    public function payment_success(){
+
+      return view('payment_success');
+    }
+
+
+
+    public function post_payment_notify(Request $request){
+      $image = $request->file('image');
+      $this->validate($request, [
+            'email' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'order_id' => 'required',
+            'bank' => 'required',
+            'money' => 'required',
+            'day_tran' => 'required'
+      ]);
+
+
+
+      if($image == null){
+
+        $package = new user_payment();
+        $package->order_id = $request['order_id'];
+        $package->name = $request['name'];
+        $package->email = $request['email'];
+        $package->phone = $request['phone'];
+        $package->bank = $request['bank'];
+        $package->money = $request['money'];
+        $package->day_tran = $request['day_tran'];
+        $package->time_tran = $request['time_tran'];
+        $package->save();
+
+
+        $message = $request['name']." ได้ทำการแจ้งชำระเงินมาที่ Order ID : ".$request['order_id']." เบอร์ : ".$request['phone'];
+        $lineapi = 'uhXIeORjZqpzKgTsNfBi3S7iopucdn5uRDVG6P4rHIR';
+
+        $mms =  trim($message);
+        $chOne = curl_init();
+        curl_setopt($chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify");
+        curl_setopt($chOne, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($chOne, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($chOne, CURLOPT_POST, 1);
+        curl_setopt($chOne, CURLOPT_POSTFIELDS, "message=$mms");
+        curl_setopt($chOne, CURLOPT_FOLLOWLOCATION, 1);
+        $headers = array('Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$lineapi.'',);
+        curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($chOne, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($chOne);
+        if(curl_error($chOne)){
+        echo 'error:' . curl_error($chOne);
+        }else{
+        $result_ = json_decode($result, true);
+    //    echo "status : ".$result_['status'];
+    //    echo "message : ". $result_['message'];
+        }
+        curl_close($chOne);
+
+      }else{
+
+        $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+
+        $destinationPath = asset('assets/image/slip/');
+        $img = Image::make($image->getRealPath());
+        $img->resize(800, 800, function ($constraint) {
+        $constraint->aspectRatio();
+        })->save('assets/image/slip/'.$input['imagename']);
+
+
+        $input['imagename_small'] = time().'_small.'.$image->getClientOriginalExtension();
+
+        $img = Image::make($image->getRealPath());
+        $img->resize(240, 240, function ($constraint) {
+        $constraint->aspectRatio();
+      })->save('assets/image/slip/'.$input['imagename_small']);
+
+         $package = new user_payment();
+         $package->order_id = $request['order_id'];
+         $package->name = $request['name'];
+         $package->email = $request['email'];
+         $package->phone = $request['phone'];
+         $package->bank = $request['bank'];
+         $package->money = $request['money'];
+         $package->day_tran = $request['day_tran'];
+         $package->time_tran = $request['time_tran'];
+         $package->image_tran = $input['imagename'];
+         $package->save();
+
+
+
+
+         $message = $request['name']." ได้ทำการแจ้งชำระเงินมาที่ Order ID : ".$request['order_id']." เบอร์ : ".$request['phone'];
+
+
+              $image_thumbnail_url = url('assets/image/slip/'.$input['imagename_small']);  // max size 240x240px JPEG
+              $image_fullsize_url = url('assets/image/slip/'.$input['imagename']); //max size 1024x1024px JPEG
+              $imageFile = 'copy/240.jpg';
+              $sticker_package_id = '';  // Package ID sticker
+              $sticker_id = '';    // ID sticker
+
+              $message_data = array(
+              'imageThumbnail' => $image_thumbnail_url,
+              'imageFullsize' => $image_fullsize_url,
+              'message' => $message,
+              'imageFile' => $imageFile,
+              'stickerPackageId' => $sticker_package_id,
+              'stickerId' => $sticker_id
+              );
+
+            $lineapi = 'uhXIeORjZqpzKgTsNfBi3S7iopucdn5uRDVG6P4rHIR';
+
+            $headers = array('Method: POST', 'Content-type: multipart/form-data', 'Authorization: Bearer '.$lineapi );
+            $mms =  trim($message);
+            $chOne = curl_init();
+            curl_setopt($chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify");
+            curl_setopt($chOne, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($chOne, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($chOne, CURLOPT_POST, 1);
+            curl_setopt($chOne, CURLOPT_POSTFIELDS, $message_data);
+            curl_setopt($chOne, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($chOne, CURLOPT_RETURNTRANSFER, 1);
+            $result = curl_exec($chOne);
+            if(curl_error($chOne)){
+            echo 'error:' . curl_error($chOne);
+            }else{
+            $result_ = json_decode($result, true);
+          //  echo "status : ".$result_['status'];
+          //  echo "message : ". $result_['message'];
+            }
+            curl_close($chOne);
+
+      }
+
+
+
+      return redirect(url('payment_success/'))->with('add_success','เพิ่ม เสร็จเรียบร้อยแล้ว');
+    }
+
+
 
     public function faq(){
       return view('faq');
@@ -381,6 +597,53 @@ class HomeController extends Controller
 
 
       return view('course_details', $data);
+    }
+
+
+    public function all_course(){
+
+
+
+
+
+                  $get_count = DB::table('courses')
+                        ->count();
+
+
+                        $get_course = DB::table('courses')
+                            ->select(
+                            'courses.*',
+                            'courses.id as A',
+                            'typecourses.*',
+                            'departments.*',
+                            'teachers.*'
+                            )
+                            ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+                            ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
+                            ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
+                            ->where('courses.ch_status', 1)
+                            ->orderBy('sort_corse', 'asc')
+                            ->paginate(15);
+
+                            if(isset($get_course)){
+                              foreach($get_course as $u){
+
+                                $count_video = DB::table('video_lists')
+                                      ->where('course_id', $u->A)
+                                      ->count();
+                                      $u->count_video = $count_video;
+
+
+                              }
+                            }
+
+
+
+          //  dd($cats);
+      $data['get_course'] = $get_course;
+      $data['get_count'] = $get_count;
+      return view('all_course', $data);
+
     }
 
 

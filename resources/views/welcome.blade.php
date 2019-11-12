@@ -134,7 +134,7 @@
                                 <div class="col-lg-3">
                                     <div class="course-item">
                                         <div class="course-img">
-                                            <a href="{{url('course_details/'.$u->A)}}" class="course__img"><img src="{{url('assets/uploads/'.$u->image_course)}}" alt=""></a>
+                                            <a href="{{url('course_details/'.$u->A)}}" class="course__img"><img src="{{url('assets/uploads/'.$u->image_course)}}" alt="{{$u->title_course}}"></a>
                                           <!--  <div class="course-tooltip">
                                                 <span class="tooltip-label">bestseller</span>
                                             </div> -->
@@ -142,9 +142,25 @@
                                         <div class="course-content">
                                             <p class="course__label">
 
-                                                <a href="{{url('course_details/'.$u->A)}}" class="course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                              @if (Auth::guest())
+
+                                                <a href="#" class="photo_f course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
                                                   <span class="la la-heart-o"></span>
                                                 </a>
+
+                                              @else
+                                              <form id="cutproduct" class="" novalidate="novalidate" action="" method="post"  role="form">
+
+                                              <input class="user_id form hide" type="hidden" name="id" value="{{$u->A}}" />
+
+                                              <a href="#" class="course__collection-icon add_wishlist"  data-value="{{$u->A}}" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                <span class="la la-heart-o"></span>
+                                              </a>
+
+                                              </form>
+                                              @endif
+
+
                                             </p>
                                             <h3 class="course__title">
                                                 <a href="{{url('course_details/'.$u->A)}}">{{$u->title_course}}</a>
@@ -199,7 +215,23 @@
                                       <div class="course-content">
                                           <p class="course__label">
 
-                                              <a href="#" class="course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="la la-heart-o"></span></a>
+                                            @if (Auth::guest())
+
+                                              <a href="#" class="photo_f course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                <span class="la la-heart-o"></span>
+                                              </a>
+
+                                            @else
+                                            <form id="cutproduct" class="" novalidate="novalidate" action="" method="post"  role="form">
+
+                                            <input class="user_id form hide" type="hidden" name="id" value="{{$u->A}}" />
+
+                                            <a href="#" class="course__collection-icon add_wishlist"  data-value="{{$u->A}}" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                              <span class="la la-heart-o"></span>
+                                            </a>
+
+                                            </form>
+                                            @endif
                                           </p>
                                           <h3 class="course__title">
                                               <a href="course-details.html">{{$u->title_course}}</a>
@@ -250,7 +282,24 @@
                                       <div class="course-content">
                                           <p class="course__label">
 
-                                              <a href="#" class="course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="la la-heart-o"></span></a>
+                                            @if (Auth::guest())
+
+                                              <a href="#" class="photo_f course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                <span class="la la-heart-o"></span>
+                                              </a>
+
+                                            @else
+                                            <form id="cutproduct" class="" novalidate="novalidate" action="" method="post"  role="form">
+
+                                            <input class="user_id form hide" type="hidden" name="id" value="{{$u->A}}" />
+
+                                            <a href="#" class="course__collection-icon add_wishlist"  data-value="{{$u->A}}" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                              <span class="la la-heart-o"></span>
+                                            </a>
+
+                                            </form>
+                                            @endif
+
                                           </p>
                                           <h3 class="course__title">
                                               <a href="course-details.html">{{$u->title_course}}</a>
@@ -291,7 +340,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="button-shared text-center">
-                        <a href="course-grid.html" class="theme-btn theme-btn2">คอร์สเรียนอื่นๆ</a>
+                        <a href="{{url('all_course')}}" class="theme-btn theme-btn2">คอร์สเรียนอื่นๆ</a>
                     </div><!-- end button-shared -->
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
@@ -439,7 +488,7 @@
                             </div><!-- end col-lg-4 -->
                         </div><!-- end row -->
                         <div class="get-start-btn">
-                            <a href="#" class="theme-btn theme-btn2">learn more</a>
+                            <a href="#" class="theme-btn theme-btn2">เพิ่มเติม</a>
                         </div>
                     </div><!-- end section-heading -->
                 </div><!-- end benefit-heading -->
@@ -460,5 +509,64 @@
 @endsection
 
 @section('scripts')
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+$('.photo_f').on('click', function () {
+
+swal("การเก็บคอร์สเรียนที่ นักเรียนชื่นชอบ ต้องทำการ login เข้าสู่ระบบก่อน")
+
+});
+</script>
+
+<script type="text/javascript">
+
+
+    $('.add_wishlist').click(function(e){
+          e.preventDefault();
+        //  var username = $('form#cutproduct input[name=id]').val();
+
+
+        var $form = $(this).closest("form#cutproduct");
+        var formData =  $form.serializeArray();
+        var userId =  $form.find(".user_id").val();
+
+          if(userId){
+            $.ajax({
+              type: "POST",
+              url: "{{url('add_wishlist')}}",
+              headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+              data: "id="+userId,
+              dataType: "json",
+           success: function(json){
+               if(json.status == 1001) {
+
+                 swal("เพิ่มสำเร็จ!", "คุณทำการเพิ่มรายการที่ชื่นชอบ", "success");
+
+                } else {
+
+
+                  swal("คอร์ส นี้อยู่ในรายการชื่นชอบอยุ่แล้ว");
+
+                }
+              },
+              failure: function(errMsg) {
+                alert(errMsg.Msg);
+              }
+            });
+          }else{
+
+
+
+
+          }
+        });
+
+
+
+
+
+
+</script>
 
 @stop('scripts')

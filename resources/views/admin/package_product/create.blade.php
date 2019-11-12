@@ -76,7 +76,7 @@
                         <div class="form-group">
 													<label class="col-md-3 control-label" for="profileAddress">ภาควิชา*</label>
 													<div class="col-md-8">
-														<select name="department_id" class="form-control mb-md" required>
+														<select name="department_id" class="form-control mb-md" >
 
 								                      <option value="">-- เลือกภาควิชา --</option>
 								                      @foreach($department as $departments)
@@ -91,7 +91,7 @@
 													<div class="col-md-8">
 														<select name="package_day" class="form-control mb-md" required>
 
-								                      <option value="7">-- 7 วัน  --</option>
+								                      <option value="60">-- ทดลองเรียนฟรี  --</option>
                                       <option value="30">-- 30 วัน / 1 เดือน  --</option>
                                       <option value="60">-- 60 วัน / 2 เดือน  --</option>
                                       <option value="90">-- 90 วัน / 3 เดือน  --</option>
@@ -136,6 +136,9 @@
         														</div>
         													</div>
                                   </div>
+
+
+
                         </div>
 
 

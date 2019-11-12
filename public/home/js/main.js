@@ -52,24 +52,7 @@ Author Email:   contact@techydevs.com
         var nav = document.querySelector('.header-menu-content');
         var topOfNav = nav.offsetTop;
 
-        $(window).on('scroll', function () {
-            //header fixed animation and control
-            if ($(window).scrollTop() >= topOfNav) {
-                document.body.style.paddingTop = nav.offsetHeight + 'px';
-                document.body.classList.add('fixed-nav');
-            }
-            else {
-                document.body.style.paddingTop = 0;
-                document.body.classList.remove('fixed-nav');
-            }
-
-            //back to top button control
-            if($(this).scrollTop()>= 300){
-                scrollButton.show();
-            }else{
-                scrollButton.hide();
-            }
-        });
+    
         $(document).on('click','#scroll-top', function () {
             $('html, body').animate({scrollTop:0},1000);
         });

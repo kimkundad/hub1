@@ -45,7 +45,7 @@
                                 <form method="post">
                                     <div class="row">
                                         <div class="col-lg-10 form-group">
-                                            <input class="form-control" type="text" name="search" placeholder="ค้นหาทุกอย่าง">
+                                            <input class="form-control" type="text" name="search" placeholder="ค้นหาทุกอย่าง" style="padding: 10px;">
                                             <span class="la la-search search-icon"></span>
                                         </div><!-- end col-lg-6 -->
                                     </div><!-- end row -->
@@ -53,25 +53,31 @@
                             </div><!-- end contact-form-action -->
                             <nav class="main-menu">
                                 <ul>
+                                    <li><a href="{{url('package')}}">ทดลองเรียนฟรี</a></li>
                                     <li><a href="{{url('teachers')}}">รู้จักอาจารย์</a></li>
                                     <li><a href="{{url('contact')}}">ติดต่อเรา</a></li>
 
                                 </ul><!-- end ul -->
 
+
                             </nav><!-- end main-menu -->
 
 
-                            <div class="logo-right-button" style="width: 250px;">
+                            <div class="logo-right-button"
+
+                            style="width: 250px;
+                            ">
                               <div class="d-none d-sm-block">
                                 @if (Auth::guest())
                                 <a href="{{url('login')}}" class="theme-btn  " style="margin-right:10px; padding: 0 20px 0 20px;">เข้าสู่ระบบ</a>
                                 <a href="{{url('register')}}" class="theme-btn  sign-btn btn__google" style="padding: 0 20px 0 20px;">ลงทะเบียน</a>
                                 @else
+
                                 <nav class="main-menu ">
                                 <ul>
 
                                     <li>
-                                        <a href="#">
+                                        <a href="{{url('profile')}}">
                                           @if(Auth::user()->provider == 'email')
                                           <img class="avatar__img" style="border: 1px solid #007791;" src="{{url('assets/images/avatar/'.Auth::user()->avatar)}}" alt="{{Auth::user()->anme}}" title="{{Auth::user()->name}}"/>
                                           @else
@@ -80,9 +86,20 @@
 
                                         </a>
                                         <ul class="dropdown-menu-item" style="margin-top:8px;">
-                                            <li><a href="#">ข้อมูลส่วนตัว</a></li>
+                                            <li><a href="{{url('profile')}}">ข้อมูลส่วนตัว</a></li>
+                                            <li><a href="{{url('my_course')}}" > คอร์สเรียน</a></li>
+                                            <li><a href="{{url('my_example')}}"> สถิติแบบฝึกหัด</a></li>
+                                            <li><a href="{{url('my_pack')}}" > Package ปัจจุบัน</a></li>
+                                            <li><a href="{{url('my_payment')}}" > ประวัติการเติมเงิน </a></li>
                                             <li><a href="{{url('logout')}}">ออกจากระบบ</a></li>
                                         </ul>
+
+
+
+
+
+
+
                                     </li>
                                 </ul><!-- end ul -->
                               </nav><!-- end main-menu -->
@@ -105,38 +122,34 @@
                                 </div><!-- end humburger-menu -->
                                 <div class="side-menu-wrap">
                                     <ul class="side-menu-ul">
-                                        <li class="sidenav__item">
-                                            <a href="index.html">home</a>
-                                            <span class="menu-plus-icon"></span>
-                                            <ul class="side-sub-menu">
-                                                <li><a href="index.html">Home 01</a></li>
-                                                <li><a href="home-2.html">Home 02</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sidenav__item"><a href="about.html">about</a></li>
-                                        <li class="sidenav__item">
-                                            <a href="#">courses</a>
-                                            <span class="menu-plus-icon"></span>
-                                            <ul class="side-sub-menu">
-                                                <li><a href="course-grid.html">course grid</a></li>
-                                                <li><a href="course-details.html">course details</a></li>
-                                            </ul>
-                                        </li>
 
-                                        <li class="sidenav__item">
-                                            <a href="blog-grid.html">blog</a>
-                                            <span class="menu-plus-icon"></span>
-                                            <ul class="side-sub-menu">
-                                                <li><a href="blog-grid.html">blog grid</a></li>
-                                                <li><a href="blog-single.html">blog detail</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sidenav__item">
-                                            <a href="contact.html">contact</a>
-                                        </li>
+
+                                      <li class="sidenav__item"><a href="{{url('package')}}">ทดลองเรียนฟรี</a></li>
+                                      <li class="sidenav__item"><a href="{{url('teachers')}}">รู้จักอาจารย์</a></li>
+                                      <li class="sidenav__item"><a href="{{url('contact')}}">ติดต่อเรา</a></li>
+
+                                      @if (Auth::guest())
+
+                                      @else
+                                      <li class="sidenav__item"><a href="{{url('/profile')}}" ><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
+                                      <li class="sidenav__item"><a href="{{url('profile')}}"> ส่วนตัวของฉัน</a></li>
+                                      <li class="sidenav__item"><a href="{{url('my_course')}}" > คอร์สเรียน</a></li>
+                                      <li class="sidenav__item"><a href="{{url('my_example')}}"> สถิติแบบฝึกหัด</a></li>
+                                      <li class="sidenav__item"><a href="{{url('my_pack')}}" > Package ปัจจุบัน</a></li>
+                                      <li class="sidenav__item"><a href="{{url('my_payment')}}" > ประวัติการเติมเงิน </a></li>
+
+
+                                      @endif
+
+
                                     </ul>
                                     <div class="side-btn-box">
-                                        <a href="admission.html" class="theme-btn">admission</a>
+                                      @if (Auth::guest())
+                                      <a href="{{url('login')}}" class="theme-btn  " style="margin-right:10px; padding: 0 20px 0 20px;">เข้าสู่ระบบ</a>
+                                      <a href="{{url('register')}}" class="theme-btn  sign-btn btn__google" style="padding: 0 20px 0 20px;">ลงทะเบียน</a>
+                                      @else
+
+                                      @endif
                                     </div>
                                 </div><!-- end side-menu-wrap -->
                             </div><!-- end side-nav-container -->

@@ -17,8 +17,8 @@
             <div class="col-lg-6 mx-auto">
                 <div class="contact-form-action">
                     <div class="form-heading text-center">
-                        <h3 class="form__title">Login to your account!</h3>
-                        <p class="form__desc">with your social network.</p>
+                        <h3 class="form__title">เข้าสู่ระบบ</h3>
+                        <p class="form__desc">ผ่านโดย social network.</p>
                     </div>
                     <!--Contact Form-->
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
@@ -43,13 +43,13 @@
                                 <input class="form-control" type="text" name="email" placeholder="Email">
                                 @if ($errors->has('email'))
                                   <span class="help-block">
-                                      <strong>{{ $errors->first('email') }}</strong>
+                                      <strong>อีเมลของท่านไม่อยู่ในระบบ</strong>
                                   </span>
                               @endif
                                 <span class="la la-user input-icon"></span>
                             </div><!-- end col-md-12 -->
                             <div class="col-lg-12 col-sm-12 form-group">
-                                <input class="form-control" type="text" name="password" placeholder="Password">
+                                <input class="form-control" type="password" name="password" placeholder="Password">
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -60,15 +60,15 @@
                             <div class="col-lg-12 col-sm-12 col-xs-12 form-condition">
                                 <div class="custom-checkbox">
                                     <input type="checkbox" id="chb1">
-                                    <label for="chb1">Remember Me</label>
-                                    <a href="{{url('password/reset')}}" class="pass__desc"> Forgot my password?</a>
+                                    <label for="chb1">จดจำฉันไว้</label>
+                                    <a href="{{url('password/reset')}}" class="pass__desc"> ลืมรหัสผ่านใช่ไหม?</a>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 col-xs-12 form-group">
-                                <button class="theme-btn" type="submit">login now</button>
+                                <button class="theme-btn" type="submit">เข้าสู่ระบบ</button>
                             </div><!-- end col-md-12 -->
                             <div class="col-lg-12 col-sm-12 col-xs-12 account-assist">
-                                <p class="account__desc">Not a member?<a href="{{url('register')}}"> Register now</a></p>
+                                <p class="account__desc">ยังไม่ได้เป็นสมาชิก?<a href="{{url('register')}}"> สมัครสมาชิก</a></p>
                             </div><!-- end col-md-12 -->
                         </div><!-- end row -->
                     </form>

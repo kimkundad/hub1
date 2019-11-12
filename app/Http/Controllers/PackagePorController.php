@@ -60,12 +60,16 @@ class PackagePorController extends Controller
     {
         //
 
+        $this->validate($request, [
+              'image' => 'required'
+        ]);
+
         $image = $request->file('image');
         $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
         $img = Image::make($image->getRealPath());
         $img->resize(500, 500, function ($constraint) {
         $constraint->aspectRatio();
-      })->save('web_stream/img/package/'.$input['imagename']);
+      })->save('assets/image/package/'.$input['imagename']);
 
       $package_day = $request['package_day'];
       if($package_day == 7){
@@ -85,12 +89,7 @@ class PackagePorController extends Controller
       $obj->save();
 
 
-      $package = new noti_package();
-      $package->user_id = 0;
-      $package->name_noti = "Package ใหม่ สมัครเลย ".$request['package_name'];
-      $package->url_noti = "japanonline";
-      $package->new_status = 1;
-      $package->save();
+
 
       return redirect(url('admin/package_product/'))->with('success','เพิ่มข้อมูล สำเร็จ');
 
@@ -154,7 +153,7 @@ class PackagePorController extends Controller
            ->where('id', $id)
            ->first();
 
-           $file_path = 'web_stream/img/package/'.$objs->package_image;
+           $file_path = 'assets/image/package/'.$objs->package_image;
                          unlink($file_path);
 
 
@@ -162,7 +161,7 @@ class PackagePorController extends Controller
           $img = Image::make($image->getRealPath());
           $img->resize(500, 500, function ($constraint) {
           $constraint->aspectRatio();
-        })->save('web_stream/img/package/'.$input['imagename']);
+        })->save('assets/image/package/'.$input['imagename']);
 
           $obj = package_product::find($id);
           $obj->package_name = $request['package_name'];

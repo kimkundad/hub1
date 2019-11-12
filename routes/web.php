@@ -22,6 +22,25 @@ Route::get('/teachers', 'HomeController@teachers')->name('teachers');
 Route::post('add_video_course', 'CourseController@add_video_course');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
+Route::get('/all_course', 'HomeController@all_course')->name('all_course');
+
+Route::get('/payment', 'HomeController@payment')->name('payment');
+Route::post('post_payment_notify', 'HomeController@post_payment_notify');
+Route::get('/payment_success', 'HomeController@payment_success')->name('payment_success');
+
+
+Route::get('/package', 'PagkageControlle@package')->name('package');
+
+Route::get('/submit_info_package/{id}','PagkageControlle@submit_info_package');
+Route::post('/submit_free_package','PagkageControlle@submit_free_package');
+Route::get('/success_free_package/{id}', 'PagkageControlle@success_free_package');
+
+Route::get('/get_free_package/{id}','PagkageControlle@get_free_package');
+
+
+Route::get('/teacher_detail/{id}', 'HomeController@teacher_detail')->name('teacher_detail');
+
+
 Route::get('/about', 'HomeController@about')->name('about');
 
 Route::get('/faq', 'HomeController@faq')->name('faq');
@@ -39,6 +58,21 @@ Route::get('/category/{id}', 'HomeController@category')->name('category');
 Route::get('/course_details/{id}', 'HomeController@course_details')->name('course_details');
 
 Route::group(['middleware' => ['UserRole:manager|employee|customer']], function() {
+
+    Route::get('profile', 'UserprofileController@profile');
+    Route::get('edit_profile', 'UserprofileController@index');
+    Route::get('my_payment', 'UserprofileController@my_payment');
+    Route::get('my_pack', 'UserprofileController@my_package');
+    Route::get('my_example', 'UserprofileController@my_example');
+
+    Route::get('my_course', 'UserprofileController@my_course');
+
+    Route::put('profile_user/{id}', 'UserprofileController@update');
+    Route::post('add_wishlist', 'UserprofileController@add_wishlist');
+
+    Route::post('del_wishlist', 'UserprofileController@del_wishlist');
+
+
 
 });
 

@@ -19,6 +19,14 @@
     <!-- end inject -->
 </head>
 <style>
+.fixed-nav .header-menu-content {
+    position: absolute;
+
+}
+.header-menu-area .main-menu-content {
+    height: 75px;
+}
+
 .theme-btn {
 
     background-color: #3F51B5;
@@ -99,4 +107,32 @@
     margin-right: 20px;
     float: left;
 }
+.course__collection-icon:after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: "\f233";
+    font-family: "LineAwesome";
+    color: #51be78;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    opacity: 0;
+    visibility: hidden;
+}
+.course__collection-icon {
+    float:right;
+    margin-left: auto;
+    color: #7f8897;
+    font-size: 22px;
+    position: relative;
+}
+.course__collection-icon:hover:after {
+  opacity: 1;
+  visibility: visible; }
+
 </style>

@@ -39,6 +39,218 @@ class HomeController extends Controller
     }
 
 
+    public function search_course(Request $request){
+
+        $search_text = $request['search'];
+
+        if($search_text == null){
+          $get_course = null;
+          $count_user = 0;
+        }else{
+
+          //step 1
+          $check_count = DB::table('departments')
+          ->Where('name_department','LIKE','%'.$search_text.'%')
+                   ->count();
+
+            if($check_count > 0){
+
+
+
+
+              $get_de = DB::table('departments')
+              ->Where('name_department','LIKE','%'.$search_text.'%')
+                       ->first();
+
+                       $count_course = DB::table('courses')
+                                ->Where('department_id', $get_de->id)
+                                ->count();
+
+                       $count_user = $count_course;
+
+                      $get_course = DB::table('courses')
+                           ->select(
+                           'courses.*',
+                           'courses.id as A',
+                           'typecourses.*',
+                           'departments.*',
+                           'teachers.*'
+                           )
+                           ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+                           ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
+                           ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
+                           ->Where('department_id', $get_de->id)
+                           ->where('courses.ch_status', 1)
+                           ->orderBy('sort_corse', 'asc')
+                           ->paginate(15)
+                           ->withPath('?search_text=' . $search_text);
+
+                           if(isset($get_course)){
+                             foreach($get_course as $u){
+
+                               $count_video = DB::table('video_lists')
+                                     ->where('course_id', $u->A)
+                                     ->count();
+                                     $u->count_video = $count_video;
+
+
+                             }
+                           }
+
+
+
+                            //    dd($get_de);
+
+            }else{
+
+
+
+              //step2
+
+              $check_count_2 = DB::table('sub_departments')
+              ->Where('name_sub_depart','LIKE','%'.$search_text.'%')
+                       ->count();
+
+
+
+                    if($check_count_2 > 0){
+
+
+                      $get_de = DB::table('sub_departments')
+                      ->Where('name_sub_depart','LIKE','%'.$search_text.'%')
+                               ->get();
+
+                               $get_data_2 = [];
+
+                               foreach($get_de as $u){
+                                 $get_data_2[] = $u->id;
+                               }
+
+                               $count_course = DB::table('courses')
+                                        ->WhereIn('type_course', $get_data_2)
+                                        ->count();
+
+
+
+                               $count_user = $count_course;
+
+                              $get_course = DB::table('courses')
+                                   ->select(
+                                   'courses.*',
+                                   'courses.id as A',
+                                   'typecourses.*',
+                                   'departments.*',
+                                   'teachers.*'
+                                   )
+                                   ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+                                   ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
+                                   ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
+                                   ->WhereIn('type_course', $get_data_2)
+                                   ->where('courses.ch_status', 1)
+                                   ->orderBy('sort_corse', 'asc')
+                                   ->paginate(15)
+                                   ->withPath('?search_text=' . $search_text);
+
+                                   if(isset($get_course)){
+                                     foreach($get_course as $u){
+
+                                       $count_video = DB::table('video_lists')
+                                             ->where('course_id', $u->A)
+                                             ->count();
+                                             $u->count_video = $count_video;
+
+
+                                     }
+                                   }
+
+
+
+                    }else{
+
+
+                        //step3
+
+
+                        $check_count_3 = DB::table('courses')
+                        ->Where('title_course','LIKE','%'.$search_text.'%')
+                                 ->count();
+
+
+                          if($check_count_3 > 0){
+
+
+
+                            $count_course = DB::table('courses')
+                                     ->Where('title_course','LIKE','%'.$search_text.'%')
+                                     ->count();
+
+
+
+                            $count_user = $count_course;
+
+                           $get_course = DB::table('courses')
+                                ->select(
+                                'courses.*',
+                                'courses.id as A',
+                                'typecourses.*',
+                                'departments.*',
+                                'teachers.*'
+                                )
+                                ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+                                ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
+                                ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
+                                ->Where('title_course','LIKE','%'.$search_text.'%')
+                                ->where('courses.ch_status', 1)
+                                ->orderBy('sort_corse', 'asc')
+                                ->paginate(15)
+                                ->withPath('?search_text=' . $search_text);
+
+                                if(isset($get_course)){
+                                  foreach($get_course as $u){
+
+                                    $count_video = DB::table('video_lists')
+                                          ->where('course_id', $u->A)
+                                          ->count();
+                                          $u->count_video = $count_video;
+
+
+                                  }
+                                }
+
+
+
+
+                          }else{
+
+
+                            $get_course = null;
+                            $count_user = 0;
+
+                          }
+
+
+
+                    }
+
+
+
+
+            }
+
+
+
+        }
+
+
+        return view('search', compact(['get_course']))
+        ->with('search_text', $search_text)
+        ->with('get_count', $count_user);
+
+      //  dd($search_text);
+
+    }
+
+
     public function about(){
       return view('about');
     }

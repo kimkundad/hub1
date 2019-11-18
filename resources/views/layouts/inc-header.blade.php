@@ -42,11 +42,11 @@
                         <div class="menu-wrapper">
                             <div class="contact-form-action">
                                 <!--Contact Form-->
-                                <form method="post">
+                                <form action="{{url('search_course')}}" method="GET" name="search_course" id="search_course">
                                     <div class="row">
                                         <div class="col-lg-10 form-group">
                                             <input class="form-control" type="text" name="search" placeholder="ค้นหาทุกอย่าง" style="padding: 10px;">
-                                            <span class="la la-search search-icon"></span>
+                                            <span class="la la-search search-icon" id="btn-submit" onclick="$(this).closest('form').submit();"></span>
                                         </div><!-- end col-lg-6 -->
                                     </div><!-- end row -->
                                 </form>

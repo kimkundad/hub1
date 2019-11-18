@@ -24,6 +24,8 @@ Route::get('/contact', 'HomeController@contact')->name('contact');
 
 Route::get('/all_course', 'HomeController@all_course')->name('all_course');
 
+Route::get('/search_course', 'HomeController@search_course')->name('search_course');
+
 Route::get('/refer', 'HomeController@refer')->name('refer');
 
 Route::get('/payment', 'HomeController@payment')->name('payment');

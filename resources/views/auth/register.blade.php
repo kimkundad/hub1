@@ -27,7 +27,9 @@
           <div class="col-lg-6 mx-auto">
               <div class="contact-form-action">
                   <div class="form-heading text-center">
-                      <h3 class="form__title">สมัครสมาชิก</h3>
+                      <h3 class="form__title">สมัครสมาชิก </h3>
+
+
                       <p class="form__desc">หรือผ่าน social network.</p>
                   </div>
                   <!--Contact Form-->

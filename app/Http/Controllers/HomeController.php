@@ -43,6 +43,17 @@ class HomeController extends Controller
       return view('about');
     }
 
+    public function refer(Request $request){
+
+      $code = $request['code'];
+
+      Session::put('refer_code', $code);
+
+      return redirect(url('register'))->with('success','กรอกวันเกิดนักเรียนด้วยนะจ๊ะ');
+
+    }
+
+
     public function payment(){
 
       $objs = bank::all();

@@ -26,20 +26,7 @@ $strMonthThai=$strMonthCut[$strMonth];
 return "$strDay $strMonthThai";
 }
  ?>
-<?php
-function DateThai($strDate)
-{
-$strYear = date("Y",strtotime($strDate))+543;
-$strMonth= date("n",strtotime($strDate));
-$strDay= date("j",strtotime($strDate));
-$strHour= date("H",strtotime($strDate));
-$strMinute= date("i",strtotime($strDate));
-$strSeconds= date("s",strtotime($strDate));
-$strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-$strMonthThai=$strMonthCut[$strMonth];
-return "$strDay $strMonthThai $strYear";
-}
- ?>
+
 
 
 				<section role="main" class="content-body">
@@ -70,7 +57,7 @@ return "$strDay $strMonthThai $strYear";
 
 							<div class="row">
 							<div class="col-md-2 col-lg-3">
-                <img class="img-responsive" src="{{url('web_stream/img/package/'.$courseinfo->package_image)}}" alt="{{$courseinfo->package_name}}" style="width:250px;">
+                <img class="img-responsive" src="{{url('assets/image/package/'.$courseinfo->package_image)}}" alt="{{$courseinfo->package_name}}" style="width:250px;">
 							</div>
 
 

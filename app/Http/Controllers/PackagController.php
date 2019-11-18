@@ -1091,10 +1091,9 @@ class PackagController extends Controller
 
     public function submit_payment_package(Request $request){
 
+      //dd($request['pay_type']);
+
       $this->validate($request, [
-       'bankname' => 'required',
-       'totalmoney' => 'required',
-       'day' => 'required',
        'packag_id' => 'required'
       ]);
 
@@ -1105,45 +1104,41 @@ class PackagController extends Controller
        ->where('id', $packag_id)
        ->first();
 
-      $image = $request->file('image');
 
-      if($image == NULL){
 
         $package = new package_his();
         $package->user_id = Auth::user()->id;
         $package->packeage_id = $packag_id;
-        $package->department_id = $pack->department_id;
-        $package->bank_id = $request['bankname'];
-        $package->money_tran = $request['totalmoney'];
-        $package->date_tran = $request['day'];
-        $package->time_tran = $request['timer'];
+        $package->pay_type_user = $request['pay_type'];
         $package->save();
 
-      }else{
 
-        $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
-
-         $img = Image::make($image->getRealPath());
-         $img->resize(240, 240, function ($constraint) {
-         $constraint->aspectRatio();
-       })->save('assets/bill/'.$input['imagename']);
-
-       $package = new package_his();
-       $package->user_id = Auth::user()->id;
-       $package->packeage_id = $packag_id;
-       $package->department_id = $pack->department_id;
-       $package->bank_id = $request['bankname'];
-       $package->money_tran = $request['totalmoney'];
-       $package->date_tran = $request['day'];
-       $package->time_tran = $request['timer'];
-       $package->slip_img = $input['imagename'];
-       $package->save();
-
-      }
+        $the_id = $package->id;
 
 
+        $coursess = DB::table('package_his')
+          ->select(
+             'package_his.*',
+             'package_his.user_id as Uid',
+             'package_his.id as Oid',
+             'users.*',
+             'package_products.*',
+             'package_products.id as id_cource'
+             )
+          ->where('package_his.user_id', Auth::user()->id)
+          ->where('package_his.id', $the_id)
+          ->leftjoin('users', 'users.id', '=', 'package_his.user_id')
+          ->leftjoin('package_products', 'package_products.id', '=', 'package_his.packeage_id')
+          ->first();
 
-      $the_id = $package->id;
+          $package = new noti_package();
+          $package->user_id = Auth::user()->id;
+          $package->name_noti = "ได้ทำการสมัคร Package : ".$coursess->package_name;
+          $package->url_noti = "account";
+          $package->save();
+
+
+  /*    $the_id = $package->id;
 
 
       $coursess = DB::table('package_his')
@@ -1170,7 +1165,7 @@ class PackagController extends Controller
         $package->url_noti = "account";
         $package->save();
 
-
+*/
 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1183,8 +1178,8 @@ class PackagController extends Controller
         $data_toview['data'] = $coursess;
         $data_toview['datatime'] = date("d-m-Y H:i:s");
 
-        $email_sender   = 'learnsbuy@gmail.com';
-        $email_pass     = 'Ayumusiam168';
+        $email_sender   = 'Hubjungacademy@gmail.com';
+        $email_pass     = 'hub12345678';
 
     /*    $email_sender   = 'info@acmeinvestor.com';
         $email_pass     = 'Iaminfoacmeinvestor';  */
@@ -1195,9 +1190,9 @@ class PackagController extends Controller
 
         try{
 
-                    //https://accounts.google.com/DisplayUnlockCaptcha
+                      //https://accounts.google.com/DisplayUnlockCaptcha
                     // Setup your gmail mailer
-                    $transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'SSL');
+                    $transport = new \Swift_SmtpTransport('smtp.gmail.com', 465, 'SSL');
                     $transport->setUsername($email_sender);
                     $transport->setPassword($email_pass);
 
@@ -1211,23 +1206,23 @@ class PackagController extends Controller
                     $data['sender'] = $email_to;
                     //Sender dan Reply harus sama
 
-                    Mail::send('mails.index3', $data_toview, function($message) use ($data)
+                    Mail::send('mails.index', $data_toview, function($message) use ($data)
                     {
-                        $message->from($data['sender'], 'Learnsbuy');
+                        $message->from($data['sender'], 'Hubjung');
                         $message->to($data['sender'])
-                        ->replyTo($data['sender'], 'Learnsbuy.')
-                        ->subject('ใบเสร็จสำหรับการสั่งซื้อคอร์สเรียน Learnsbuy ');
+                        ->replyTo($data['sender'], 'Hubjung.')
+                        ->subject('ใบเสร็จสำหรับการสั่งซื้อคอร์สเรียน Hubjung ');
 
                         //echo 'Confirmation email after registration is completed.';
                     });
 
 
-                    Mail::send('mails.index3', $data_toview, function($message) use ($data)
+                    Mail::send('mails.index', $data_toview, function($message) use ($data)
                     {
-                        $message->from($data['sender'], 'Learnsbuy');
+                        $message->from($data['sender'], 'Hubjung');
                         $message->to($data['emailto'])
-                        ->replyTo($data['sender'], 'Learnsbuy.')
-                        ->subject('ใบเสร็จสำหรับการสั่งซื้อคอร์สเรียน Learnsbuy ');
+                        ->replyTo($data['sender'], 'Hubjung.')
+                        ->subject('ใบเสร็จสำหรับการสั่งซื้อคอร์สเรียน Hubjung ');
 
                         //echo 'Confirmation email after registration is completed.';
                     });
@@ -1246,34 +1241,13 @@ class PackagController extends Controller
 
 
 
-         $message = Auth::user()->name." ได้สั่งซื้อคอร์ส : ".$coursess->package_name.", ธนาคาร :".$coursess->bank_name.", ยอดโอน : ".$coursess->money_tran;
-         if($image == NULL){
+         $message = Auth::user()->name." ได้สั่งซื้อ : ".$coursess->package_name.", ราคา :".$coursess->package_price;
 
            $message_data = array(
            'message' => $message
            );
 
-         }else{
-
-           $image_thumbnail_url = url('assets/bill/'.$coursess->slip_img);  // max size 240x240px JPEG
-           $image_fullsize_url = url('assets/bill/'.$coursess->slip_img); //max size 1024x1024px JPEG
-           $imageFile = 'copy/240.jpg';
-           $sticker_package_id = '';  // Package ID sticker
-           $sticker_id = '';    // ID sticker
-
-           $message_data = array(
-           'imageThumbnail' => $image_thumbnail_url,
-           'imageFullsize' => $image_fullsize_url,
-           'message' => $message,
-           'imageFile' => $imageFile,
-           'stickerPackageId' => $sticker_package_id,
-           'stickerId' => $sticker_id
-           );
-
-         }
-
-
-         $lineapi = '0V5h0cJwrMQ0haSxFbmAiCTCVXMxwaRcHX8BoFffR12';
+         $lineapi = 'uhXIeORjZqpzKgTsNfBi3S7iopucdn5uRDVG6P4rHIR';
          $headers = array('Method: POST', 'Content-type: multipart/form-data', 'Authorization: Bearer '.$lineapi );
          $mms =  trim($message);
          $chOne = curl_init();
@@ -1298,9 +1272,37 @@ class PackagController extends Controller
          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-      return redirect(url('success_payment/'.$the_id))->with('hbd','กรอกวันเกิดนักเรียนด้วยนะจ๊ะ');
 
 
+
+      return redirect(url('success_payment_type/'.$the_id))->with('hbd','กรอกวันเกิดนักเรียนด้วยนะจ๊ะ');
+
+
+    }
+
+    public function success_payment_type($id){
+
+      $coursess = DB::table('package_his')
+        ->select(
+           'package_his.*',
+           'package_his.user_id as Uid',
+           'package_his.id as Oid',
+           'package_his.created_at as created_ats',
+           'users.*',
+           'package_products.*',
+           'package_products.id as id_cource'
+           )
+        ->where('package_his.user_id', Auth::user()->id)
+        ->where('package_his.id', $id)
+        ->leftjoin('users', 'users.id', '=', 'package_his.user_id')
+        ->leftjoin('package_products', 'package_products.id', '=', 'package_his.packeage_id')
+        ->first();
+
+
+      //  dd($coursess);
+
+        $data['objs'] = $coursess;
+        return view('success_payment_type', $data);
     }
 
     public function success_payment($id){

@@ -124,6 +124,7 @@ ul {
           <li><a href="{{url('my_course')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-graduation-cap"></i> คอร์สเรียน</a></li>
           <li><a href="{{url('my_example')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class=" fa fa-bar-chart"></i> สถิติแบบฝึกหัด</a></li>
           <li><a href="{{url('my_pack')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="ap-questions-featured fa fa-cube"></i> Package ปัจจุบัน</a></li>
+          <li><a href="{{url('my_friends')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-users"></i> แนะนำเพื่อน</a></li>
           <li><a href="{{url('my_payment')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class=" fa fa-shopping-cart"></i> ประวัติการเติมเงิน </a></li>
 
           <li><a href="{{url('logout')}}" class="ap-user-menu-activity-feed apicon-rss"><i class="fa fa-sign-out"></i> ออกจากระบบ</a></li>
@@ -269,24 +270,38 @@ ul {
                   </tr>
                   <tr>
                     <td><span class="t-l">
-                      ระยะเวลาที่เหลือ <a class="text-success"> {{$u->total_day}} วัน</a>
+                      จำนวนวัน <a class="text-success"> {{$u->package_day}} วัน</a>
                     </span></td>
                   </tr>
                   <tr>
                     <td><span class="t-l">
-                      เติมครั้งล่าสุด <a class="text-success"> {{DateThai($u->Dcre)}}</a>
-                    </span></td>
-                  </tr>
-
-                  <tr>
-                    <td><span class="t-l">
-                      เริ่มใช้งาน <a class="text-success"> {{DateThai($u->start)}}</a>
+                      ราคา Package <a class="text-success"> {{$u->package_price}} บาท</a>
                     </span></td>
                   </tr>
 
                   <tr>
                     <td><span class="t-l">
-                      วันหมดอายุ <a class="text-success"> {{DateThai($u->end_date)}}</a>
+                      วันที่สั่งซื้อ <a class="text-success"> {{DateThai($u->Dcre)}}</a>
+                    </span></td>
+                  </tr>
+
+                  <tr>
+                    <td><span class="t-l">
+                      การชำระเงิน
+                      @if($u->pay_type_user == 1)
+                      <a class="text-success"> แบบโอนผ่านบัญชีธนาคาร</a>
+                      @elseif($u->pay_type_user == 2)
+                      <a class="text-success"> GB Prime Pay</a>
+                      @else
+                      <a class="text-success"> ทดลองเรียนฟรี</a>
+                      @endif
+
+                    </span></td>
+                  </tr>
+
+                  <tr>
+                    <td><span class="t-l">
+                      สถานะ <a class="text-success"> รอการตรวจสอบ</a>
                     </span></td>
                   </tr>
 

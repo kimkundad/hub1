@@ -17,7 +17,7 @@
             <div class="col-lg-6 mx-auto">
                 <div class="contact-form-action">
                     <div class="form-heading text-center">
-                        <h3 class="form__title">เข้าสู่ระบบ</h3>
+                        <h3 class="form__title">เข้าสู่ระบบ <!-- {{Session::get('refer_code')}} --></h3>
                         <p class="form__desc">ผ่านโดย social network.</p>
                     </div>
                     <!--Contact Form-->

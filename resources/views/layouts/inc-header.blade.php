@@ -90,6 +90,9 @@
                                             <li><a href="{{url('my_course')}}" > คอร์สเรียน</a></li>
                                             <li><a href="{{url('my_example')}}"> สถิติแบบฝึกหัด</a></li>
                                             <li><a href="{{url('my_pack')}}" > Package ปัจจุบัน</a></li>
+
+                                            <li><a href="{{url('my_friends')}}" > แนะนำเพื่อน</a></li>
+
                                             <li><a href="{{url('my_payment')}}" > ประวัติการเติมเงิน </a></li>
                                             <li><a href="{{url('logout')}}">ออกจากระบบ</a></li>
                                         </ul>
@@ -136,6 +139,7 @@
                                       <li class="sidenav__item"><a href="{{url('my_course')}}" > คอร์สเรียน</a></li>
                                       <li class="sidenav__item"><a href="{{url('my_example')}}"> สถิติแบบฝึกหัด</a></li>
                                       <li class="sidenav__item"><a href="{{url('my_pack')}}" > Package ปัจจุบัน</a></li>
+                                      <li class="sidenav__item"><a href="{{url('my_friends')}}" > แนะนำเพื่อน</a></li>
                                       <li class="sidenav__item"><a href="{{url('my_payment')}}" > ประวัติการเติมเงิน </a></li>
 
 

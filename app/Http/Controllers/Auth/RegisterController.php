@@ -66,15 +66,26 @@ class RegisterController extends Controller
      protected function create(array $data)
       {
 
-        if(Session::has('status_user') == 1){
-         Session::put('status_user', 0);
-         $this->redirectTo = '/vampireday';
+
+
+        if(Session::get('refer_code') == null){
+
+          $code_refer = null;
+          $refer_date = null;
+
         }else{
-          $this->redirectTo = '/';
+
+
+
+          $code_refer = Session::get('refer_code');
+          $refer_date = date("Y-m-d");
+
+
+        //  Session::put('refer_code', null);
         }
 
           $ran = array("1483537975.png","1483556517.png","1483556686.png");
-          $randomSixDigitInt = 'ACME-'.(\random_int(1000, 9999)).'-'.(\random_int(1000, 9999)).'-'.(\random_int(1000, 9999));
+          $randomSixDigitInt = (\random_int(1000, 9999)).'_'.(\random_int(1000, 9999)).'_'.(\random_int(1000, 9999));
           $user = User::create([
           'name' => $data['name'],
           'email' => $data['email'],
@@ -83,6 +94,8 @@ class RegisterController extends Controller
           'provider' => 'email',
           'avatar' => $ran[array_rand($ran, 1)],
           'code_user' => $randomSixDigitInt,
+          'refer_code' => $code_refer,
+          'refer_date' => $refer_date,
         ]);
 
         $user

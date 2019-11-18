@@ -118,6 +118,17 @@
 
 
 												<div class="form-group">
+													<label class="col-md-3 control-label" for="profileFirstName">รายละเอียด Package*</label>
+													<div class="col-md-8">
+														<textarea class="form-control" name="package_detail"  rows="4">{{ old('package_detail') }}</textarea>
+														</div>
+												</div>
+
+
+
+
+
+												<div class="form-group">
                           <label class="col-md-3 control-label" for="exampleInputEmail1">รูป Package*</label>
                           <div class="col-md-8">
 

@@ -82,6 +82,7 @@ class PackagePorController extends Controller
       $obj->package_name = $request['package_name'];
       $obj->department_id = $request['department_id'];
       $obj->package_day = $request['package_day'];
+      $obj->package_detail = $request['package_detail'];
       $obj->package_price = $request['package_price'];
       $obj->package_sort = $request['package_sort'];
       $obj->package_type = $type;
@@ -167,6 +168,7 @@ class PackagePorController extends Controller
           $obj->package_name = $request['package_name'];
           $obj->department_id = $request['department_id'];
           $obj->package_day = $request['package_day'];
+          $obj->package_detail = $request['package_detail'];
           $obj->package_price = $request['package_price'];
           $obj->package_sort = $request['package_sort'];
           $obj->package_image = $input['imagename'];
@@ -181,6 +183,7 @@ class PackagePorController extends Controller
           $obj->package_name = $request['package_name'];
           $obj->department_id = $request['department_id'];
           $obj->package_day = $request['package_day'];
+          $obj->package_detail = $request['package_detail'];
           $obj->package_price = $request['package_price'];
           $obj->package_sort = $request['package_sort'];
           $obj->package_status = $request['package_status'];
@@ -205,7 +208,7 @@ class PackagePorController extends Controller
          ->where('id', $id)
          ->first();
 
-         $file_path = 'web_stream/img/package/'.$objs->package_image;
+         $file_path = 'assets/image/package/'.$objs->package_image;
                        unlink($file_path);
 
                        DB::table('package_products')

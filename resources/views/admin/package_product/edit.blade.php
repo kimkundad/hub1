@@ -153,6 +153,14 @@
 												</div>
 
 
+												<div class="form-group">
+													<label class="col-md-3 control-label" for="profileFirstName">รายละเอียด Package*</label>
+													<div class="col-md-8">
+														<textarea class="form-control" name="package_detail"  rows="4">{{ $objs->package_detail }}</textarea>
+														</div>
+												</div>
+
+
                         <div class="form-group">
 													<label class="col-md-3 control-label" for="profileFirstName">รูปภาพ</label>
 													<div class="col-md-8">

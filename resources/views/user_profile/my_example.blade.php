@@ -124,6 +124,7 @@ ul {
           <li><a href="{{url('my_course')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-graduation-cap"></i> คอร์สเรียน</a></li>
           <li><a href="{{url('my_example')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="ap-questions-featured fa fa-bar-chart"></i> สถิติแบบฝึกหัด</a></li>
           <li><a href="{{url('my_pack')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class=" fa fa-cube"></i> Package ปัจจุบัน</a></li>
+          <li><a href="{{url('my_friends')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-users"></i> แนะนำเพื่อน</a></li>
           <li><a href="{{url('my_payment')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class=" fa fa-shopping-cart"></i> ประวัติการเติมเงิน </a></li>
 
           <li><a href="{{url('logout')}}" class="ap-user-menu-activity-feed apicon-rss"><i class="fa fa-sign-out"></i> ออกจากระบบ</a></li>
@@ -158,7 +159,7 @@ ul {
 
 
 
-                  <h3 class="instructor-all-course__title " style="font-size: 1.25rem; margin-bottom:15px;"> ประวัติการเติมเงิน</h3>
+                  <h3 class="instructor-all-course__title " style="font-size: 1.25rem; margin-bottom:15px;"> สถิติแบบฝึกหัด</h3>
 
 
 

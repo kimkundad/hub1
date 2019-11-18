@@ -53,6 +53,23 @@ class PagkageControlle extends Controller
     }
 
 
+    public function get_info_package($id){
+
+      $packag_id = $id;
+
+      $pack = DB::table('package_products')
+       ->where('package_status', 1)
+       ->where('id', $id)
+       ->first();
+
+       $data['objs'] = $pack;
+
+
+      return view('get_info_package', $data);
+
+    }
+
+
     public function get_free_package($id){
 
       $pack = DB::table('package_products')

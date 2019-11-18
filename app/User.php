@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
      protected $fillable = [
-         'name', 'email', 'password', 'is_admin', 'provider', 'provider_id', 'access_token', 'avatar', 'phone', 'address', 'birthday', 'zipcode', 'country', 'code_user',
+         'name', 'email', 'password', 'is_admin', 'provider', 'provider_id', 'access_token', 'avatar', 'phone', 'address', 'birthday', 'zipcode', 'country', 'code_user', 'refer_code', 'refer_date',
      ];
 
      public function sendPasswordResetNotification($token)

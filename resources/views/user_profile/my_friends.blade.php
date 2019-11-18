@@ -118,13 +118,13 @@ ul {
 
       <div class="ap-user-navigation ">
       <ul id="ap-user-menu" class="ap-user-menu ap_collapse_menu clearfix">
-        <li><a href="{{url('profile')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="ap-questions-featured fa fa-street-view"></i> ส่วนตัวของฉัน</a></li>
+        <li><a href="{{url('profile')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class=" fa fa-street-view"></i> ส่วนตัวของฉัน</a></li>
 
 
         <li><a href="{{url('my_course')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-graduation-cap"></i> คอร์สเรียน</a></li>
         <li><a href="{{url('my_example')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class=" fa fa-bar-chart"></i> สถิติแบบฝึกหัด</a></li>
         <li><a href="{{url('my_pack')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class=" fa fa-cube"></i> Package ปัจจุบัน</a></li>
-        <li><a href="{{url('my_friends')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-users"></i> แนะนำเพื่อน</a></li>
+        <li><a href="{{url('my_friends')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="ap-questions-featured fa fa-users"></i> แนะนำเพื่อน</a></li>
         <li><a href="{{url('my_payment')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-shopping-cart"></i> ประวัติการเติมเงิน</a></li>
 
         <li><a href="{{url('logout')}}" class="ap-user-menu-activity-feed apicon-rss"><i class="fa fa-sign-out"></i> ออกจากระบบ</a></li>
@@ -149,54 +149,55 @@ ul {
 
 
 
-                  <h3 class="instructor-all-course__title " style="font-size: 1.25rem; margin-bottom:15px;">ข้อมูลส่วนตัว</h3>
+                  <h3 class="instructor-all-course__title " style="font-size: 1.25rem; margin-bottom:15px;">แนะนำเพื่อน</h3>
                   <hr />
 
 
 
-                  <div class="alert alert-success" style="font-size:14px;">
-                  <strong>กรอกข้อมูลให้ครบด้วยนะนักเรียน </strong> เพื่อผลประโยชน์ของนักเรียน ทางครูพี่โฮมจะมีการส่งของน่ารักๆหรือเอกสารไปให้นักเรียน
+                  <div class="alert alert-success" style="font-size:14px; margin-bottom:30px;">
+                  <strong>คัดลอก URL แนะนำเพื่อน </strong> <input type="text" class="form-control" value="http://localhost/hub1/public/refer/?code={{Auth::user()->code_user}}">
                 </div>
 
-                <table class="table ">
+
+
+                <h3 class="instructor-all-course__title " style="font-size: 1.25rem; margin-bottom:15px;">รายชื่อเพื่อนที่มาจากการแแนะนำ</h3>
+                <hr />
+
+
+                <div class="table-responsive">
+                  <table class="table ">
                 <tbody>
-
                   <tr>
-                    <td>ชื่อของคุณ</td><td>{{Auth::user()->name}}</td>
+                    <td><div class="osahan-title">วันที่</div></td>
+                    <td><div class="osahan-title">ชื่อเพื่อน</div></td>
+                    <td><div class="osahan-title">สถานะ</div></td>
                   </tr>
+
+
+                  @if(isset($get_friend))
+                    @foreach($get_friend as $u)
                   <tr>
-                    <td>อีเมล์</td><td>{{Auth::user()->email}}</td>
-                    </tr>
-                    <tr>
-                    <td>เบอร์โทร</td><td>{{Auth::user()->phone}}</td>
-                    </tr>
-                    <tr>
-                    <td>ID Line</td><td>{{Auth::user()->line_id}}</td>
-                    </tr>
-                    <tr>
-                    <td>วันเกิดของฉัน</td><td>
-                      @if(Auth::user()->hbd == null)
-                      @else
-                      {{DateThai(Auth::user()->hbd)}}
-                      @endif
+                    <td>{{DateThai($u->refer_date)}}</td>
+                    <td>{{$u->name}}</td>
 
 
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>ที่อยู่</td><td>{{Auth::user()->address}}</td>
-                    </tr>
-                    <tr>
-                    <td>เกี่ยวกับนักเรียน</td><td>{{Auth::user()->bio}}</td>
+                    <td>ยังไม่ได้สมัคร</td>
+
+
+
                   </tr>
+                    @endforeach
+                  @endif
+
+
+
                 </tbody>
               </table>
-                  <hr>
 
-                  <div class="col-sm-12 text-center">
+           </div>
 
-                                  <a href="{{url('edit_profile')}}" class="theme-btn">แก้ไขข้อมูลส่วนตัว</a>
-                               </div>
+
+
 
 
 

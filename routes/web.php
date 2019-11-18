@@ -24,6 +24,8 @@ Route::get('/contact', 'HomeController@contact')->name('contact');
 
 Route::get('/all_course', 'HomeController@all_course')->name('all_course');
 
+Route::get('/refer', 'HomeController@refer')->name('refer');
+
 Route::get('/payment', 'HomeController@payment')->name('payment');
 Route::post('post_payment_notify', 'HomeController@post_payment_notify');
 Route::get('/payment_success', 'HomeController@payment_success')->name('payment_success');
@@ -59,10 +61,23 @@ Route::get('/course_details/{id}', 'HomeController@course_details')->name('cours
 
 Route::group(['middleware' => ['UserRole:manager|employee|customer']], function() {
 
+
+
+    Route::post('/submit_payment_package','PackagController@submit_payment_package');
+
+
+    Route::get('success_payment_type/{id}', 'PackagController@success_payment_type');
+
+    Route::get('get_info_package/{id}', 'PagkageControlle@get_info_package');
+
     Route::get('profile', 'UserprofileController@profile');
     Route::get('edit_profile', 'UserprofileController@index');
     Route::get('my_payment', 'UserprofileController@my_payment');
     Route::get('my_pack', 'UserprofileController@my_package');
+
+    Route::get('my_friends', 'UserprofileController@my_friends');
+
+
     Route::get('my_example', 'UserprofileController@my_example');
 
     Route::get('my_course', 'UserprofileController@my_course');

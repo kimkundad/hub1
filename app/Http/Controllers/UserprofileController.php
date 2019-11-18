@@ -34,6 +34,56 @@ class UserprofileController extends Controller
     }
 
 
+
+
+    public function my_friends(){
+
+      $id = Auth::user()->id;
+
+
+
+
+      $objs = DB::table('users')
+          ->where('users.id', Auth::user()->id)
+          ->first();
+
+          if($objs->code_user == null){
+
+            $randomSixDigitInt = (\random_int(1000, 9999)).'_'.(\random_int(1000, 9999)).'_'.(\random_int(1000, 9999));
+
+
+            $objs1 = DB::table('users')
+              ->where('id', $id)
+              ->update(['code_user' => $randomSixDigitInt]);
+
+
+              $get_friend = DB::table('users')
+                  ->where('refer_code', $objs1->code_user)
+                  ->get();
+
+
+
+          }else{
+
+            $objs1 = DB::table('users')
+                ->where('users.id', Auth::user()->id)
+                ->first();
+
+
+                $get_friend = DB::table('users')
+                    ->where('refer_code', $objs1->code_user)
+                    ->get();
+
+
+          }
+
+
+      $data['get_friend'] = $get_friend;
+      $data['objs'] = $objs1;
+      return view('user_profile.my_friends', $data);
+    }
+
+
     public function my_package(){
       $s = 0;
 
@@ -78,6 +128,8 @@ class UserprofileController extends Controller
         ->where('submit_packages.user_id', $id)
         ->get();
 
+
+
         if(isset($package)){
           foreach($package as $u){
 
@@ -118,7 +170,7 @@ class UserprofileController extends Controller
 
 
 
-      //  dd($package);
+      //  dd($order);
 
       $count_his = DB::table('package_his')
         ->where('package_his.user_id', $id)

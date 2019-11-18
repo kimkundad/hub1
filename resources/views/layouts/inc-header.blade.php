@@ -43,6 +43,7 @@
                             <div class="contact-form-action">
                                 <!--Contact Form-->
                                 <form action="{{url('search_course')}}" method="GET" name="search_course" id="search_course">
+                                    {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-lg-10 form-group">
                                             <input class="form-control" type="text" name="search" placeholder="ค้นหาทุกอย่าง" style="padding: 10px;">

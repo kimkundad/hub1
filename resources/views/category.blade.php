@@ -259,10 +259,11 @@
                             <h3 class="widget__title">ค้นหา</h3>
                             <span class="section__divider"></span>
                             <div class="contact-form-action">
-                                <form method="post">
+                                <form action="{{url('search_course')}}" method="post" name="search_course2" id="search_course2">
+                                    {{ csrf_field() }}
                                     <div class="form-group">
                                         <input class="form-control" type="search" name="search" placeholder="ค้นหาคอร์สเรียน...">
-                                        <button type="button" class="search__btn"><span class="la la-search"></span></button>
+                                        <button type="submit" class="search__btn"><span class="la la-search"></span></button>
                                     </div>
                                 </form>
                             </div><!-- end contact-form-action -->

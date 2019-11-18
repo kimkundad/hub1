@@ -2,7 +2,7 @@
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,200,300,400,500,600,700&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" sizes="16x16" href="{{url('home/images/favicon.png')}}">
+    <link rel="icon" sizes="16x16" href="{{url('home/images/favicon.png')}}?v2">
 
     <!-- inject:css -->
     <link rel="stylesheet" href="{{url('home/css/bootstrap.min.css')}}">

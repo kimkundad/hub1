@@ -32,12 +32,9 @@
 
                   <h3 class="instructor-all-course__title">{{$objs->package_name}}</h3>
                   <hr />
-                  <h3 class="instructor-all-course__title" style="font-size: 1.25rem; margin-bottom:15px;">เงื่อนไขและข้อตกลง Package </h3>
 
-                  <p style="font-size:13px; color: #999;">
-                    {{$objs->package_detail}}
-                  </p>
-                  <br />
+
+
 
 
                          <div class="form-group course-overall-wrapper">
@@ -111,52 +108,41 @@
 
                          <div class="form-group course-overall-wrapper">
 
-                           <h3 class="single_tour_desc ">เลือกวิธีการชำระเงิน</h3>
+                           <h3 class="single_tour_desc ">ชำระผ่านบัตรเครดิต</h3>
                            <br />
 
-                           <div class="form_title">
-                              <h3 class="single_tour_desc "><strong>1</strong>โอนเงินผ่านธนาคาร</h3>
-                              <p style="font-size:13px; color: #999;">
-                                สามารถชำระเงินได้โดยผ่านทางธนาคาร จากนั้นกรุณาแจ้งการชำระเงินผ่านทาง <a href="{{url('payment')}}" target="_blank">ยืนยันการชำระเงิน</a>
-                              </p>
-                            </div>
+                           <div class="step">
 
-                            <div class="step">
-                              <form action="{{url('submit_payment_package')}}" method="post" enctype="multipart/form-data" name="product1">
-                                {{ csrf_field() }}
-                                <input class="form-control border-form-control" value="{{$objs->id}}" name="packag_id" type="hidden">
-                                <input class="form-control border-form-control" value="1" name="pay_type" type="hidden">
-                                <button type="submit" class="btn btn-primary border-none">  เลือกชำระโอนเงินผ่านธนาคาร </button>
-
-                              </form>
-
-                            </div>
-
-
-                            <div class="form_title">
-                               <h3 class="single_tour_desc "><strong>2</strong>ชำระผ่านบัตรเครดิต</h3>
-                               <p style="font-size:13px; color: #999;">
-                                ทุกธุรกรรมผ่านบัตรเครดิตและบัตรเดบิตได้รับการรับรองความปลอดภัย ด้วยเทคโนโลยี <b style="color: #2196F3;">GB Prime ระบบชำระเงินออนไลน์</b>
-                               </p>
-                             </div>
-
-
-
-                             <div class="step">
-                               <a href="{{url('/')}}">
-                                 <img src="{{url('assets/image/gb_payment2.png')}}" class="team__img img-thumbnail">
-                               </a>
-
-                               <br /><br />
+                             <form action="https://api.gbprimepay.com/gbp/gateway/qrcode" method="post">
+                                 <div class="col-lg-12 form-group">
+                                   <label>Amount: </label>
+                                   <input type="text" class="form-control" name="amount" value="{{$objs->package_price}}.00" readonly/>
+                                 </div>
+                                 <div class="col-lg-12 form-group">
+                                   <label>Response URL: </label>
+                                   <input type="text" class="form-control" name="responseUrl" value="http://test.com" />
+                                 </div>
+                                 <div class="col-lg-12 form-group">
+                                   <label>Background URL: </label>
+                                   <input type="text" class="form-control" name="backgroundUrl" value="http://test.com" />
+                                 </div>
+                                 <div class="col-lg-12 form-group">
+                                   <label>Detail: </label>
+                                   <input type="text" class="form-control" name="detail" value="money" />
+                                 </div>
+                                 <div class="col-lg-12 form-group">
+                                   <label>Reference No: </label>
+                                   <input type="text" class="form-control" name="referenceNo" value="2017112800001" />
+                                 </div>
+                                 <div>
+                                   <button type="submit" class="btn btn-primary border-none">  ชำระผ่านบัตรเครดิต </button>
+                                 </div>
+                                 <input type="hidden" name="token" value="S4aW3NQXU56Sc9pEThEhKXa3sr2kkj39t44VCrMkJ7sqZLLuWSj1EGHHmB7JTN05TvPuQQXTdVK5DVnrRZXonzhoCKM" />
+                                 <input type="hidden" name="payType" value="F" />
+                               </form>
 
 
-                                 {{ csrf_field() }}
-
-                                 <a href="{{url('gb_pay/'.$objs->id)}}" class="btn btn-primary border-none">  เลือกชำระผ่านบัตรเครดิต </a>
-
-
-
-                             </div>
+                           </div>
 
 
                          </div>

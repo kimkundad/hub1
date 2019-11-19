@@ -65,6 +65,9 @@ Route::get('/course_details/{id}', 'HomeController@course_details')->name('cours
 Route::group(['middleware' => ['UserRole:manager|employee|customer']], function() {
 
 
+  Route::get('gb_pay/{id}', 'GbpayController@gb_pay');
+
+
 
     Route::post('/submit_payment_package','PackagController@submit_payment_package');
 

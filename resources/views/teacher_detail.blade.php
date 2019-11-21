@@ -51,20 +51,7 @@
                         </div><!-- end col-lg-6 -->
                     </div><!-- end tsd-box -->
                     <div class="tsd-box-2 row">
-                        <div class="col-lg-6">
-                            <ul class="ts__contact">
-                                <li><a href="tel:+123-456-0975"><span class="la la-phone"></span> {{$objs->te_phone}}</a></li>
-                                <li><a href="mailto:example@gmail.com"><span class="la la-envelope-o"></span>{{$objs->te_email}}</a></li>
-                                <li><a href="#"><span class="la la-users"></span>อายุ : {{$objs->te_old}}</a></li>
-                            </ul>
-                        </div><!-- end col-lg-6 -->
-                        <div class="col-lg-6">
-                            <ul class="ts__contact">
-                                <li><a href="{{$objs->te_facebook}}" target="_blank"><span class="fa fa-facebook"></span>facebook</a></li>
-                                <li><a href="{{$objs->te_twitter}}" target="_blank"><span class="fa fa-twitter"></span>Twitter</a></li>
-                                <li><a href="{{$objs->te_ig}}" target="_blank"><span class="fa fa-instagram"></span>Instagram</a></li>
-                            </ul>
-                        </div><!-- end col-lg-6 -->
+                        
                     </div><!-- end tsd-box -->
                     <div class="tsd-box tsd-box-3 row">
                         <div class="col-lg-4">

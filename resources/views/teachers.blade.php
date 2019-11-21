@@ -44,9 +44,7 @@
                     <div class="speaker-img-box">
                         <img src="{{url('assets/images/teachers/'.$u->te_image)}}" alt="{{$u->te_name}}">
                         <ul class="speaker__profile">
-                            <li><a href="{{$u->te_twitter}}"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="{{$u->te_facebook}}"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="{{$u->te_ig}}"><i class="fa fa-instagram"></i></a></li>
+                          
                         </ul>
                     </div>
                     <div class="speaker-detail">

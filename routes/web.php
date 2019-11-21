@@ -56,7 +56,7 @@ Route::get('/returns_exchanges', 'HomeController@returns_exchanges')->name('retu
 Route::get('/blog', 'HomeController@blog')->name('blog');
 Route::get('/blog/{id}', 'HomeController@blog_detail')->name('blog_detail');
 
-
+Route::get('/download_file_course/{id}', 'CourseinfoController@download_file_course');
 
 
 Route::get('/category/{id}', 'HomeController@category')->name('category');

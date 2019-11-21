@@ -206,6 +206,8 @@
                         <div class="sidebar-widget sidebar-preview">
 
                             <div class="preview-video-and-details">
+
+                                @if(isset($get_video_ex))
                                 <div class="preview-course-video">
 
                                   <video controls crossorigin playsinline style="width:100%"
@@ -219,6 +221,9 @@
 
                                   </video>
                                 </div>
+                                @endif
+
+
                                 <div class="preview-course-content">
 
 

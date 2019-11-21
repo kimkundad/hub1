@@ -116,15 +116,15 @@
                              <form action="https://api.gbprimepay.com/gbp/gateway/qrcode" method="post">
                                  <div class="col-lg-12 form-group">
                                    <label>Amount: </label>
-                                   <input type="text" class="form-control" name="amount" value="{{$objs->package_price}}.00" readonly/>
+                                   <input type="text" class="form-control" name="amount" value="1.00" readonly/>
                                  </div>
                                  <div class="col-lg-12 form-group">
                                    <label>Response URL: </label>
-                                   <input type="text" class="form-control" name="responseUrl" value="http://test.com" />
+                                   <input type="text" class="form-control" name="responseUrl" value="http://localhost/hub1/public/gb_pay/2" />
                                  </div>
                                  <div class="col-lg-12 form-group">
                                    <label>Background URL: </label>
-                                   <input type="text" class="form-control" name="backgroundUrl" value="http://test.com" />
+                                   <input type="text" class="form-control" name="backgroundUrl" value="http://localhost/hub1/public/gb_pay/2" />
                                  </div>
                                  <div class="col-lg-12 form-group">
                                    <label>Detail: </label>
@@ -137,7 +137,7 @@
                                  <div>
                                    <button type="submit" class="btn btn-primary border-none">  ชำระผ่านบัตรเครดิต </button>
                                  </div>
-                                 <input type="hidden" name="token" value="S4aW3NQXU56Sc9pEThEhKXa3sr2kkj39t44VCrMkJ7sqZLLuWSj1EGHHmB7JTN05TvPuQQXTdVK5DVnrRZXonzhoCKM" />
+                                 <input type="hidden" name="token" value="S4aW3NQXU56Sc9pEThEhKXa3sr2kkj39t44VCrMkJ7sqZLLuWSj1EGHHmB7JTN05TvPuQQXTdVK5DVnrRZXonzhoCKM+QTxIBEN/uKLdtZsNqMW70fK8b8zUQifTqVxWLQFRtrkRYy9PAPD3t1Fihmt6LguVMS5R6cKxx25bmYMMZ0bJ" />
                                  <input type="hidden" name="payType" value="F" />
                                </form>
 

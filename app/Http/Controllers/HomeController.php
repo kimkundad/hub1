@@ -11,7 +11,7 @@ use App\blog;
 use Auth;
 use App\bank;
 use App\teacher;
-
+use Intervention\Image\ImageManagerStatic as Image;
 use App\user_payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

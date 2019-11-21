@@ -55,7 +55,7 @@
                       <th>order id</th>
                       <th>นักเรียน</th>
                       <th>Package</th>
-                      <th>ธนาคาร</th>
+
                       <th>จำนวนเงิน</th>
                       <th>สถานะ</th>
                       <th>สั่งซื้อวันที่</th>
@@ -71,8 +71,8 @@
                       </td>
                       <td><a href="{{url('admin/student/'.$u->Ustudent.'/edit')}}" target="_blank">{{$u->name}}</a></td>
                       <td><a href="{{url('admin/course/'.$u->id_cource.'/edit')}}" target="_blank">{{$u->package_name}}</a></td>
-                      <td>{{$u->bank_name}}</td>
-                      <td>{{$u->money_tran}}</td>
+                      
+                      <td>{{$u->package_price}}</td>
                       <td>
                         @if($u->his_status == 0)
                         <p class="text-danger">

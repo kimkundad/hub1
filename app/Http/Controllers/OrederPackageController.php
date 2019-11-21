@@ -46,6 +46,15 @@ class OrederPackageController extends Controller
     public function order_package_edit($id){
 
 
+      $check_count = DB::table('package_his')
+        ->where('package_his.id', $id)
+        ->count();
+
+      if($check_count == 0){
+        return view('admin.order_package.no_item');
+      }
+
+
       $coursess = DB::table('package_his')
       ->select(
          'package_his.*',

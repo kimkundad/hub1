@@ -3970,15 +3970,7 @@ body {
           -moz-border-radius: 4px 0 0 0;
           border-radius: 4px 0 0 0; }
     .course-block .course-item .course-img:after {
-      position: absolute;
-      bottom: 0;
-      left: 30px;
-      content: '';
-      width: 0;
-      height: 0;
-      border-left: 13px solid transparent;
-      border-right: 13px solid transparent;
-      border-bottom: 13px solid #fff; }
+       }
   .course-block .course-item .course-content {
     border: 1px solid rgba(127, 136, 151, 0.2);
     -webkit-border-radius: 0 0 4px 4px;

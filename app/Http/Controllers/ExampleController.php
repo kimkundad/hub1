@@ -171,14 +171,12 @@ class ExampleController extends Controller
     {
       $this->validate($request, [
            'example_name' => 'required',
-           'categorys' => 'required',
            'course' => 'required',
            'example_detail' => 'required'
        ]);
 
        $obj = new example();
        $obj->examples_name = $request['example_name'];
-       $obj->category_id = $request['categorys'];
        $obj->course_id = $request['course'];
        $obj->examples_detail = $request['example_detail'];
        $obj->save();
@@ -389,14 +387,12 @@ class ExampleController extends Controller
     {
       $this->validate($request, [
            'example_name' => 'required',
-           'categorys' => 'required',
            'course' => 'required',
            'example_detail' => 'required'
        ]);
 
        $obj = example::find($id);
        $obj->examples_name = $request['example_name'];
-       $obj->category_id = $request['categorys'];
        $obj->course_id = $request['course'];
        $obj->examples_detail = $request['example_detail'];
        $obj->save();

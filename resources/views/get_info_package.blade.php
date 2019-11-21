@@ -143,17 +143,28 @@
 
 
                              <div class="step">
-                               <a href="{{url('/')}}">
+
                                  <img src="{{url('assets/image/gb_payment2.png')}}" class="team__img img-thumbnail">
-                               </a>
+
 
                                <br /><br />
-
+                               <form action="https://api.gbprimepay.com/gbp/gateway/qrcode" method="post">
 
                                  {{ csrf_field() }}
+                                  <input type="hidden" class="form-control" name="amount" value="1.00" readonly/>
+                                <!-- <input type="hidden" class="form-control" name="amount" value="{{$objs->package_price}}.00" readonly/> -->
+                                 <input type="hidden" class="form-control" name="responseUrl" value="https://learnsbuy.com/" />
+                                 <input type="hidden" class="form-control" name="backgroundUrl" value="https://learnsbuy.com/" />
+                                 <input type="hidden" class="form-control" name="detail" value="money" />
+                                 <input type="hidden" class="form-control" name="customerName" value="{{Auth::user()->name}}" />
+                                 <input type="hidden" class="form-control" name="customerEmail" value="{{Auth::user()->email}}" />
+                                 <input type="hidden" class="form-control" name="merchantDefined1" value="ซื้อ {{$objs->package_name}}" />
 
-                                 <a href="{{url('gb_pay/'.$objs->id)}}" class="btn btn-primary border-none">  เลือกชำระผ่านบัตรเครดิต </a>
-
+                                 <input type="hidden" class="form-control" name="referenceNo" value="{{date("Y")}}{{date("m")}}{{date("d")}}{{$rand}}" />
+                                 <input type="hidden" name="token" value="S4aW3NQXU56Sc9pEThEhKXa3sr2kkj39t44VCrMkJ7sqZLLuWSj1EGHHmB7JTN05TvPuQQXTdVK5DVnrRZXonzhoCKM+QTxIBEN/uKLdtZsNqMW70fK8b8zUQifTqVxWLQFRtrkRYy9PAPD3t1Fihmt6LguVMS5R6cKxx25bmYMMZ0bJ" />
+                                 <input type="hidden" name="payType" value="F" />
+                                 <button type="submit" class="btn btn-primary border-none">  ชำระผ่าน GB PAY </button>
+                               </form>
 
 
                              </div>

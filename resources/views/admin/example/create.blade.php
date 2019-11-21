@@ -79,18 +79,8 @@
 													</div>
 												</div>
 
-												<div class="form-group">
-													<label class="col-md-3 control-label" for="profileAddress">หมวดหมู่แบบฝึกหัด*</label>
-													<div class="col-md-8">
-														<select name="categorys" class="form-control mb-md" required>
 
-								                      <option value="">-- เลือกหมวดหมู่แบบฝึกหัด --</option>
-								                      @foreach($category as $categorys)
-													  <option value="{{$categorys->id}}">{{$categorys->name_category}}</option>
-													  @endforeach
-								                    </select>
-														</div>
-													</div>
+
 
 
                           <div class="form-group">
@@ -100,7 +90,7 @@
 
   								                      <option value="">-- เลือกคอร์ส --</option>
   								                      @foreach($course as $courses)
-  													  <option value="{{$courses->id}}">{{$courses->code_course}}</option>
+  													  <option value="{{$courses->id}}">{{$courses->title_course}}</option>
   													  @endforeach
   								                    </select>
   														</div>

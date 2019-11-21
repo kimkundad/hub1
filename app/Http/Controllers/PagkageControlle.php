@@ -62,6 +62,10 @@ class PagkageControlle extends Controller
        ->where('id', $id)
        ->first();
 
+       $set_num_date = (\random_int(1000, 9999));
+
+       $data['rand'] = $set_num_date;
+
        $data['objs'] = $pack;
 
 

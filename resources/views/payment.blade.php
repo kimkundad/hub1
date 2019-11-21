@@ -58,8 +58,8 @@
                             <div class="row">
 
                               <div class="col-lg-6 form-group">
-                                  <label class="form-label">เลขคำสั่งซื้อ*</label>
-                                  <input class="form-control" type="text" name="order_id" value="{{ old('order_id') }}" placeholder="หมายเลขคำสั่งซื้อ">
+                                  <label class="form-label">เลขคำสั่งซื้อ* <small class="text-muted">(ใส่แต่ตัวเลขที่ได้รับ)</small></label>
+                                  <input class="form-control" type="number" name="order_id" value="{{ old('order_id') }}" placeholder="หมายเลขคำสั่งซื้อ">
                                   @if ($errors->has('order_id'))
                                   <p class="text-danger" style="margin-top:10px;">
                                     คุณต้องกรอก เลขคำสั่งซื้อ ด้วยค่ะ

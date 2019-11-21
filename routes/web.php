@@ -100,7 +100,11 @@ Route::group(['middleware' => ['UserRole:manager|employee|customer']], function(
 
 Route::group(['middleware' => ['UserRole:manager|employee']], function() {
 
-  Route::post('add_video_course_example', 'CourseController@add_video_course_example');
+      Route::resource('admin/user_pay', 'UserpayController');
+      Route::post('api/api_pay_status', 'UserpayController@api_pay_status');
+
+
+      Route::post('add_video_course_example', 'CourseController@add_video_course_example');
       Route::get('admin/set_video', 'SetVideoController@index');
       Route::get('admin/search_list_video', 'SetVideoController@search_list_video');
       Route::post('admin/fea_video', 'SetVideoController@fea_video');

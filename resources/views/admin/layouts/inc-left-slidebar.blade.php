@@ -60,6 +60,13 @@ html.no-overflowscrolling .nano > .nano-pane > .nano-slider {
 										</a>
 									</li>
 
+                  <li {{ (Request::is('admin/user_pay*') ? 'class=nav-expanded' : '') }} >
+										<a href="{{url('admin/user_pay/')}}"  >
+											<i class="fa fa-copy" aria-hidden="true"></i>
+											<span>แจ้งชำระโอน</span>
+										</a>
+									</li>
+
 
                   <li {{ (Request::is('admin/set_video*') ? 'class=nav-expanded' : '') }} {{ (Request::is('admin/search_list_video*') ? 'class=nav-expanded' : '') }} >
 										<a href="{{url('admin/set_video/')}}" >
@@ -67,6 +74,10 @@ html.no-overflowscrolling .nano > .nano-pane > .nano-slider {
 											<span>จัดการ Video ทั้งหมด</span>
 										</a>
 									</li>
+
+
+
+
 
 
 

@@ -6,7 +6,7 @@
     <li class="">
           <a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown" aria-expanded="false">
             <i class="fa fa-tasks"></i>
-            <span class="badge">{{$course_message}}</span>
+            <span class="badge"></span>
           </a>
 
 
@@ -44,7 +44,7 @@
 <li class="">
   <a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown" aria-expanded="true">
     <i class="fa fa-envelope"></i>
-    <span class="badge" id="new_count_message">{{$count_message}}</span>
+    <span class="badge" id="new_count_message"></span>
   </a>
 
   <div class="dropdown-menu notification-menu">
@@ -56,27 +56,7 @@
     <div class="content">
       <ul id="messages_noti">
 
-        @if(isset($message_user))
-          @foreach($message_user as $message_users)
-        <li>
-          <a href="{{url('admin/inbox_chat/'.$message_users->chat_user_id)}}" class="clearfix">
-            <figure class="image">
 
-              @if($message_users->provider == 'email')
-              <img src="{{url('assets/images/avatar/'.$message_users->avatar)}}" class="img-circle" style="width:35px; height35px">
-              @else
-              <img src="//{{$message_users->avatar}}" class="img-circle" style="width:35px; height35px">
-              @endif
-
-
-
-            </figure>
-            <span class="title">{{$message_users->name}}</span>
-            <span class="message">มีข้อความมาใหม่ถึงคุณ</span>
-          </a>
-        </li>
-          @endforeach
-        @endif
 
       </ul>
 

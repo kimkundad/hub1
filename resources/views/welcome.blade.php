@@ -174,13 +174,13 @@
                                             <div class="course-meta">
                                                 <ul class="course__list d-flex">
                                                     <li>
-                                                        <span class="meta__date">
+                                                        <span class="meta__date" style="font-size:13px">
                                                             <i class="la la-play-circle"></i> {{$u->count_video}} Video
                                                         </span>
                                                     </li>
-                                                    <li>
-                                                        <span class="meta__date">
-                                                            <i class="la la-clock-o"></i> {{$u->time_course_text}}
+                                                    <li style="padding: 0px;">
+                                                        <span class="meta__date" style="font-size:13px">
+                                                            <i class="fa fa-file-text-o"></i> {{$u->time_course_text}}
                                                         </span>
                                                     </li>
                                                 </ul>

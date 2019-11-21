@@ -10,37 +10,13 @@
 
 
 
-<!-- ================================
-    START BREADCRUMB AREA
-================================= -->
-<section class="breadcrumb-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb-content">
-                    <h2 class="breadcrumb__title">contact</h2>
-                    <ul class="breadcrumb__list">
-                        <li class="active__list-item"><a href="index.html">home</a></li>
-                        <li class="active__list-item">pages</li>
-                        <li>contact</li>
-                    </ul>
-                    <div class="text-outline">contact</div>
-                </div><!-- end breadcrumb-content -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end breadcrumb-area -->
-<!-- ================================
-    END BREADCRUMB AREA
-================================= -->
+
 
 
 <!-- ================================
        START GOOGLE MAP
 ================================= -->
-<div class="map-container">
-    <div id="map"></div><!-- end map -->
-</div>
+
 <!-- ================================
        END GOOGLE MAP
 ================================= -->

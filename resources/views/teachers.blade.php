@@ -42,9 +42,12 @@
             <div class="col-lg-3">
                 <div class="speaker-item speaker-item1">
                     <div class="speaker-img-box">
+                      <a href="{{url('teacher_detail/'.$u->id)}}">
                         <img src="{{url('assets/images/teachers/'.$u->te_image)}}" alt="{{$u->te_name}}">
+                      </a>
+
                         <ul class="speaker__profile">
-                          
+
                         </ul>
                     </div>
                     <div class="speaker-detail">

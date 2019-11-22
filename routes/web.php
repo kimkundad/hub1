@@ -93,6 +93,7 @@ Route::group(['middleware' => ['UserRole:manager|employee|customer']], function(
 
     Route::post('del_wishlist', 'UserprofileController@del_wishlist');
 
+    Route::get('post_pay_package/{id}', 'PagkageControlle@post_pay_package');
 
 
 });

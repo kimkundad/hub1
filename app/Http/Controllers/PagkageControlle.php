@@ -34,6 +34,53 @@ class PagkageControlle extends Controller
     }
 
 
+    public function post_pay_package(Request $request, $id){
+
+      //dd($request->all());
+      $gbToken = $request['gbToken'];
+      $number = $request['number'];
+      //dd($number);
+
+
+      $secret_key = "uyWqinDLz1DBKSk4lOy2ujsdXZI61IBG";
+
+      $data = array(
+        'amount' => 1.00,
+        'referenceNo' => '012345678',
+        'detail' => 't-shirt',
+        'customerName' => 'John',
+        'card' => array(
+          'token' => $gbToken,
+        ),
+        'otp' => 'N'
+      );
+
+      $payload = json_encode($data);
+
+      //dd($payload);
+
+      $ch = curl_init('https://api.globalprimepay.com/v1/tokens/charge'); // Test env
+      curl_setopt($ch, CURLOPT_HEADER, 1);
+      curl_setopt($ch, CURLOPT_USERPWD, $secret_key . ':');
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true );
+      curl_setopt($ch, CURLOPT_POST, true);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($payload))
+      );
+
+      $result = curl_exec($ch);
+
+      curl_close($ch);
+
+      echo $result;
+
+    }
+
+
+
     public function submit_info_package($id){
 
       $packag_id = $id;

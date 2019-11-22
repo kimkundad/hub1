@@ -167,6 +167,27 @@
                                </form>
 
 
+                               <br />
+
+                               <hr />
+                            <!-- <form id="checkout-form" action="{{url('post_pay_package/'.$objs->id.'/')}}"> -->
+                                <form id="checkout-form" action="/">
+                                  <div id="gb-form" style="height: 600px;"></div>
+                                </form>
+                                <script src="{{url('home/js/GBPrimePay.js')}}"></script>
+                                <script>
+                                       new GBPrimePay({
+                                         publicKey: '5RjrJwedCYzx1cvSPxuT8HhTz1co2O34',
+                                         gbForm: '#gb-form',
+                                         merchantForm: '#checkout-form',
+                                         customStyle: {
+                                           backgroundColor: '#eaeaea'
+                                         },
+                                         env: 'test' // default prd | optional: test, prd
+                                       });
+                                     </script>
+
+
                              </div>
 
 
@@ -217,6 +238,7 @@
 
 @section('scripts')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script>
 $('.photo_f').on('click', function () {
 

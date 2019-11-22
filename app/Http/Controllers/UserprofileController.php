@@ -36,6 +36,9 @@ class UserprofileController extends Controller
 
 
 
+
+
+
     public function my_friends(){
 
       $id = Auth::user()->id;

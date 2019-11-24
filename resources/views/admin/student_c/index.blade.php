@@ -61,9 +61,9 @@
                       </th>
                       <th>นักเรียน</th>
                       <th>คอร์ส</th>
-                      <th>หมดอายุ</th>
-                      <th>เวลา</th>
-                      <th>วันที่โอน</th>
+
+
+                      <th>สถานะ</th>
                       <th>สั่งซื้อวันที่</th>
                       <th>Action</th>
                     </tr>
@@ -75,11 +75,23 @@
                       <td>
                         {{$u->Oid}}
                       </td>
-                      <td><a href="{{url('admin/student/'.$u->Ustudent.'/edit')}}" target="_blank">{{$u->name}}</a></td>
+                      <td><a href="{{url('admin/student/'.$u->Ustudent.'/edit')}}" target="_blank">{{$u->name}}</a> <br />{{$u->order_id}}</td>
                       <td><a href="{{url('admin/course/'.$u->Ucourse.'/edit')}}" target="_blank">{{$u->title_course}}</a></td>
-                      <td><?php echo DateThai($u->end_day); ?></td>
-                      <td>{{$u->hrcourse}}</td>
-                      <td>{{$u->date_tran}}</td>
+
+                      <td>@if($u->status == 0)
+                      <p class="text-warning">
+                        ยังไม่แจ้งชำระเงิน
+                      </p>
+                      @elseif($u->status == 1)
+                      <p class="text-danger">
+                        รอการตรวจสอบ
+                      </p>
+                      @else
+                      <p class="text-success">
+                        อนุมัติแล้ว
+                      </p>
+                      @endif</td>
+
                       <td>{{$u->Dcre}}</td>
 
 
@@ -93,7 +105,7 @@
                         <a style="float:left; margin-right:4px;" class="btn btn-primary btn-xs" href="{{url('admin/play_student/'.$u->Oid.'/edit')}}"
                           role="button"><i class="fa fa-wrench"></i> </a>
 
-                          <a style="float:left; margin:0px 4px 4px 4px; " target="_blank" class="btn btn-warning btn-xs" href="{{url('admin/play_student/'.$u->Oid.'/print')}}" role="button"><i class="fa fa-print"></i> </a>
+                        <!--  <a style="float:left; margin:0px 4px 4px 4px; " target="_blank" class="btn btn-warning btn-xs" href="{{url('admin/play_student/'.$u->Oid.'/print')}}" role="button"><i class="fa fa-print"></i> </a> -->
 
                           <form  action="{{url('admin/play_student/'.$u->Oid)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
                             <input type="hidden" name="_method" value="DELETE">

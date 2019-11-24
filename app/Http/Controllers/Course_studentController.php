@@ -42,40 +42,10 @@ class Course_studentController extends Controller
         ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
         ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
         ->leftjoin('banks', 'banks.id', '=', 'submitcourses.bank_id')
-        ->where('submitcourses.status', '=', 1)
         ->count();
 
-      $data['course_message'] = $course_message;
-
-      $message_user = DB::table('messages')
-      ->select(
-      DB::raw('messages.*, max(messages.id) as id'),
-      'users.*'
-      )
-      ->leftjoin('users', 'users.id', '=', 'messages.chat_user_id')
-      ->where('messages.chat_user_id', '>', 1)
-      ->where('messages.seen', 0)
-      ->groupBy('messages.chat_user_id')
-      ->get();
-      $data['message_user'] = $message_user;
 
 
-      $message = DB::table('messages')
-       ->select(
-       DB::raw('messages.*')
-       )
-       ->where('chat_user_id', '>', 1)
-       ->where('seen', 0)
-       ->groupBy('chat_user_id')
-       ->get();
-
-       $s = 0;
-       foreach ($message as $obj) {
-          $s++;
-
-           $obj->options = $s;
-       }
-     $data['count_message'] = $s;
 
       $coursess = DB::table('submitcourses')
         ->select(
@@ -92,7 +62,6 @@ class Course_studentController extends Controller
         ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
         ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
         ->leftjoin('banks', 'banks.id', '=', 'submitcourses.bank_id')
-        ->where('submitcourses.status', '=', 2)
         ->get();
 
       $data['objs'] = $coursess;
@@ -160,35 +129,8 @@ class Course_studentController extends Controller
 
       $data['course_message'] = $course_message;
 
-      $message_user = DB::table('messages')
-      ->select(
-      DB::raw('messages.*, max(messages.id) as id'),
-      'users.*'
-      )
-      ->leftjoin('users', 'users.id', '=', 'messages.chat_user_id')
-      ->where('messages.chat_user_id', '>', 1)
-      ->where('messages.seen', 0)
-      ->groupBy('messages.chat_user_id')
-      ->get();
-      $data['message_user'] = $message_user;
 
 
-      $message = DB::table('messages')
-       ->select(
-       DB::raw('messages.*')
-       )
-       ->where('chat_user_id', '>', 1)
-       ->where('seen', 0)
-       ->groupBy('chat_user_id')
-       ->get();
-
-       $s = 0;
-       foreach ($message as $obj) {
-          $s++;
-
-           $obj->options = $s;
-       }
-     $data['count_message'] = $s;
 
       $coursess = DB::table('submitcourses')
         ->select(
@@ -207,6 +149,21 @@ class Course_studentController extends Controller
         ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
         ->leftjoin('banks', 'banks.id', '=', 'submitcourses.bank_id')
         ->first();
+
+
+        $pay = DB::table('user_payments')->select(
+            'user_payments.*',
+            'user_payments.id as ids',
+            'banks.*'
+            )
+            ->leftjoin('banks', 'banks.id',  'user_payments.bank')
+            ->where('user_payments.order_id', $coursess->order_id)
+            ->first();
+
+
+    //  dd($pay);
+
+      $data['pay'] = $pay;
 
       //dd($coursess);
       $data['method'] = "put";
@@ -241,7 +198,7 @@ class Course_studentController extends Controller
         ->leftjoin('banks', 'banks.id', '=', 'submitcourses.bank_id')
         ->first();
 
-      //dd($coursess);
+
 
       $data['courseinfo'] = $coursess;
       $data['datahead'] = "จัดการคอร์สเรียน";
@@ -260,8 +217,7 @@ class Course_studentController extends Controller
     {
       $this->validate($request, [
    'end_day' => 'required',
-   'status' => 'required',
-   'hrcourse' => 'required'
+   'status' => 'required'
     ]);
 
 
@@ -275,8 +231,7 @@ class Course_studentController extends Controller
         ->where('id', $id)
         ->update(array(
           'end_day' => $request['end_day'],
-          'status' => $request['status'],
-          'hrcourse' => $request['hrcourse']
+          'status' => $request['status']
         ));
 
 

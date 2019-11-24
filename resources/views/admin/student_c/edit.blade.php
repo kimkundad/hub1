@@ -12,34 +12,7 @@
 
 
 
-<?php
-function DateThaif($strDate)
-{
-$strYear = date("Y",strtotime($strDate))+543;
-$strMonth= date("n",strtotime($strDate));
-$strDay= date("j",strtotime($strDate));
-$strHour= date("H",strtotime($strDate));
-$strMinute= date("i",strtotime($strDate));
-$strSeconds= date("s",strtotime($strDate));
-$strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-$strMonthThai=$strMonthCut[$strMonth];
-return "$strDay $strMonthThai";
-}
- ?>
-<?php
-function DateThai($strDate)
-{
-$strYear = date("Y",strtotime($strDate))+543;
-$strMonth= date("n",strtotime($strDate));
-$strDay= date("j",strtotime($strDate));
-$strHour= date("H",strtotime($strDate));
-$strMinute= date("i",strtotime($strDate));
-$strSeconds= date("s",strtotime($strDate));
-$strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-$strMonthThai=$strMonthCut[$strMonth];
-return "$strDay $strMonthThai $strYear";
-}
- ?>
+
 
 
 				<section role="main" class="content-body">
@@ -108,33 +81,52 @@ return "$strDay $strMonthThai $strYear";
                         </tr>
                         <tr>
                           <td>ยอดเงินที่โอน</td>
-                          <td>{{$courseinfo->money_tran}}</td>
+                          <td>
+
+                            @if(isset($pay->money))
+                            {{$pay->money}}
+                            @endif
+
+                          </td>
                         </tr>
                         <tr>
                           <td>โอนมายังธนาคาร</td>
-                          <td>{{$courseinfo->bank_name}}</td>
+                          <td>
+                            @if(isset($pay->bank_name))
+                            {{$pay->bank_name}}
+                            @endif
+
+
+                          </td>
                         </tr>
                         <tr>
                           <td>โอนมาวันที่</td>
-                          <td>{{$courseinfo->date_tran}} {{$courseinfo->time_tran}}</td>
+                          <td>
+
+                            @if(isset($pay->day_tran))
+                            {{$pay->day_tran}} {{$pay->time_tran}}
+                            @endif
+
+
+                            </td>
                         </tr>
                         <tr>
                           <td>ราคาคอร์ส</td>
                           <td>{{$courseinfo->price_course}}</td>
                         </tr>
-                        <tr>
-                          <td>ช่วงเวลา</td>
-                          <td>{{$courseinfo->time_course}}</td>
-                        </tr>
-                        <tr>
-                          <td>วันที่สอน</td>
-                          <td>{{$courseinfo->day_course}}</td>
-                        </tr>
+
                         <tr>
                           <td>เอกสารการโอนเงิน</td>
                           <td>
-                            @if($courseinfo->bill_image != null)
-                            <img src="{{url('assets/bill/'.$courseinfo->bill_image)}}" class="img-responsive" />
+                            @if(isset($pay->image_tran))
+                            @if($pay->image_tran != null)
+                            <div class="form-group">
+
+                              <div class="col-md-8">
+                                <img src="{{url('assets/image/slip/'.$pay->image_tran)}}" class="img-responsive" style="width:70%">
+                                </div>
+                            </div>
+                            @endif
                             @endif
                           </td>
                         </tr>
@@ -172,12 +164,12 @@ return "$strDay $strMonthThai $strYear";
   												</div>
   											</div>
 
-                            <div class="form-group">
+                          <!--  <div class="form-group">
                               <label class="col-md-3 control-label" for="profileFirstName">จำนวนชั่วโมง*</label>
                                   <div class="col-md-8">
                                       <input type="text" class="form-control" name="hrcourse" value="{{$courseinfo->hrcourse}}" placeholder="1500">
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
     													<label class="col-md-3 control-label" for="profileAddress">สถานะ*</label>

@@ -234,10 +234,21 @@
                                         <p class="preview-course-incentives__title">หลักสูตรนี้รวมถึง</p>
 
 
+                                        <div class="buy-course-btn">
 
+                                        @if (Auth::guest())
+                                        <button class="photo_f btn btn-primary border-none btn-block" href="/">ซื้อคอร์สนี้</button>
+                                        @else
+                                        <a class="btn btn-primary border-none btn-block" href="{{url('buy_course/'.$objs->A)}}">ซื้อคอร์สนี้</a>
+                                        @endif
+
+
+
+                                        </div>
 
                                         <ul class="preview-course-incentives__list">
-                                            <li><span class="la la-play-circle-o"></span>{{$objs->time_course_text}} on-demand video</li>
+                                            <li><span class="la la-clock-o"></span>{{$objs->time_course_text}}</li>
+                                            <li><span class="la la-play-circle-o"></span>{{$objs->count_video}} video {{$objs->time_course_text}}</li>
                                             <li><span class="la la-file"></span>{{$objs->count_video}} Video</li>
                                             <li><span class="la la-key"></span>Full lifetime access</li>
                                             <li><span class="la la-television"></span>Access on mobile and TV</li>
@@ -359,6 +370,13 @@
 
 @section('scripts')
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+$('.photo_f').on('click', function () {
 
+swal("การซื้อคอร์สเรียน นักเรียน ต้องทำการ login เข้าสู่ระบบก่อน")
+
+});
+</script>
 
 @stop('scripts')

@@ -8,7 +8,9 @@
 }
 .slider-area .single-slide-item:after {
 
-    opacity: .50;
+  /*  opacity: .50; */
+
+  opacity: 0;
 }
 </style>
 
@@ -31,10 +33,24 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="slider-heading">
+                                    @if($slide->text_slide1 == null)
+                                    <h2 class="slider__title">&nbsp</h2>
+                                    @else
                                     <h2 class="slider__title">{{$slide->text_slide1}}</h2>
+                                    @endif
+
+
+                                    @if($slide->text_slide1 == null)
+                                    <p class="slider__text" style="margin-bottom: 0px;">
+                                        &nbsp
+                                    </p>
+                                    @else
                                     <p class="slider__text" style="margin-bottom: 0px;">
                                         {{$slide->text_slide3}}
                                     </p>
+                                    @endif
+
+
 
                                 </div>
                             </div><!-- col-md-7 -->
@@ -143,14 +159,14 @@
                                             <p class="course__label">
 
                                               @if (Auth::guest())
-
+                                                <span class="course__label-text">{{$u->name_department}}</span>
                                                 <a href="#" class="photo_f course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
                                                   <span class="la la-heart-o"></span>
                                                 </a>
 
                                               @else
                                               <form id="cutproduct" class="" novalidate="novalidate" action="" method="post"  role="form">
-
+                                              <span class="course__label-text">{{$u->name_department}}</span>
                                               <input class="user_id form hide" type="hidden" name="id" value="{{$u->A}}" />
 
                                               <a href="#" class="course__collection-icon add_wishlist"  data-value="{{$u->A}}" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
@@ -175,13 +191,11 @@
                                                 <ul class="course__list d-flex">
                                                     <li>
                                                         <span class="meta__date" style="font-size:13px">
-                                                            <i class="la la-play-circle"></i> {{$u->count_video}} Video
+                                                            <i class="la la-play-circle"></i> {{$u->count_video}} Classes
                                                         </span>
                                                     </li>
                                                     <li style="padding: 0px;">
-                                                        <span class="meta__date" style="font-size:13px">
-                                                            <i class="fa fa-file-text-o"></i> {{$u->time_course_text}}
-                                                        </span>
+                                                        <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
                                                     </li>
                                                 </ul>
                                             </div><!-- end course-meta -->
@@ -214,7 +228,7 @@
                                       </div><!-- end course-img -->
                                       <div class="course-content">
                                           <p class="course__label">
-
+                                            <span class="course__label-text">{{$u->name_department}}</span>
                                             @if (Auth::guest())
 
                                               <a href="#" class="photo_f course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
@@ -251,7 +265,7 @@
                                                   </li>
                                                   <li>
                                                       <span class="meta__date">
-                                                          <i class="la la-clock-o"></i> {{$u->time_course_text}}
+                                                          <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
                                                       </span>
                                                   </li>
                                               </ul>
@@ -281,7 +295,7 @@
                                       </div><!-- end course-img -->
                                       <div class="course-content">
                                           <p class="course__label">
-
+                                            <span class="course__label-text">{{$u->name_department}}</span>
                                             @if (Auth::guest())
 
                                               <a href="#" class="photo_f course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
@@ -319,7 +333,7 @@
                                                   </li>
                                                   <li>
                                                       <span class="meta__date">
-                                                          <i class="la la-clock-o"></i> {{$u->time_course_text}}
+                                                          <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
                                                       </span>
                                                   </li>
                                               </ul>
@@ -427,7 +441,7 @@
             <div class="col-lg-3">
                 <div class="category-item">
                     <div class="category-content">
-                        <a href="#" style="padding-left: 10px;">
+                        <a href="{{url('course_department/'.$u->id)}}" style="padding-left: 10px;">
                             <span class="{{$u->icon_de}}" style="float: left;"></span>
                             <h3 class="cat__title">{{$u->name_department}}</h3>
                         </a>
@@ -488,7 +502,7 @@
                             </div><!-- end col-lg-4 -->
                         </div><!-- end row -->
                         <div class="get-start-btn">
-                            <a href="#" class="theme-btn theme-btn2">เพิ่มเติม</a>
+                            <a href="{{url('about')}}" class="theme-btn theme-btn2">เพิ่มเติม</a>
                         </div>
                     </div><!-- end section-heading -->
                 </div><!-- end benefit-heading -->

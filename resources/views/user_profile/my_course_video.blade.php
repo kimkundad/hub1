@@ -157,6 +157,23 @@ ul {
     box-shadow: 0 0 11px #ececec;
     transition-duration: 0.4s;
 }
+.comment__btn {
+    color: #7f8897;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    font-size: 16px;
+    display: inline-block;
+    padding: 7px 18px;
+    border: 1px solid #eee;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    font-weight: 500;
+}
 </style>
 
 
@@ -165,43 +182,111 @@ ul {
 
 
 
-                  <h3 class="instructor-all-course__title " style="font-size: 1.25rem; margin-bottom:15px;"> คอร์สเรียนของฉัน</h3>
+                  <h3 class="instructor-all-course__title " style="font-size: 1.25rem; margin-bottom:15px;"> คอร์สเรียนของฉัน &nbsp&nbsp<a class="comment__btn" href="#">
+                                                    {{$objs->title_course}}
+                                                </a> </h3>
 
                   <div class="row">
-
-                    @if(isset($objs))
-                      @foreach($objs as $u)
-                    <div class="col-lg-4 " id="wish_{{$u->id}}">
-                        <div class="blog-post-img">
-                          <a href="{{url('my_course_video/'.$u->id_c)}}" class="te">
-                            <img src="{{url('assets/uploads/'.$u->image_course)}}" class="img-fluid">
-                            </a>
-
-
-                            <table class="table " style="font-size: 12px;margin-bottom: 0rem;">
-                         <tbody>
-
-                           <tr>
-                             <td>{{$u->title_course}}</td>
-                           </tr>
-                           <tr>
-                             <td>ดูได้ถึง {{DateThai($u->created_ats)}}</td>
-                           </tr>
+                    <div class="col-md-12">
 
 
 
-                         </tbody>
-                       </table>
+                      @if(isset($filecourses))
+
+                      <div class="table-scrollable table-scrollable-borderless">
+                                           <table class="table table-hover table-light">
+                                            <thead class="uppercase">
+                                                <tr>
+                                                    <th>เอกสาร Download</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+
+                        @foreach($filecourses as $u)
+
+                              <tr>
+                                <td>
+                                  <a href="{{url('download_file_course/'.$u->id)}}"> {{$u->file_of_name}}</a>
+                                </td>
+                                <td class="text-right"><a href="#" >
+                                <a href="{{url('download_file_course/'.$u->id)}}">  <i class="fa fa-download"></i> ดาวน์โหลด</a>
+                                </td>
+                              </tr>
+
+                        @endforeach
+
+                        </tbody>
+                      </table>
+                    </div>
+                      @endif
+
+
+
+                    @if(isset($get_video))
+
+
+
+                      <div class="table-scrollable table-scrollable-borderless">
+                                           <table class="table table-hover table-light">
+                                            <thead class="uppercase">
+                                                <tr>
+                                                    <th>รายชื่อของ Video</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+
+                                              @foreach($get_video as $u)
+                                              <tr>
+                                                <td><a href="#" data-toggle="modal" data-target="#exampleModalCenter-{{$u->id}}"><i class="fa fa-video-camera "></i> {{$u->course_video_name}}</a>  </td>
+
+                                                <div class="modal fade bd-example-modal-lg" id="exampleModalCenter-{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">{{$u->course_video_name}}</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true" class="la la-close"></span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <video controls crossorigin playsinline poster="{{url('assets/uploads/'.$u->thumbnail_img)}}" id="player">
+                                                                        <!-- Video files -->
+                                                                        <source src="{{url('assets/videos/'.$u->course_video)}}" type="video/mp4" size="576"/>
+                                                                        <source src="{{url('assets/videos/'.$u->course_video)}}" type="video/mp4" size="720"/>
+                                                                        <source src="{{url('assets/videos/'.$u->course_video)}}" type="video/mp4" size="1080"/>
+
+                                                                    </video>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- end modal -->
+
+
+                                                <td class="text-right"><a href="#" data-toggle="modal" data-target="#exampleModalCenter-{{$u->id}}">
+                                                  <i class="fa fa-play-circle-o" style="font-size:18px; color:red"></i> {{$u->time_video}} / นาที</a>
+                                                </td>
+
+                                              </tr>
+
+
+                                              @endforeach
+
+
+                                            </tbody>
+                                            </table>
+                                          </div>
 
 
 
 
-                        </div><!-- end blog-post-img -->
-                    </div><!-- end blog-post-item -->
-                    @endforeach
+
                     @endif
 
-
+                    </div>
                     </div>
 
 

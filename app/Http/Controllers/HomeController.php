@@ -275,6 +275,16 @@ class HomeController extends Controller
       return view('payment', $data);
     }
 
+
+    public function payment_id($id){
+
+      $objs = bank::all();
+      $data['order_id'] = $id;
+      $data['objs'] = $objs;
+
+      return view('payment', $data);
+    }
+
     public function teacher_detail($id){
 
       $package = teacher::find($id);
@@ -866,6 +876,62 @@ class HomeController extends Controller
       $data['get_course'] = $get_course;
       $data['get_count'] = $get_count;
       return view('all_course', $data);
+
+    }
+
+
+
+    public function course_department($id){
+
+      $cats = DB::table('departments')
+            ->where('id', $id)
+            ->first();
+
+            $get_sub = DB::table('sub_departments')
+                  ->where('id_depart', $cats->id)
+                  ->get();
+
+                  $get_count = DB::table('courses')
+                        ->where('department_id', $cats->id)
+                        ->count();
+
+
+                        $get_course = DB::table('courses')
+                            ->select(
+                            'courses.*',
+                            'courses.id as A',
+                            'typecourses.*',
+                            'departments.*',
+                            'teachers.*'
+                            )
+                            ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+                            ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
+                            ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
+                            ->where('courses.department_id', $cats->id)
+                            ->where('courses.ch_status', 1)
+                            ->orderBy('sort_corse', 'asc')
+                            ->get();
+
+                            if(isset($get_course)){
+                              foreach($get_course as $u){
+
+                                $count_video = DB::table('video_lists')
+                                      ->where('course_id', $u->A)
+                                      ->count();
+                                      $u->count_video = $count_video;
+
+
+                              }
+                            }
+
+
+
+          //  dd($cats);
+      $data['get_course'] = $get_course;
+      $data['get_count'] = $get_count;
+      $data['get_sub'] = $get_sub;
+      $data['objs'] = $cats;
+      return view('course_department', $data);
 
     }
 

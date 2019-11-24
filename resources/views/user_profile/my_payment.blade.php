@@ -121,11 +121,11 @@ ul {
           <li><a href="{{url('profile')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class=" fa fa-street-view"></i> ส่วนตัวของฉัน</a></li>
 
 
-          <li><a href="{{url('my_course')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-graduation-cap"></i> คอร์สเรียน</a></li>
+          <li><a href="{{url('my_course')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-graduation-cap"></i> คอร์สเรียน ที่ชอบ</a></li>
           <li><a href="{{url('my_example')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class=" fa fa-bar-chart"></i> สถิติแบบฝึกหัด</a></li>
-          <li><a href="{{url('my_pack')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class=" fa fa-cube"></i> Package ปัจจุบัน</a></li>
+          <li><a href="{{url('my_pack')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class=" fa fa-cube"></i> คอร์สเรียนของฉัน</a></li>
           <li><a href="{{url('my_friends')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-users"></i> แนะนำเพื่อน</a></li>
-          <li><a href="{{url('my_payment')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="ap-questions-featured fa fa-shopping-cart"></i> ประวัติการเติมเงิน </a></li>
+          <li><a href="{{url('my_payment')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="ap-questions-featured fa fa-shopping-cart"></i> ประวัติการสั่งซื้อ </a></li>
 
           <li><a href="{{url('logout')}}" class="ap-user-menu-activity-feed apicon-rss"><i class="fa fa-sign-out"></i> ออกจากระบบ</a></li>
         </ul>
@@ -159,47 +159,59 @@ ul {
 
 
 
-                  <h3 class="instructor-all-course__title " style="font-size: 1.25rem; margin-bottom:15px;"> ประวัติการเติมเงิน</h3>
+                  <h3 class="instructor-all-course__title " style="font-size: 1.25rem; margin-bottom:15px;"> ประวัติการสั่งซื้อ</h3>
 
 
 
                   <div class="table-responsive">
-                  <table class="table ">
+                  <table class="table " style="font-size: 12px;">
                <tbody>
                  <tr>
-                   <td><div class="osahan-title">วันที่</div></td>
-                   <td><div class="osahan-title">Package</div></td>
+                   <td><div class="osahan-title">วันทำรายการ</div></td>
+                   <td><div class="osahan-title">คอร์ส</div></td>
                    <td><div class="osahan-title">ราคา</div></td>
-                   <td><div class="osahan-title">เริ่มใช้</div></td>
-                   <td><div class="osahan-title">สิ้นสุด</div></td>
+                   <td><div class="osahan-title">ส่วนลด</div></td>
+                   <td><div class="osahan-title">จำนวนวัน</div></td>
+                   <td><div class="osahan-title">สถานะ</div></td>
+                   <td></td>
                  </tr>
 
                  @if(isset($pack))
                    @foreach($pack as $u)
                  <tr>
-                   <td>{{DateThai($u->Dcre)}}</td>
-                   <td>{{$u->package_name}}</td>
+                   <td>{{DateThai($u->created_ats)}}</td>
+                   <td>{{$u->title_course}}</td>
+                   <td>
+                     {{$u->price_course}}
+                   </td>
+                   <td>
+                     {{$u->discount}}
+                   </td>
+                   <td>
+                     {{$u->time_course_text}}
+                   </td>
                    <td>
 
-                     @if($u->package_price < 10)
-                     ทดลองใช้ฟรี {{$u->package_day}} วัน
+                     @if($u->status_sub == 0)
+                     <p class="text-warning">
+                       ยังไม่แจ้งชำระเงิน
+                     </p>
+                     @elseif($u->status_sub == 1)
+                     <p class="text-danger">
+                       รอการตรวจสอบ
+                     </p>
                      @else
-                     {{$u->package_price}}
+                     <p class="text-success">
+                       อนุมัติแล้ว
+                     </p>
                      @endif
 
                    </td>
-                   <td>
-                     @if($u->start != '0000-00-00')
-                     {{DateThai($u->start)}}
-                     @else
-                     @endif
-                   </td>
-                   <td>
-                     @if($u->end_date != '0000-00-00')
-                     {{DateThai($u->end_date)}}
-                     @else
-                     @endif
 
+                   <td>
+                     @if($u->status_sub == 0)
+                     <a href="{{url('payment/'.$u->order_id)}}"  class=" btn btn-primary btn-sm">  แจ้งชำระเงิน </a>
+                     @endif
                    </td>
                  </tr>
                    @endforeach

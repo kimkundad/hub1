@@ -87,111 +87,87 @@ class UserprofileController extends Controller
     }
 
 
-    public function my_package(){
-      $s = 0;
-
-      $course_chart = DB::table('answers')->select(
-        'answers.*'
-        )
-        ->where('answers.user_id', Auth::user()->id)
-        ->orderBy('answers.id_option', 'desc')
-        ->groupBy('answers.id_option')
-        ->get();
-
-      // dd($course_chart);
+    public function my_course_video($id){
 
 
-      foreach($course_chart as $u){
-        $s++;
-      }
-        $data['ex_count'] = $s;
-
-      //  dd($ex_count);
-
-      $id = Auth::user()->id;
-      $user = Users::find($id);
-
-      $package_count = DB::table('submit_packages')
-        ->where('user_id', $id)
-        ->count();
-
-      $package = DB::table('submit_packages')
-        ->select(
-           'submit_packages.*',
-           'submit_packages.user_id as Uid',
-           'submit_packages.id as Oid',
-           'submit_packages.created_at as Dcre',
-           'users.*',
-           'users.id as Ustudent',
-           'package_products.*',
-           'package_products.id as id_cource'
-           )
-        ->leftjoin('users', 'users.id', '=', 'submit_packages.user_id')
-        ->leftjoin('package_products', 'package_products.id', '=', 'submit_packages.packeage_id')
-        ->where('submit_packages.user_id', $id)
-        ->get();
-
-
-
-        if(isset($package)){
-          foreach($package as $u){
-
-
-            $str_start = strtotime($u->start); // ทำวันที่ให้อยู่ในรูปแบบ timestamp
-            $str_end = strtotime($u->end_date); // ทำวันที่ให้อยู่ในรูปแบบ timestamp
-            $nseconds = $str_end - $str_start; // วันที่ระหว่างเริ่มและสิ้นสุดมาลบกัน
-            $ndays = round($nseconds / 86400); // หนึ่งวันมี 86400 วินาที
-
-            $total_day = $ndays;
-
-            $u->total_day = $total_day;
-
-          }
-        }
-
-
-
-        $order = DB::table('package_his')
+      $objs = DB::table('courses')
           ->select(
-             'package_his.*',
-             'package_his.user_id as Uid',
-             'package_his.id as Oid',
-             'package_his.created_at as Dcre',
-             'users.*',
-             'users.id as Ustudent',
-             'package_products.*',
-             'package_products.id as id_cource'
-             )
-          ->leftjoin('users', 'users.id', '=', 'package_his.user_id')
-          ->leftjoin('package_products', 'package_products.id', '=', 'package_his.packeage_id')
-          ->where('package_his.user_id', $id)
-          ->where('package_his.his_status', 0)
-          ->where('package_his.his_type', 0)
-          ->get();
+          'courses.*',
+          'courses.id as A',
+          'courses.created_at as created_ats',
+          'typecourses.*',
+          'departments.*',
+          'teachers.*'
+          )
+          ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+          ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
+          ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
+          ->where('courses.id', $id)
+          ->where('courses.ch_status', 1)
+          ->orderBy('sort_corse', 'asc')
+          ->first();
+
+        $man = explode(',', $objs->tags);
+        $count_tags = count($man);
+
+        $data['man'] = $man;
+        $data['count_tags'] = $count_tags;
+      //  dd($man);
+
+
+              $count_video = DB::table('video_lists')
+                    ->where('course_id', $objs->A)
+                    ->count();
+                    $objs->count_video = $count_video;
+
+                    $get_video = DB::table('video_lists')
+                          ->where('course_id', $objs->A)
+                          ->get();
+
+
+                          $filecourses = DB::table('filecourses')
+                                ->where('course_id', $objs->A)
+                                ->get();
 
 
 
+                          $get_video_ex = DB::table('example_videos')
+                                ->where('course_id', $objs->A)
+                                ->first();
+                              //  $objs->get_video_ex = $get_video_ex;
+
+                            //    dd($get_video_ex);
 
 
-      //  dd($order);
+          $data['objs'] = $objs;
+          $data['get_video_ex'] = $get_video_ex;
+          $data['get_video'] = $get_video;
 
-      $count_his = DB::table('package_his')
-        ->where('package_his.user_id', $id)
-        ->count();
+          $data['filecourses'] = $filecourses;
 
-      $pack = DB::table('package_products')
-       ->where('package_status', 1)
-       ->orderBy('package_sort', 'asc')
-       ->get();
 
-       $data['count_his'] = $count_his;
-      $data['pack'] = $pack;
-      $data['order'] = $order;
-      $data['package'] = $package;
-      $data['package_count'] = $package_count;
+          return view('user_profile.my_course_video', $data);
 
-      //dd($user);
-      $data['user'] = $user;
+    }
+
+
+    public function my_package(){
+
+      $objs = DB::table('submitcourses')
+        ->select(
+           'submitcourses.*',
+           'submitcourses.user_id as Uid',
+           'submitcourses.id as Oid',
+           'submitcourses.created_at as created_ats',
+           'courses.*',
+           'courses.id as id_c'
+           )
+        ->where('submitcourses.user_id', Auth::user()->id)
+        ->where('submitcourses.status', 2)
+        ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
+        ->get();
+
+        $data['objs'] = $objs;
 
       return view('user_profile.my_pack', $data);
     }
@@ -239,22 +215,19 @@ class UserprofileController extends Controller
     public function my_payment(){
       $id = Auth::user()->id;
 
-      $pack = DB::table('package_his')
+      $pack = DB::table('submitcourses')
         ->select(
-           'package_his.*',
-           'package_his.user_id as Uid',
-           'package_his.id as Oid',
-           'package_his.created_at as Dcre',
+           'submitcourses.*',
+           'submitcourses.user_id as Uid',
+           'submitcourses.id as Oid',
+           'submitcourses.status as status_sub',
+           'submitcourses.created_at as created_ats',
            'users.*',
-           'users.id as Ustudent',
-           'banks.*',
-           'package_products.*',
-           'package_products.id as id_cource'
+           'courses.*'
            )
-        ->leftjoin('users', 'users.id', '=', 'package_his.user_id')
-        ->leftjoin('package_products', 'package_products.id', '=', 'package_his.packeage_id')
-        ->leftjoin('banks', 'banks.id', '=', 'package_his.bank_id')
-        ->where('package_his.user_id', $id)
+        ->where('submitcourses.user_id', Auth::user()->id)
+        ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
+        ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
         ->get();
 
 

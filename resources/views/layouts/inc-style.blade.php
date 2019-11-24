@@ -107,6 +107,17 @@
     margin-right: 20px;
     float: left;
 }
+.course__label-text {
+    background-color: rgba(81, 190, 120, 0.1);
+    display: inline-block;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    color: #2196F3;
+    padding: 3px 10px;
+    text-transform: capitalize;
+    font-size: 15px;
+}
 .course__collection-icon:after {
     position: absolute;
     width: 100%;
@@ -134,5 +145,67 @@
 .course__collection-icon:hover:after {
   opacity: 1;
   visibility: visible; }
-
+  .course-block .course-item .course-content .course-meta {
+      margin-bottom: 0px;
+  }
+  .course-block .course-item .course-content .rating-wrap {
+    margin-top: 8px;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.course-block .course-item .course-content .course__title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 9px;
+    line-height: 26px;
+}
+.header-menu-area .main-menu-content .menu-wrapper .main-menu ul li a:after {
+    width: 0;
+    height: 2px;
+    position: absolute;
+    content: '';
+    bottom: 36px;
+    right: 0;
+    background-color: #2196F3;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.header-menu-area .main-menu-content .menu-wrapper .main-menu ul li a:hover {
+    font-size: 15px;
+    color: #2196F3;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    position: relative;
+    padding-bottom: 40px;
+}
+.header-menu-area .main-menu-content .logo-box .header-category ul li a:hover {
+    color: #2196F3;
+}
+.header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item li .sub-menu li a {
+    color: #2196F3;
+}
+.header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item li .sub-menu li a:hover {
+    color: #2196F3;
+}
+.header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item li .sub-menu li a:after {
+    width: 0;
+    height: 2px;
+    position: absolute;
+    content: '';
+    bottom: -2px;
+    right: 0;
+    background-color: #2196F3;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
 </style>

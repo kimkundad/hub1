@@ -30,6 +30,9 @@ Route::post('/search_course', 'HomeController@search_course')->name('search_cour
 Route::get('/refer', 'HomeController@refer')->name('refer');
 
 Route::get('/payment', 'HomeController@payment')->name('payment');
+Route::get('/payment/{id}', 'HomeController@payment_id')->name('payment_id');
+
+
 Route::post('post_payment_notify', 'HomeController@post_payment_notify');
 Route::get('/payment_success', 'HomeController@payment_success')->name('payment_success');
 
@@ -58,6 +61,7 @@ Route::get('/blog/{id}', 'HomeController@blog_detail')->name('blog_detail');
 
 Route::get('/download_file_course/{id}', 'CourseinfoController@download_file_course');
 
+  Route::get('/course_department/{id}', 'HomeController@course_department')->name('course_department');
 
 Route::get('/category/{id}', 'HomeController@category')->name('category');
 Route::get('/course_details/{id}', 'HomeController@course_details')->name('course_details');
@@ -103,6 +107,18 @@ Route::group(['middleware' => ['UserRole:manager|employee']], function() {
 
       Route::resource('admin/user_pay', 'UserpayController');
       Route::post('api/api_pay_status', 'UserpayController@api_pay_status');
+
+
+
+      Route::get('my_course_video/{id}', 'UserprofileController@my_course_video');
+
+      Route::get('bil_course', 'BuycourseController@bil_course');
+
+
+      Route::get('buy_course/{id}', 'BuycourseController@buy_course');
+      Route::post('/post_coupon','BuycourseController@post_coupon');
+      Route::post('/submit_buy_course','BuycourseController@submit_buy_course');
+      Route::post('/submit_buy_course_2','BuycourseController@submit_buy_course_2');
 
 
       Route::post('add_video_course_example', 'CourseController@add_video_course_example');

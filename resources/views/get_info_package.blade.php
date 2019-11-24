@@ -134,7 +134,7 @@
 
 
                             <div class="form_title">
-                               <h3 class="single_tour_desc "><strong>2</strong>ชำระผ่านบัตรเครดิต</h3>
+                               <h3 class="single_tour_desc "><strong>2</strong>ชำระผ่าน QR CODE</h3>
                                <p style="font-size:13px; color: #999;">
                                 ทุกธุรกรรมผ่านบัตรเครดิตและบัตรเดบิตได้รับการรับรองความปลอดภัย ด้วยเทคโนโลยี <b style="color: #2196F3;">GB Prime ระบบชำระเงินออนไลน์</b>
                                </p>
@@ -148,7 +148,7 @@
 
 
                                <br /><br />
-                               <form action="https://api.gbprimepay.com/gbp/gateway/qrcode" method="post">
+                               <form action="https://api.gbprimepay.com/gbp/gateway/qrcode" target="_blank" method="post">
 
                                  {{ csrf_field() }}
                                   <input type="hidden" class="form-control" name="amount" value="1.00" readonly/>
@@ -163,29 +163,13 @@
                                  <input type="hidden" class="form-control" name="referenceNo" value="{{date("Y")}}{{date("m")}}{{date("d")}}{{$rand}}" />
                                  <input type="hidden" name="token" value="S4aW3NQXU56Sc9pEThEhKXa3sr2kkj39t44VCrMkJ7sqZLLuWSj1EGHHmB7JTN05TvPuQQXTdVK5DVnrRZXonzhoCKM+QTxIBEN/uKLdtZsNqMW70fK8b8zUQifTqVxWLQFRtrkRYy9PAPD3t1Fihmt6LguVMS5R6cKxx25bmYMMZ0bJ" />
                                  <input type="hidden" name="payType" value="F" />
-                                 <button type="submit" class="btn btn-primary border-none">  ชำระผ่าน GB PAY </button>
+                                 <button type="submit" class="btn btn-primary border-none"> ชำระผ่าน QR CODE </button>
                                </form>
 
 
                                <br />
 
-                               <hr />
-                            <!-- <form id="checkout-form" action="{{url('post_pay_package/'.$objs->id.'/')}}"> -->
-                                <form id="checkout-form" action="/">
-                                  <div id="gb-form" style="height: 600px;"></div>
-                                </form>
-                                <script src="{{url('home/js/GBPrimePay.js')}}"></script>
-                                <script>
-                                       new GBPrimePay({
-                                         publicKey: '5RjrJwedCYzx1cvSPxuT8HhTz1co2O34',
-                                         gbForm: '#gb-form',
-                                         merchantForm: '#checkout-form',
-                                         customStyle: {
-                                           backgroundColor: '#eaeaea'
-                                         },
-                                         env: 'test' // default prd | optional: test, prd
-                                       });
-                                     </script>
+
 
 
                              </div>

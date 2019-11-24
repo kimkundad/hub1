@@ -54,7 +54,7 @@
                             </div><!-- end contact-form-action -->
                             <nav class="main-menu">
                                 <ul>
-                                    <li><a href="{{url('package')}}">ทดลองเรียนฟรี</a></li>
+                                  <!--  <li><a href="{{url('package')}}">ทดลองเรียนฟรี</a></li> -->
                                     <li><a href="{{url('teachers')}}">รู้จักอาจารย์</a></li>
                                     <li><a href="{{url('contact')}}">ติดต่อเรา</a></li>
 
@@ -88,9 +88,9 @@
                                         </a>
                                         <ul class="dropdown-menu-item" style="margin-top:8px;">
                                             <li><a href="{{url('profile')}}">ข้อมูลส่วนตัว</a></li>
-                                            <li><a href="{{url('my_course')}}" > คอร์สเรียน</a></li>
+                                            <li><a href="{{url('my_course')}}" > คอร์สเรียน ที่ชอบ</a></li>
                                             <li><a href="{{url('my_example')}}"> สถิติแบบฝึกหัด</a></li>
-                                            <li><a href="{{url('my_pack')}}" > Package ปัจจุบัน</a></li>
+                                            <li><a href="{{url('my_pack')}}" > คอร์สเรียนของฉัน</a></li>
 
                                             <li><a href="{{url('my_friends')}}" > แนะนำเพื่อน</a></li>
 
@@ -137,9 +137,9 @@
                                       @else
                                       <li class="sidenav__item"><a href="{{url('/profile')}}" ><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
                                       <li class="sidenav__item"><a href="{{url('profile')}}"> ส่วนตัวของฉัน</a></li>
-                                      <li class="sidenav__item"><a href="{{url('my_course')}}" > คอร์สเรียน</a></li>
+                                      <li class="sidenav__item"><a href="{{url('my_course')}}" > คอร์สเรียน ที่ชอบ</a></li>
                                       <li class="sidenav__item"><a href="{{url('my_example')}}"> สถิติแบบฝึกหัด</a></li>
-                                      <li class="sidenav__item"><a href="{{url('my_pack')}}" > Package ปัจจุบัน</a></li>
+                                      <li class="sidenav__item"><a href="{{url('my_pack')}}" > คอร์สเรียนของฉัน</a></li>
                                       <li class="sidenav__item"><a href="{{url('my_friends')}}" > แนะนำเพื่อน</a></li>
                                       <li class="sidenav__item"><a href="{{url('my_payment')}}" > ประวัติการเติมเงิน </a></li>
 

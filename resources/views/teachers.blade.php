@@ -8,6 +8,7 @@
 }
 .speaker-area .speaker-content-wrap .speaker-item .speaker-detail .speaker-title-box .speaker__text {
     height: 84px;
+    overflow: hidden;
 }
 </style>
 
@@ -49,7 +50,7 @@
             <div class="col-lg-3">
                 <div class="speaker-item speaker-item1">
                     <div class="speaker-img-box">
-                      <a href="{{url('teacher_detail/'.$u->id)}}">
+                      <a href="{{url('teacher_detail/'.$u->id)}}" style="font-size:20px">
                         <img src="{{url('assets/images/teachers/'.$u->te_image)}}" alt="{{$u->te_name}}">
                       </a>
 

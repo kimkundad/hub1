@@ -151,7 +151,7 @@ Route::group(['middleware' => ['UserRole:manager|employee']], function() {
 
 
 
-      Route::resource('admin/sub_department', 'SubDeController');
+        Route::resource('admin/sub_department', 'SubDeController');
         Route::resource('admin/free_course', 'Free_courseController');
         Route::resource('admin/wallet', 'Wallet_submitController');
         Route::resource('admin/dashboard', 'DashboardController');

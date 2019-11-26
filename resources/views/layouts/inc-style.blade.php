@@ -208,4 +208,64 @@
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
+.sidebar .sidebar-widget .section__divider {
+    display: inline-block;
+    position: relative;
+    height: 4px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #2196F3;
+    width: 50px;
+    margin-bottom: 18px;
+    overflow: hidden;
+}
+.sidebar .sidebar-widget .social__links li a {
+    color: #2196F3;
+    display: block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: rgba(81, 190, 120, 0.1);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.sidebar .sidebar-widget .social__links li a:hover {
+    background-color: #2196F3;
+    color: #fff;
+}
+.sidebar .tag-widget .widget__list li a:hover {
+    background-color: #2196F3;
+    color: #fff;
+    border-color: #2196F3;
+}
+.course-detail .curriculum-wrap .curriculum-content .course-accordion .card .card-body .card-list .card-list-item .preview-link {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: #2196F3;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.course-detail .curriculum-wrap .curriculum-content .course-accordion .card .card-body .card-list .card-list-item .course-duration {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #2196F3;
+}
 </style>

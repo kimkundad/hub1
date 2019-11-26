@@ -84,6 +84,7 @@
 
                               @if(isset($get_course))
                               @foreach($get_course as $u)
+
                                 <div class="col-lg-6">
                                   <div class="course-item">
                                       <div class="course-img">

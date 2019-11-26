@@ -64,7 +64,7 @@
                           @if(isset($filecourses))
                             @foreach($filecourses as $u)
                             <li class="requirements__item">
-                                <span class="la la-angle-right requirements__icon"></span>
+                                <span class="la la-file requirements__icon"></span>
                                 <a href="{{url('download_file_course/'.$u->id)}}"> {{$u->file_of_name}}</a>
                             </li>
                             @endforeach
@@ -335,7 +335,7 @@
 
                         <div class="sidebar-widget tag-widget">
                             <h3 class="widget__title">Course Tags</h3>
-                            <span class="section__divider"></span>
+
                             <ul class="widget__list">
                               @for ($i = 0 ; $i <  $count_tags ; $i++)
                                 <li><a href="#">{{$man[$i]}}</a></li>
@@ -344,7 +344,7 @@
                         </div><!-- end sidebar-widget -->
                         <div class="sidebar-widget social-widget">
                             <h3 class="widget__title">Share with</h3>
-                            <span class="section__divider"></span>
+
                             <ul class="social__links">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>

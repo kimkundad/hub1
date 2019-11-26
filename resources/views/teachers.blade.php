@@ -10,6 +10,9 @@
     height: 84px;
     overflow: hidden;
 }
+.speaker-area .speaker-content-wrap .speaker-item .speaker-img-box:after {
+    display: none;
+}
 </style>
 
 @stop('stylesheet')

@@ -71,8 +71,12 @@
                           <td>{{$courseinfo->name}}</td>
                         </tr>
                         <tr>
+                          <td>หมายเลขสั่งซื้อ</td>
+                          <td>{{$courseinfo->order_id}}</td>
+                        </tr>
+                        <tr>
                           <td>สถานะ</td>
-                          <td>@if($courseinfo->status == 1)
+                          <td>@if($courseinfo->status == 1 || $courseinfo->status == 0)
                                 <b class="text-danger">ยังไม่อนุมัติ</b>
                               @else
                               <b class="text-success">อนุมัติแล้ว</b>
@@ -177,7 +181,7 @@
     														<select name="status" class="form-control mb-md" required>
 
     								                      <option value="">-- เลือกสถานะ --</option>
-                                          <option value="1" @if( $courseinfo->status == 1)
+                                          <option value="1" @if( $courseinfo->status == 1 || $courseinfo->status == 0)
                                             selected='selected'
                                             @endif>ยังไม่อนุมัต</option>
                                           <option value="2" @if( $courseinfo->status == 2)
@@ -189,7 +193,7 @@
                             <div class="panel-footer">
       												<div class="row">
       													<div class="col-md-9 col-md-offset-3">
-      														<button type="submit" class="btn btn-primary">เพิ่มคอร์ส</button>
+      														<button type="submit" class="btn btn-primary">อัพเดท</button>
       														<button type="reset" class="btn btn-default">Reset</button>
       													</div>
       												</div>

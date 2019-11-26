@@ -162,7 +162,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
-                                <a href="{{url('admin/order_package/'.$u->order_id.'/edit')}}" class="btn btn-primary">ไปที่ Order</a>
+                                <a href="{{url('admin/play_student/'.$u->order_id.'/edit')}}" class="btn btn-primary">ไปที่ Order</a>
                               </div>
                             </div>
                           </div>

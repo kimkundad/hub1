@@ -483,6 +483,24 @@ class HomeController extends Controller
 
 
 
+
+      $get_count = DB::table('submitcourses')
+        ->where('order_id', $request['order_id'])
+        ->count();
+
+        if($get_count > 0){
+
+          $upobj = DB::table('submitcourses')
+              ->where('order_id', $request['order_id'])
+              ->update(array(
+                'status' => 1
+              ));
+
+        }
+
+
+
+
       return redirect(url('payment_success/'))->with('add_success','เพิ่ม เสร็จเรียบร้อยแล้ว');
     }
 

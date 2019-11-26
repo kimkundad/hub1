@@ -178,10 +178,27 @@ ul {
                     @foreach($get_friend as $u)
                   <tr>
                     <td>{{DateThai($u->refer_date)}}</td>
-                    <td>{{$u->name}}</td>
+                    <td>  @if($u->provider == 'email')
+                      <img data-view="user_avatar_1980" alt="" src="{{url('assets/images/avatar/'.$u->avatar)}}"
+                      class="avatar avatar-32 photo" width="32" height="32" data-pin-nopin="true">
+                      @else
+                      <img data-view="user_avatar_1980" alt="" src="//{{$u->avatar}}"
+                      class="avatar avatar-32 photo" width="32" height="32" data-pin-nopin="true">
+                      @endif {{$u->name}}</td>
 
 
-                    <td>ยังไม่ได้สมัคร</td>
+                    <td>
+                      @if($u->get_data_refer == 1)
+                      <p class="text-success">
+                        สมัครแล้ว
+                      </p>
+                      @else
+                      <p class="text-danger">
+                      ยังไม่ได้สมัคร
+                      </p>
+                      @endif
+
+                      </td>
 
 
 

@@ -185,7 +185,7 @@ ul {
                              <td>{{$u->title_course}}</td>
                            </tr>
                            <tr>
-                             <td>ดูได้ถึง {{DateThai($u->created_ats)}}</td>
+                             <td>ดูได้ถึง {{DateThai($u->end_day)}}</td>
                            </tr>
 
 

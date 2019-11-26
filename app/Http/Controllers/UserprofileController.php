@@ -66,6 +66,27 @@ class UserprofileController extends Controller
 
 
 
+                  if(isset($get_friend)){
+                    foreach($get_friend as $u){
+
+
+
+                      $get_data_user = DB::table('submitcourses')
+                          ->where('user_id', $u->id)
+                          ->where('status', 2)
+                          ->count();
+
+                          if($get_data_user > 0){
+                            $u->get_data_refer = 1;
+                          }else{
+                            $u->get_data_refer = 0;
+                          }
+
+                    }
+                  }
+
+
+
           }else{
 
             $objs1 = DB::table('users')
@@ -77,8 +98,30 @@ class UserprofileController extends Controller
                     ->where('refer_code', $objs1->code_user)
                     ->get();
 
+                    if(isset($get_friend)){
+                      foreach($get_friend as $u){
+
+
+
+                        $get_data_user = DB::table('submitcourses')
+                            ->where('user_id', $u->id)
+                            ->where('status', 2)
+                            ->count();
+
+                            if($get_data_user > 0){
+                              $u->get_data_refer = 1;
+                            }else{
+                              $u->get_data_refer = 0;
+                            }
+
+                      }
+                    }
+
 
           }
+
+
+        //  dd($get_friend);
 
 
       $data['get_friend'] = $get_friend;

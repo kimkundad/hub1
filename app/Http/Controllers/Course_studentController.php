@@ -121,34 +121,68 @@ class Course_studentController extends Controller
            'banks.*',
            'courses.id as Ucourse'
            )
-        ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
-        ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
-        ->leftjoin('banks', 'banks.id', '=', 'submitcourses.bank_id')
-        ->where('submitcourses.status', '=', 1)
-        ->count();
-
-      $data['course_message'] = $course_message;
-
-
-
-
-      $coursess = DB::table('submitcourses')
-        ->select(
-           'submitcourses.*',
-           'submitcourses.user_id as Uid',
-           'submitcourses.id as Oid',
-           'submitcourses.created_at as Dcre',
-           'users.*',
-           'users.id as Ustudent',
-           'courses.*',
-           'banks.*',
-           'courses.id as Ucourse'
-           )
         ->where('submitcourses.id', $id)
         ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
         ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
         ->leftjoin('banks', 'banks.id', '=', 'submitcourses.bank_id')
-        ->first();
+        ->count();
+
+      //  dd($course_message);
+
+      if($course_message > 0){
+
+        $coursess = DB::table('submitcourses')
+          ->select(
+             'submitcourses.*',
+             'submitcourses.user_id as Uid',
+             'submitcourses.id as Oid',
+             'submitcourses.created_at as Dcre',
+             'users.*',
+             'users.id as Ustudent',
+             'courses.*',
+             'banks.*',
+             'courses.id as Ucourse'
+             )
+          ->where('submitcourses.id', $id)
+          ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
+          ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
+          ->leftjoin('banks', 'banks.id', '=', 'submitcourses.bank_id')
+          ->first();
+
+
+
+      }else{
+
+
+        $coursess = DB::table('submitcourses')
+          ->select(
+             'submitcourses.*',
+             'submitcourses.user_id as Uid',
+             'submitcourses.id as Oid',
+             'submitcourses.created_at as Dcre',
+             'users.*',
+             'users.id as Ustudent',
+             'courses.*',
+             'banks.*',
+             'courses.id as Ucourse'
+             )
+          ->where('submitcourses.order_id', $id)
+          ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
+          ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
+          ->leftjoin('banks', 'banks.id', '=', 'submitcourses.bank_id')
+          ->first();
+
+
+
+
+      }
+
+    //  $data['course_message'] = $course_message;
+
+
+
+
+
 
 
         $pay = DB::table('user_payments')->select(

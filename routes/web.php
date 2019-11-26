@@ -32,6 +32,7 @@ Route::get('/refer', 'HomeController@refer')->name('refer');
 Route::get('/payment', 'HomeController@payment')->name('payment');
 Route::get('/payment/{id}', 'HomeController@payment_id')->name('payment_id');
 
+Route::post('post_contact', 'BuycourseController@post_contact');
 
 Route::post('post_payment_notify', 'HomeController@post_payment_notify');
 Route::get('/payment_success', 'HomeController@payment_success')->name('payment_success');

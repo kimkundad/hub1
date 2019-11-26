@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\course;
+use App\contact;
 use App\typecourses;
 use App\Http\Requests;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -274,7 +275,7 @@ class BuycourseController extends Controller
            $set_num_date = (\random_int(1000, 9999));
 
 
-          
+
 
 
            return view('bil_course_gbpay')->with([
@@ -513,6 +514,41 @@ class BuycourseController extends Controller
              ]);
 
 
+
+    }
+
+
+    public function post_contact(Request $request){
+
+
+      $token = $request['g_response'];
+
+    //  dd($token);
+
+      if ($token) {
+
+        $obj = new contact();
+         $obj->name = $request['name_user'];
+         $obj->email = $request['email'];
+         $obj->phone = $request['phone'];
+         $obj->detail = $request['message'];
+         $obj->save();
+
+         $response = array(
+             'status' => 'success',
+             'msg' => 'คุณสามารถใช้ Coupon นี้ได้',
+         );
+
+      }else{
+
+        $response = array(
+            'status' => 'error',
+            'msg' => 'คุณไม่สามารถใช้ Coupon นี้ได้ Coupon ได้ถูกใช้ไปหมดแล้ว',
+        );
+
+      }
+
+      return response()->json($response);
 
     }
 

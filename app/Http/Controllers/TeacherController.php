@@ -213,6 +213,10 @@ class TeacherController extends Controller
     {
         //
 
+        DB::table('courses')
+            ->where('te_study', $id)
+            ->update(['te_study' => 0]);
+
         $obj = teacher::find($id);
         $obj->delete();
         return redirect(url('admin/teachers'))->with('delete','Delete successful');

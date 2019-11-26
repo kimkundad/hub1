@@ -259,6 +259,7 @@
                             </div><!-- end preview-video-and-details -->
                         </div><!-- end sidebar-widget -->
 
+                        @if($objs->te_study != 0)
                         <div class="sidebar-widget recent-widget">
                             <h3 class="widget__title">ครูผู้สอน</h3>
                             <span class="section__divider"></span>
@@ -284,6 +285,9 @@
                     </div>
 
                         </div><!-- end sidebar-widget -->
+
+                        @endif
+
 
 
                     <!--    <div class="sidebar-widget sidebar-feature">

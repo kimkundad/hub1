@@ -53,7 +53,7 @@
             <div class="col-lg-3">
                 <div class="speaker-item speaker-item1">
                     <div class="speaker-img-box">
-                      <a href="{{url('teacher_detail/'.$u->id)}}" style="font-size:20px">
+                      <a href="{{url('teacher_detail/'.$u->id)}}" >
                         <img src="{{url('assets/images/teachers/'.$u->te_image)}}" alt="{{$u->te_name}}">
                       </a>
 
@@ -63,7 +63,7 @@
                     </div>
                     <div class="speaker-detail">
                         <div class="speaker-title-box">
-                            <h3 class="speaker__title"><a href="{{url('teacher_detail/'.$u->id)}}">{{$u->te_name}}</a></h3>
+                            <h3 class="speaker__title"><a href="{{url('teacher_detail/'.$u->id)}}" style="font-size:20px"> {{$u->te_name}}</a></h3>
                             <p class="speaker__meta">อาจารย์</p>
                             <p class="speaker__text">
                                 {{$u->te_about}}

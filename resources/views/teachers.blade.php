@@ -2,7 +2,14 @@
 @section('stylesheet')
 
 
-
+<style>
+.speaker-area .speaker-content-wrap .speaker-item .speaker-detail {
+    padding: 25px;
+}
+.speaker-area .speaker-content-wrap .speaker-item .speaker-detail .speaker-title-box .speaker__text {
+    height: 84px;
+}
+</style>
 
 @stop('stylesheet')
 @section('content')

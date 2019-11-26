@@ -96,14 +96,14 @@
                                           <p class="course__label">
 
                                             @if (Auth::guest())
-
+                                              <span class="course__label-text">{{$u->name_department}}</span>
                                               <a href="#" class="photo_f course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
                                                 <span class="la la-heart-o"></span>
                                               </a>
 
                                             @else
                                             <form id="cutproduct" class="" novalidate="novalidate" action="" method="post"  role="form">
-
+                                            <span class="course__label-text">{{$u->name_department}}</span>
                                             <input class="user_id form hide" type="hidden" name="id" value="{{$u->A}}" />
 
                                             <a href="#" class="course__collection-icon add_wishlist"  data-value="{{$u->A}}" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
@@ -127,14 +127,12 @@
                                           <div class="course-meta">
                                               <ul class="course__list d-flex">
                                                   <li>
-                                                      <span class="meta__date">
-                                                          <i class="la la-play-circle"></i> {{$u->count_video}} Video
+                                                      <span class="meta__date" style="font-size:13px">
+                                                          <i class="la la-play-circle"></i> {{$u->count_video}} Classes
                                                       </span>
                                                   </li>
-                                                  <li>
-                                                      <span class="meta__date">
-                                                          <i class="la la-clock-o"></i> {{$u->time_course_text}}
-                                                      </span>
+                                                  <li style="padding: 0px;">
+                                                      <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
                                                   </li>
                                               </ul>
                                           </div><!-- end course-meta -->

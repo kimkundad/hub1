@@ -35,7 +35,7 @@
             <div class="col-lg-8">
                 <div class="team-single-content">
                     <div class="tsd-box row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="tsd-item">
                                 <h3 class="tsdi__title">สาขาที่เชี่ยวชาญ</h3>
                                 <p>
@@ -43,15 +43,10 @@
                                 </p>
                             </div><!-- end tsd-item -->
                         </div><!-- end col-lg-6 -->
-                        <div class="col-lg-6">
-                            <div class="tsd-item education-detail">
-                                <h3 class="tsdi__title">การศึกษา</h3>
-                                {!! $objs->te_edu !!}
-                            </div><!-- end tsd-item -->
-                        </div><!-- end col-lg-6 -->
+
                     </div><!-- end tsd-box -->
                     <div class="tsd-box-2 row">
-                        
+
                     </div><!-- end tsd-box -->
                     <div class="tsd-box tsd-box-3 row">
                         <div class="col-lg-4">
@@ -118,9 +113,23 @@
                     <div class="course-content">
                         <p class="course__label">
 
-                            <a href="{{url('course_details/'.$u->A)}}" class="course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                          @if (Auth::guest())
+                            <span class="course__label-text">{{$u->name_department}}</span>
+                            <a href="#" class="photo_f course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
                               <span class="la la-heart-o"></span>
                             </a>
+
+                          @else
+                          <form id="cutproduct" class="" novalidate="novalidate" action="" method="post"  role="form">
+                          <span class="course__label-text">{{$u->name_department}}</span>
+                          <input class="user_id form hide" type="hidden" name="id" value="{{$u->A}}" />
+
+                          <a href="#" class="course__collection-icon add_wishlist"  data-value="{{$u->A}}" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                            <span class="la la-heart-o"></span>
+                          </a>
+
+                          </form>
+                          @endif
                         </p>
                         <h3 class="course__title">
                             <a href="{{url('course_details/'.$u->A)}}">{{$u->title_course}}</a>
@@ -134,14 +143,12 @@
                         <div class="course-meta">
                             <ul class="course__list d-flex">
                                 <li>
-                                    <span class="meta__date">
-                                        <i class="la la-play-circle"></i> {{$u->count_video}} Video
+                                    <span class="meta__date" style="font-size:13px">
+                                        <i class="la la-play-circle"></i> {{$u->count_video}} Classes
                                     </span>
                                 </li>
-                                <li>
-                                    <span class="meta__date">
-                                        <i class="la la-clock-o"></i> {{$u->time_course_text}}
-                                    </span>
+                                <li style="padding: 0px;">
+                                    <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
                                 </li>
                             </ul>
                         </div><!-- end course-meta -->

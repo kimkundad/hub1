@@ -218,7 +218,7 @@
 
                               @if(isset($objs2))
                               @foreach($objs2 as $u)
-                              <div class="col-lg-4">
+                              <div class="col-lg-3">
                                   <div class="course-item">
                                       <div class="course-img">
                                           <a href="course-details.html" class="course__img"><img src="{{url('assets/uploads/'.$u->image_course)}}" alt=""></a>
@@ -285,7 +285,7 @@
 
                               @if(isset($objs3))
                               @foreach($objs3 as $u)
-                              <div class="col-lg-4">
+                              <div class="col-lg-3">
                                   <div class="course-item">
                                       <div class="course-img">
                                           <a href="course-details.html" class="course__img"><img src="{{url('assets/uploads/'.$u->image_course)}}" alt=""></a>

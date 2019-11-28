@@ -20,7 +20,10 @@ class DepartmentController extends Controller
       $data['course_message'] = 0;
       $data['count_message'] = 0;
 
-      $objs = department::all();
+    //  $objs = department::all();
+
+      $objs = DB::table('departments')
+        ->paginate(15);
 
       if(isset($objs)){
         foreach($objs as $u){

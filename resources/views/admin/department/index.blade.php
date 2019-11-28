@@ -56,7 +56,7 @@
                 </div>
 
                 <br>
-                <table class="table table-bordered table-striped mb-none dataTable " id="datatable-default">
+                <table class="table table-bordered table-striped mb-none dataTable ">
                   <thead>
                     <tr >
                       <th>#ลำดับ</th>
@@ -104,6 +104,9 @@
 
                   </tbody>
                 </table>
+
+                <div class="pagination"> {{ $objs->links() }} </div>
+
               </div>
             </section>
 

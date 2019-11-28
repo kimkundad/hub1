@@ -29,7 +29,7 @@ class SubDeController extends Controller
           'departments.*'
           )
           ->leftjoin('departments', 'departments.id',  'sub_departments.id_depart')
-          ->get();
+          ->paginate(15);
 
 
         $data['course_message'] = 0;

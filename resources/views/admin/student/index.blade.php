@@ -113,7 +113,7 @@
 
 
 
-                      
+
 
                        <a style="float:left; margin-right:3px;" class="btn btn-primary btn-xs" href="{{url('admin/student/'.$u->id)}}"
                           role="button"><i class="fa fa-wrench"></i> </a>

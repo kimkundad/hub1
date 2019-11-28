@@ -1041,8 +1041,8 @@ class HomeController extends Controller
           ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
           ->whereIn('departments.id', [4, 5, 6])
           ->where('courses.ch_status', 1)
-          ->orderBy('sort_corse', 'asc')
-          ->limit(3)
+          ->inRandomOrder()
+          ->limit(8)
           ->get();
 
           if(isset($objs)){
@@ -1076,8 +1076,8 @@ class HomeController extends Controller
               ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
               ->whereIn('departments.id', [7, 8])
               ->where('courses.ch_status', 1)
-              ->orderBy('sort_corse', 'asc')
-              ->limit(3)
+              ->inRandomOrder()
+              ->limit(8)
               ->get();
 
               if(isset($objs2)){
@@ -1107,8 +1107,8 @@ class HomeController extends Controller
                   ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
                   ->whereIn('departments.id', [9])
                   ->where('courses.ch_status', 1)
-                  ->orderBy('sort_corse', 'asc')
-                  ->limit(3)
+                  ->inRandomOrder()
+                  ->limit(8)
                   ->get();
 
                   if(isset($objs3)){

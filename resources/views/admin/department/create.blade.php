@@ -78,7 +78,7 @@
 
 
 												<div class="form-group">
-                          <label class="col-md-3 control-label" for="exampleInputEmail1">เลือกรูปหมวดหมู่หลัก*</label>
+                          <label class="col-md-3 control-label" for="exampleInputEmail1">เลือกรูปหมวดหมู่หลัก* 1920 x 450 px</label>
                           <div class="col-md-8">
 
                           <div class="fileupload fileupload-new" data-provides="fileupload">

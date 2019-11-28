@@ -96,7 +96,7 @@
 
 
 											<div class="form-group">
-                          <label class="col-md-3 control-label" for="exampleInputEmail1">รูปภาพ (370 x 247 px)*</label>
+                          <label class="col-md-3 control-label" for="exampleInputEmail1">รูปภาพ (1920 x 450 px)*</label>
                           <div class="col-md-8">
 
                           <div class="fileupload fileupload-new" data-provides="fileupload">

@@ -74,17 +74,7 @@
 														</div>
 												</div>
 
-
-
-
-
 											</fieldset>
-
-
-
-
-
-
 
 											<div class="panel-footer">
 												<div class="row">

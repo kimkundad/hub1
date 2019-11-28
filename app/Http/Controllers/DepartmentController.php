@@ -39,6 +39,29 @@ class DepartmentController extends Controller
       return view('admin.department.index', $data);
     }
 
+
+
+    public function api_depart_status(Request $request){
+
+    //  dd($request->user_id);
+
+    $user = department::findOrFail($request->user_id);
+
+              if($user->de_status == 1){
+                  $user->de_status = 0;
+              } else {
+                  $user->de_status = 1;
+              }
+
+
+      return response()->json([
+      'data' => [
+        'success' => $user->save(),
+      ]
+    ]);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -48,7 +71,6 @@ class DepartmentController extends Controller
     {
       $data['course_message'] = 0;
       $data['count_message'] = 0;
-
       $data['method'] = "post";
       $data['url'] = url('admin/department');
       $data['header'] = "เพิ่มหมวดหมู่หลัก";

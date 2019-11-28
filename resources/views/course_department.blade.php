@@ -14,7 +14,7 @@
 <!-- ================================
     START BREADCRUMB AREA
 ================================= -->
-<section class="breadcrumb-area" style="background-image: url({{url('assets/images/breadcrumb-bg.jpg')}});">
+<section class="breadcrumb-area" style="background-image: url({{url('assets/image/department/'.$objs->image)}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -142,7 +142,7 @@
                                     </div><!-- end course-content -->
                                 </div><!-- end course-item -->
                               </div><!-- end col-lg-6 -->
-                              
+
 
                                 @endforeach
                                 @endif

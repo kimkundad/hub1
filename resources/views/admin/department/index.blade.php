@@ -58,10 +58,10 @@
                 <br>
                 <table class="table table-bordered table-striped mb-none dataTable " id="datatable-default">
                   <thead>
-                    <tr>
+                    <tr >
                       <th>#ลำดับ</th>
                       <th>หมวดหมู่หลัก</th>
-                      <th>หมวดหมู่ย่อย</th>
+                      <th>ปิด / เปิด</th>
                       <th>วันที่เพิ่ม</th>
 
                       <th>Actions</th>
@@ -70,10 +70,18 @@
                   <tbody>
                     @if($objs)
                 @foreach($objs as $u)
-                    <tr>
+                    <tr id="{{$u->id}}">
                       <td>{{$u->depart_sort}}</td>
                       <td>{{$u->name_department}}</td>
-                      <td>{{$u->count}}</td>
+                      <td>
+                        <div class="switch switch-sm switch-success">
+                          <input type="checkbox" name="switch" data-plugin-ios-switch
+                          @if($u->de_status == 1)
+                          checked="checked"
+                          @endif
+                          />
+                        </div>
+                      </td>
                       <td>{{$u->created_at}}</td>
 
 
@@ -109,10 +117,35 @@
 
 @section('scripts')
 
-<script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("input:checkbox").change(function() {
+    var user_id = $(this).closest('tr').attr('id');
+
+    $.ajax({
+            type:'POST',
+            url:'{{url('api/api_depart_status')}}',
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            data: { "user_id" : user_id },
+            success: function(data){
+              if(data.data.success){
+
+
+                var stack_topleft = {"dir1": "down", "dir2": "right", "push": "top"};
+                      var notice = new PNotify({
+                            title: 'ทำรายการสำเร็จ',
+                            text: 'คุณเปลี่ยนการแสดงผล สำเร็จเรียบร้อยแล้วค่ะ',
+                            type: 'success',
+                            addclass: 'stack-topright'
+                          });
 
 
 
+              }
+            }
+        });
+    });
+});
 </script>
 
 @if ($message = Session::get('edit_success'))

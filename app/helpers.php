@@ -6,16 +6,19 @@ use Illuminate\Support\Facades\DB;
 function get_menu(){
 
   $menu_web = DB::table('departments')
+          ->where('de_status', 1)
           ->get();
 
           foreach($menu_web as $u){
 
             $check_count = DB::table('sub_departments')
                 ->where('id_depart', $u->id)
+                ->where('de_status', 1)
                 ->count();
 
             $options = DB::table('sub_departments')
                 ->where('id_depart', $u->id)
+                ->where('de_status', 1)
                 ->Orderby('sub_depart_sort', 'asc')
                 ->get();
 

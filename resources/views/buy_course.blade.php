@@ -345,6 +345,7 @@ $(document).ready(function(){
 
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             var total_money = 0;
+
             $(".postbutton").click(function(){
                 $.ajax({
                     /* the route pointing to the post function */

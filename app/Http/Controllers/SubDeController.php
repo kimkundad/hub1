@@ -25,6 +25,7 @@ class SubDeController extends Controller
           'sub_departments.*',
           'sub_departments.id as id_de',
           'sub_departments.created_at as created_ats',
+          'sub_departments.de_status as de_status_2',
           'departments.*'
           )
           ->leftjoin('departments', 'departments.id',  'sub_departments.id_depart')
@@ -37,6 +38,27 @@ class SubDeController extends Controller
         $data['objs'] = $objs;
         $data['datahead'] = "หมวดหมู่ภาควิชา";
         return view('admin.sub_department.index', $data);
+    }
+
+
+
+    public function api_subdepart_status(Request $request){
+
+    $user = sub_departments::findOrFail($request->user_id);
+
+              if($user->de_status == 1){
+                  $user->de_status = 0;
+              } else {
+                  $user->de_status = 1;
+              }
+
+
+      return response()->json([
+      'data' => [
+        'success' => $user->save(),
+      ]
+    ]);
+
     }
 
     /**

@@ -14,7 +14,7 @@
 <!-- ================================
     START BREADCRUMB AREA
 ================================= -->
-<section class="breadcrumb-area" style="background-image: url({{url('assets/images/breadcrumb-bg.jpg')}});">
+<section class="breadcrumb-area" style="background-image: url({{url('assets/images/sub_de/'.$objs->image_sub_depart)}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

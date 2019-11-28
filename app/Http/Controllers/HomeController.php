@@ -1015,7 +1015,7 @@ class HomeController extends Controller
       session()->forget('coupon');
 
       $get_cat = DB::table('departments')
-            ->limit(8)
+            ->where('de_status', 1)
             ->get();
 
 

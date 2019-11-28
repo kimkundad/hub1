@@ -109,6 +109,9 @@ Route::group(['middleware' => ['UserRole:manager|employee']], function() {
       Route::resource('admin/user_pay', 'UserpayController');
       Route::post('api/api_pay_status', 'UserpayController@api_pay_status');
 
+      Route::post('api/api_depart_status', 'DepartmentController@api_depart_status');
+      Route::post('api/api_subdepart_status', 'SubDeController@api_subdepart_status');
+
 
 
       Route::get('my_course_video/{id}', 'UserprofileController@my_course_video');

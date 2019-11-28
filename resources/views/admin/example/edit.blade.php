@@ -88,7 +88,7 @@
 								                      @foreach($category as $categorys)
 													  <option value="{{$categorys->id}}" @if( $courseinfo->category_id == $categorys->id)
                               selected='selected'
-                              @endif >{{$categorys->name_category}}</option>
+                              @endif >{{$categorys->name_department}}</option>
 													  @endforeach
 								                    </select>
 														</div>

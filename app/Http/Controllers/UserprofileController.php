@@ -225,11 +225,11 @@ class UserprofileController extends Controller
         'examples.*',
         'examples.id as id_e',
         'courses.title_course',
-        'categories.*'
+        'departments.*'
         )
         ->leftjoin('examples', 'examples.id', '=', 'answers.examples_id')
         ->leftjoin('courses', 'courses.id', '=', 'examples.course_id')
-        ->leftjoin('categories', 'categories.id', '=', 'examples.category_id')
+        ->leftjoin('departments', 'departments.id', '=', 'examples.category_id')
         ->where('answers.user_id', Auth::user()->id)
         ->orderBy('answers.id', 'desc')
         ->groupBy('answers.id_option')

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\example;
 use App\category;
+use App\department;
 use App\Http\Requests;
 use App\course;
 use Illuminate\Support\Facades\DB;
@@ -150,7 +151,7 @@ class ExampleController extends Controller
        }
      $data['count_message'] = $s;
 
-      $category = category::all();
+      $category = department::all();
       $course = course::all();
 
       $data['category'] = $category;
@@ -177,6 +178,7 @@ class ExampleController extends Controller
 
        $obj = new example();
        $obj->examples_name = $request['example_name'];
+       $obj->category_id = $request['categorys'];
        $obj->course_id = $request['course'];
        $obj->examples_detail = $request['example_detail'];
        $obj->save();
@@ -362,7 +364,7 @@ class ExampleController extends Controller
      $data['count_message'] = $s;
 
 
-      $category = category::all();
+      $category = department::all();
       $course = course::all();
       $data['category'] = $category;
       $data['course'] = $course;
@@ -393,6 +395,7 @@ class ExampleController extends Controller
 
        $obj = example::find($id);
        $obj->examples_name = $request['example_name'];
+       $obj->category_id = $request['categorys'];
        $obj->course_id = $request['course'];
        $obj->examples_detail = $request['example_detail'];
        $obj->save();

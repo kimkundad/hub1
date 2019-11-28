@@ -80,6 +80,20 @@
 												</div>
 
 
+												<div class="form-group">
+													<label class="col-md-3 control-label" for="profileAddress">หมวดหมู่แบบฝึกหัด*</label>
+													<div class="col-md-8">
+														<select name="categorys" class="form-control mb-md" required>
+
+								                      <option value="">-- เลือกหมวดหมู่แบบฝึกหัด --</option>
+								                      @foreach($category as $categorys)
+													  <option value="{{$categorys->id}}">{{$categorys->name_department}}</option>
+													  @endforeach
+								                    </select>
+														</div>
+													</div>
+
+
 
 
 

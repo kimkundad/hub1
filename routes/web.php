@@ -18,6 +18,15 @@ Route::auth();
 Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::get('/examination', 'ExaminationController@index')->name('examination');
+Route::get('/examination_list/{id}', 'ExaminationController@examination_list')->name('examination_list');
+Route::get('/examination_test/{id}', 'ExaminationController@examination_test')->name('examination_test');
+Route::post('/post_ans_course2','ExaminationController@post_ans_course2');
+Route::get('/success_ans_package2/{id}', 'ExaminationController@success_ans_package2');
+
+
+
 Route::get('/teachers', 'HomeController@teachers')->name('teachers');
 Route::post('add_video_course', 'CourseController@add_video_course');
 Route::get('/contact', 'HomeController@contact')->name('contact');

@@ -54,7 +54,7 @@
                             </div><!-- end contact-form-action -->
                             <nav class="main-menu">
                                 <ul>
-                                  <!--  <li><a href="{{url('package')}}">ทดลองเรียนฟรี</a></li> -->
+                                    <li><a href="{{url('examination')}}">คลังข้อสอบ</a></li>
                                     <li><a href="{{url('teachers')}}">รู้จักอาจารย์</a></li>
                                     <li><a href="{{url('contact')}}">ติดต่อเรา</a></li>
 
@@ -128,7 +128,8 @@
                                     <ul class="side-menu-ul">
 
 
-                                      <li class="sidenav__item"><a href="{{url('package')}}">ทดลองเรียนฟรี</a></li>
+
+                                      <li class="sidenav__item"><a href="{{url('examination')}}">คลังข้อสอบ</a></li>
                                       <li class="sidenav__item"><a href="{{url('teachers')}}">รู้จักอาจารย์</a></li>
                                       <li class="sidenav__item"><a href="{{url('contact')}}">ติดต่อเรา</a></li>
 

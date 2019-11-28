@@ -151,6 +151,9 @@ ul {
   font-size: 12px;
   font-weight: 600;
 }
+.table td, .table th {
+    font-size: 13px;
+}
 </style>
 
 
@@ -179,7 +182,7 @@ ul {
                       <td>{{DateThai($u->created_ats)}}</td>
                       <td>{{$u->examples_name}}</td>
                       <td>{{$u->title_course}}</td>
-                      <td>{{$u->name_category}}</td>
+                      <td>{{$u->name_department}}</td>
                       <td>{{$u->sum_ans}} / {{$u->options}}</td>
                     </tr>
                       @endforeach

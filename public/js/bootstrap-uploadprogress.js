@@ -90,7 +90,7 @@
 
             var form = this.$form;
 
-            xhr.open(form.attr('method'), 'https://go2flytravel.com/add_video_course');
+            xhr.open(form.attr('method'), 'https://hubjung.com/add_video_course');
             xhr.setRequestHeader('X-REQUESTED-WITH', 'XMLHttpRequest');
 
             var data = new FormData(form.get(0));

@@ -103,8 +103,7 @@
                                                 @foreach($get_video as $u)
                                                 <li class="card-list-item">
                                                     <span class="course-duration">{{$u->time_video}}</span>
-                                                    <butto332
-                                                    n type="button" class="preview-link" data-toggle="modal" data-target="#exampleModalCenter-{{$u->id}}">
+                                                    <button type="button" class="preview-link" data-toggle="modal" data-target="#exampleModalCenter-{{$u->id}}">
                                                         <i class="la la-play-circle-o course-play__icon"></i> {{$u->course_video_name}}
                                                     </button>
                                                     <div class="modal fade" id="exampleModalCenter-{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

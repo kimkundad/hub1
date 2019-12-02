@@ -822,6 +822,7 @@ class HomeController extends Controller
 
                     $get_video = DB::table('video_lists')
                           ->where('course_id', $objs->A)
+                          ->orderBy('order_sort', 'asc')
                           ->get();
 
 

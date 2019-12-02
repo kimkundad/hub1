@@ -103,7 +103,8 @@
                                                 @foreach($get_video as $u)
                                                 <li class="card-list-item">
                                                     <span class="course-duration">{{$u->time_video}}</span>
-                                                    <button type="button" class="preview-link" data-toggle="modal" data-target="#exampleModalCenter-{{$u->id}}">
+                                                    <butto332
+                                                    n type="button" class="preview-link" data-toggle="modal" data-target="#exampleModalCenter-{{$u->id}}">
                                                         <i class="la la-play-circle-o course-play__icon"></i> {{$u->course_video_name}}
                                                     </button>
                                                     <div class="modal fade" id="exampleModalCenter-{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -116,7 +117,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <video controls crossorigin playsinline poster="{{url('assets/uploads/'.$u->thumbnail_img)}}" id="player">
+                                                                    <video controls crossorigin playsinline poster="{{url('assets/uploads/'.$u->thumbnail_img)}}" id="player" style="width:100%">
                                                                         <!-- Video files -->
                                                                         <source src="{{url('assets/videos/'.$u->course_video)}}" type="video/mp4" size="576"/>
                                                                         <source src="{{url('assets/videos/'.$u->course_video)}}" type="video/mp4" size="720"/>

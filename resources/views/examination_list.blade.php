@@ -112,7 +112,14 @@
                             <td>{{$u->options}}</td>
 
                             <td>{{$u->view}}</td>
+
+                            @if (Auth::guest())
+                            <td><a href="#" class="photo_f btn btn-primary btn-sm">เริ่มทำข้อสอบ</a></td>
+
+                            @else
                             <td><a href="{{ url('examination_test/'.$u->e_id) }}" class="btn btn-primary btn-sm">เริ่มทำข้อสอบ</a></td>
+
+                            @endif
                           </tr>
                           @endforeach
                         @endif
@@ -179,6 +186,13 @@
 
 @section('scripts')
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+$('.photo_f').on('click', function () {
 
+swal("การทำแบบฝึกหัด นักเรียน ต้องทำการ login เข้าสู่ระบบก่อน")
+
+});
+</script>
 
 @stop('scripts')

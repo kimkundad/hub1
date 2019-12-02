@@ -21,7 +21,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/examination', 'ExaminationController@index')->name('examination');
 Route::get('/examination_list/{id}', 'ExaminationController@examination_list')->name('examination_list');
-Route::get('/examination_test/{id}', 'ExaminationController@examination_test')->name('examination_test');
+
 Route::post('/post_ans_course2','ExaminationController@post_ans_course2');
 Route::get('/success_ans_package2/{id}', 'ExaminationController@success_ans_package2');
 
@@ -78,7 +78,7 @@ Route::get('/course_details/{id}', 'HomeController@course_details')->name('cours
 
 Route::group(['middleware' => ['UserRole:manager|employee|customer']], function() {
 
-
+  Route::get('/examination_test/{id}', 'ExaminationController@examination_test')->name('examination_test');
   Route::get('gb_pay/{id}', 'GbpayController@gb_pay');
 
 

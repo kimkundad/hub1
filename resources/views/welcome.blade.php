@@ -195,7 +195,11 @@
                                                         </span>
                                                     </li>
                                                     <li style="padding: 0px;">
+                                                      @if($u->price_course != 0)
                                                         <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
+                                                      @else
+                                                        <span class="course__price text-danger">ดูฟรี</span>
+                                                      @endif
                                                     </li>
                                                 </ul>
                                             </div><!-- end course-meta -->
@@ -263,10 +267,12 @@
                                                           <i class="la la-play-circle"></i> {{$u->count_video}} Video
                                                       </span>
                                                   </li>
-                                                  <li>
-                                                      <span class="meta__date">
-                                                          <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
-                                                      </span>
+                                                  <li style="padding: 0px;">
+                                                    @if($u->price_course != 0)
+                                                      <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
+                                                    @else
+                                                      <span class="course__price text-danger">ดูฟรี</span>
+                                                    @endif
                                                   </li>
                                               </ul>
                                           </div><!-- end course-meta -->
@@ -331,10 +337,12 @@
                                                           <i class="la la-play-circle"></i> {{$u->count_video}} Video
                                                       </span>
                                                   </li>
-                                                  <li>
-                                                      <span class="meta__date">
-                                                          <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
-                                                      </span>
+                                                  <li style="padding: 0px;">
+                                                    @if($u->price_course != 0)
+                                                      <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
+                                                    @else
+                                                      <span class="course__price text-danger">ดูฟรี</span>
+                                                    @endif
                                                   </li>
                                               </ul>
                                           </div><!-- end course-meta -->

@@ -400,7 +400,7 @@ class CourseController extends Controller
           $obj->time_video = $request['time_video'];
           $obj->course_video_detail = $request['course_video_detail'];
           $obj->course_video = $input['file'];
-          $obj->course_video_url = "https://learnsbuy.com/assets/videos/".$input['file'];
+          $obj->course_video_url = "https://hubjung.com/assets/videos/".$input['file'];
           $obj->save();
 
         }else{
@@ -422,7 +422,7 @@ class CourseController extends Controller
           $obj->time_video = $request['time_video'];
           $obj->course_video_detail = $request['course_video_detail'];
           $obj->course_video = $input['file'];
-          $obj->course_video_url = "https://learnsbuy.com/assets/videos/".$input['file'];
+          $obj->course_video_url = "https://hubjung.com/assets/videos/".$input['file'];
           $obj->thumbnail_img = $input['imagename'];
           $obj->save();
 
@@ -486,7 +486,7 @@ class CourseController extends Controller
           $obj->time_video = $request['time_video'];
           $obj->course_video_detail = $request['course_video_detail'];
           $obj->course_video = $input['file'];
-          $obj->course_video_url = "https://learnsbuy.com/web_stream/example_video/".$input['file'];
+          $obj->course_video_url = "https://hubjung.com/web_stream/example_video/".$input['file'];
           $obj->save();
           //https://learnsbuy.com/assets/web_stream/example_video/
         }else{
@@ -508,7 +508,7 @@ class CourseController extends Controller
           $obj->time_video = $request['time_video'];
           $obj->course_video_detail = $request['course_video_detail'];
           $obj->course_video = $input['file'];
-          $obj->course_video_url = "https://learnsbuy.com/web_stream/example_video/".$input['file'];
+          $obj->course_video_url = "https://hubjung.com/web_stream/example_video/".$input['file'];
           $obj->thumbnail_img = $input['imagename'];
           $obj->save();
 
@@ -611,7 +611,7 @@ class CourseController extends Controller
         $obj->course_video_name = $request['name_video1'];
         $obj->course_video_detail = $request['course_video_detail1'];
         $obj->course_video = $input['file1'];
-        $obj->course_video_url = "https://learnsbuy.com/web_stream/example_video/".$input['file1'];
+        $obj->course_video_url = "https://hubjung.com/web_stream/example_video/".$input['file1'];
         $obj->thumbnail_img = $input['imagename'];
         $obj->save();
 
@@ -658,7 +658,7 @@ class CourseController extends Controller
         $obj->course_video_name = $request['name_video'];
         $obj->course_video_detail = $request['course_video_detail'];
         $obj->course_video = $input['file'];
-        $obj->course_video_url = "https://learnsbuy.com/assets/videos/".$input['file'];
+        $obj->course_video_url = "https://hubjung.com/assets/videos/".$input['file'];
         $obj->thumbnail_img = $input['imagename'];
         $obj->save();
 

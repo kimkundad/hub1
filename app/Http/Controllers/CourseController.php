@@ -16,6 +16,7 @@ use File;
 use App\question;
 use App\option;
 use App\example;
+use App\head_video;
 use App\filecourse;
 use App\category;
 use App\department;
@@ -121,6 +122,13 @@ class CourseController extends Controller
           )
           ->where('id', $id)
           ->first();
+
+
+          $head_videos = DB::table('head_videos')
+           ->where('course_id', $get_video->course_id)
+           ->get();
+
+           $data['head_videos'] = $head_videos;
 
 
       $data['get_video'] = $get_video;
@@ -301,6 +309,43 @@ class CourseController extends Controller
      }
 
 
+     public function add_head_video(Request $request){
+
+      $course_id = $request['course_id'];
+      $header_name = $request['header_name'];
+
+      $obj = new head_video();
+      $obj->course_id = $request['course_id'];
+      $obj->head_name = $request['header_name'];
+      $obj->save();
+
+
+      return redirect(url('admin/course/'.$request['course_id'].'/edit'))->with('add_head_video','แก้ไขข้อมูล ข้อมูล สำเร็จ');
+
+     }
+
+
+     public function edit_head_video(Request $request, $id){
+
+       $header_name = $request['header_name'];
+       $course_id = $request['course_id'];
+       $obj = head_video::find($id);
+       $obj->head_name = $request['header_name'];
+       $obj->save();
+
+       return redirect(url('admin/course/'.$request['course_id'].'/edit'))->with('success_edit_video','แก้ไขข้อมูล ข้อมูล สำเร็จ');
+
+     }
+
+     public function del_header_course(Request $request, $id){
+
+       $obj = head_video::find($id);
+       $obj->delete();
+       return redirect(url('admin/course/'.$request['course_id'].'/edit'))->with('del_header_course','แก้ไขข้อมูล ข้อมูล สำเร็จ');
+
+     }
+
+
 
      public function post_status(Request $request){
 
@@ -371,6 +416,7 @@ class CourseController extends Controller
           $obj->time_video = $request['time_video'];
           $obj->course_video_name = $request['name_video'];
           $obj->course_video_detail = $request['course_video_detail'];
+          $obj->head_id = $request['head_id'];
           $obj->save();
 
         }elseif($image != null && $file == null){
@@ -387,6 +433,7 @@ class CourseController extends Controller
        $obj->time_video = $request['time_video'];
        $obj->course_video_detail = $request['course_video_detail'];
        $obj->thumbnail_img = $input['imagename'];
+       $obj->head_id = $request['head_id'];
        $obj->save();
 
         }elseif($image == null && $file != null){
@@ -401,6 +448,7 @@ class CourseController extends Controller
           $obj->course_video_detail = $request['course_video_detail'];
           $obj->course_video = $input['file'];
           $obj->course_video_url = "https://hubjung.com/assets/videos/".$input['file'];
+          $obj->head_id = $request['head_id'];
           $obj->save();
 
         }else{
@@ -424,6 +472,7 @@ class CourseController extends Controller
           $obj->course_video = $input['file'];
           $obj->course_video_url = "https://hubjung.com/assets/videos/".$input['file'];
           $obj->thumbnail_img = $input['imagename'];
+          $obj->head_id = $request['head_id'];
           $obj->save();
 
 
@@ -590,6 +639,9 @@ class CourseController extends Controller
         ]);
 
 
+
+
+
         $destinationPath = 'web_stream/example_video/';
         $input['file1'] = time().'.'.$file->getClientOriginalExtension();
         $request->file('file1')->move($destinationPath, $input['file1']);
@@ -634,33 +686,59 @@ class CourseController extends Controller
             'image' => 'required',
             'file' => 'required',
             'course_id' => 'required',
+            'head_id' => 'required',
             'name_video' => 'required'
         ]);
 
 
-        $destinationPath = 'assets/videos';
-        $input['file'] = time().'.'.$file->getClientOriginalExtension();
-        $request->file('file')->move($destinationPath, $input['file']);
-        ///
-
-        ////
-        $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
-
-         $img = Image::make($image->getRealPath());
-         $img->resize(640, 360, function ($constraint) {
-         $constraint->aspectRatio();
-     })->save('assets/uploads/'.$input['imagename']);
+        if($file == null){
 
 
-        $obj = new video_list();
-        $obj->course_id = $request['course_id'];
-        $obj->time_video = $request['time_video'];
-        $obj->course_video_name = $request['name_video'];
-        $obj->course_video_detail = $request['course_video_detail'];
-        $obj->course_video = $input['file'];
-        $obj->course_video_url = "https://hubjung.com/assets/videos/".$input['file'];
-        $obj->thumbnail_img = $input['imagename'];
-        $obj->save();
+          $obj = new video_list();
+          $obj->course_id = $request['course_id'];
+          $obj->time_video = $request['time_video'];
+          $obj->course_video_name = $request['name_video'];
+          $obj->course_video_detail = $request['course_video_detail'];
+          $obj->head_id = $request['head_id'];
+          $obj->save();
+
+
+        }else{
+
+
+
+          $destinationPath = 'assets/videos';
+          $input['file'] = time().'.'.$file->getClientOriginalExtension();
+          $request->file('file')->move($destinationPath, $input['file']);
+          ///
+
+          ////
+          $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+
+           $img = Image::make($image->getRealPath());
+           $img->resize(640, 360, function ($constraint) {
+           $constraint->aspectRatio();
+       })->save('assets/uploads/'.$input['imagename']);
+
+
+          $obj = new video_list();
+          $obj->course_id = $request['course_id'];
+          $obj->time_video = $request['time_video'];
+          $obj->course_video_name = $request['name_video'];
+          $obj->course_video_detail = $request['course_video_detail'];
+          $obj->course_video = $input['file'];
+          $obj->course_video_url = "https://hubjung.com/assets/videos/".$input['file'];
+          $obj->thumbnail_img = $input['imagename'];
+          $obj->head_id = $request['head_id'];
+          $obj->save();
+
+
+        }
+
+
+
+
+
 
 
 
@@ -959,6 +1037,29 @@ class CourseController extends Controller
       ->where('course_id', $id)
       ->orderBy('order_sort', 'asc')
       ->get();
+
+      if(isset($video_list)){
+
+        foreach($video_list as $j){
+
+          $head_videos = DB::table('head_videos')
+           ->where('id', $j->head_id)
+           ->first();
+
+           $j->name_op = $head_videos->head_name;
+
+        }
+
+      }else{
+
+      }
+
+
+      $head_videos = DB::table('head_videos')
+       ->where('course_id', $id)
+       ->get();
+
+       $data['head_videos'] = $head_videos;
 
 
       $video_list_ex = DB::table('example_videos')

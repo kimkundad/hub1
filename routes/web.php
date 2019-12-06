@@ -115,6 +115,12 @@ Route::group(['middleware' => ['UserRole:manager|employee|customer']], function(
 
 Route::group(['middleware' => ['UserRole:manager|employee']], function() {
 
+
+      Route::post('admin/add_head_video/', 'CourseController@add_head_video');
+      Route::post('admin/edit_head_video/{id}', 'CourseController@edit_head_video');
+      Route::post('admin/del_header_course/{id}', 'CourseController@del_header_course');
+
+
       Route::resource('admin/user_pay', 'UserpayController');
       Route::post('api/api_pay_status', 'UserpayController@api_pay_status');
 

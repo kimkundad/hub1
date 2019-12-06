@@ -65,6 +65,22 @@
     											</div>
     									</div>
 
+
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="profileFirstName">หัวข้อของ Video*</label>
+												<div class="col-md-8">
+													<select name="head_id" class="form-control mb-md" required>
+
+																		<option value="">-- เลือกหัวข้อของ --</option>
+																		@foreach($head_videos as $u)
+																		<option value="{{$u->id}}"  @if( $u->id == $get_video->head_id)
+				                              selected='selected'
+				                              @endif>{{$u->head_name}}</option>
+																		@endforeach
+													 </select>
+													</div>
+											</div>
+
 											<div class="form-group">
 												<label class="col-md-3 control-label" for="profileFirstName">ความยาววีดีโอ*</label>
 														<div class="col-md-8">
@@ -112,7 +128,7 @@
     									</div>
 
     									<div class="form-group">
-    										<label class="col-md-3 control-label" for="exampleInputEmail1">รูป วีดีโอคอร์ส*</label>
+    										<label class="col-md-3 control-label" for="exampleInputEmail1">รูป วีดีโอคอร์ส ถ้าไม่มี Video ก็ไม่ต้องใส่</label>
     										<div class="col-md-8">
 
     										<div class="fileupload fileupload-new" data-provides="fileupload">

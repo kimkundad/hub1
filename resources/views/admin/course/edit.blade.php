@@ -321,7 +321,138 @@
 
 
 
+						<div class="row">
+						<div class="col-md-2 col-lg-2">
+						</div>
+						<div class="col-md-8 col-lg-8">
+						<div class="tabs">
+							<div class="tab-content">
+								<h4 class="mb-xlg">หัวข้อเนื้อหา video</h4>
 
+								<form class="form-horizontal" action="{{url('admin/add_head_video')}}" method="post" enctype="multipart/form-data">
+									{{ csrf_field() }}
+									<input type="hidden" class="form-control" name="course_id"  value="{{$courseinfo->id}}" >
+
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="profileFirstName">ชื่อหัวข้อ*</label>
+												<div class="col-md-8">
+														<input type="text" class="form-control" name="header_name" required>
+											</div>
+									</div>
+
+
+									<div class="panel-footer">
+										<div class="row">
+											<div class="col-md-9 col-md-offset-3">
+												<button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+												<button type="reset" class="btn btn-default">Reset</button>
+											</div>
+										</div>
+									</div>
+								</form>
+								</div>
+					</div>
+					</div>
+					</div>
+
+
+
+
+					<div class="row">
+					<div class="col-md-2 col-lg-2">
+					</div>
+
+					<div class="col-md-8 col-lg-8">
+
+					<div class="tabs">
+
+						<div class="tab-content">
+							<h4 class="mb-xlg">ตารางข้อมูล หัวข้อเนื้อหา video</h4>
+
+							<div class="table-responsive">
+									<table class="table table-striped mb-none">
+
+										<tbody>
+											@if($head_videos)
+			               						 @foreach($head_videos as $u)
+											<tr>
+
+												<td>{{$u->head_name}}</td>
+												<td>
+
+													<a href="#" data-toggle="modal" data-target="#myModal-{{$u->id}}" class="mb-1 mt-1 mr-1 btn btn-sm btn-default pull-left" style="margin-right:5px;">แก้ไขข้อมูล</a>
+													<form  action="{{url('admin/del_header_course/'.$u->id)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
+														<input type="hidden" name="_method" value="post">
+														<input type="hidden" class="form-control" name="course_id"  value="{{$courseinfo->id}}" >
+														 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+														<button type="submit" class="mb-1 mt-1 mr-1 btn btn-sm btn-danger"><i class="fa fa-times "></i> ลบ</button>
+													</form>
+
+
+
+
+
+													<!-- Modal -->
+													<div class="modal fade" id="myModal-{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+														<div class="modal-dialog" role="document">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																	<h4 class="modal-title" id="myModalLabel">แก้ไข : หัวข้อเนื้อหา video</h4>
+																</div>
+
+																<form class="form-horizontal" action="{{url('admin/edit_head_video/'.$u->id)}}" method="post" enctype="multipart/form-data">
+																	{{ csrf_field() }}
+
+
+																<div class="modal-body">
+																	<fieldset>
+																		<input type="hidden" class="form-control" name="course_id"  value="{{$courseinfo->id}}" >
+																		<div class="form-group">
+																			<label class="col-md-3 control-label" for="profileFirstName">ชื่อหัวข้อ</label>
+																			<div class="col-md-8">
+																				<input type="text" class="form-control" name="header_name" value="{{$u->head_name}}">
+																				</div>
+																		</div>
+
+																	</fieldset>
+																</div>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+																	<button type="submit" class="btn btn-primary">อัพเดทข้อมูล</button>
+																</div>
+																	</form>
+
+															</div>
+														</div>
+													</div>
+
+
+
+												</td>
+
+
+
+
+
+											</tr>
+
+
+
+											@endforeach
+											@endif
+										</tbody>
+									</table>
+								</div>
+
+
+							</div>
+
+				</div>
+
+				</div>
+
+				</div>
 
 
 
@@ -660,6 +791,21 @@
 									</div>
 
 									<div class="form-group">
+										<label class="col-md-3 control-label" for="profileFirstName">หัวข้อของ Video*</label>
+										<div class="col-md-8">
+											<select name="head_id" class="form-control mb-md" required>
+
+																<option value="">-- เลือกหัวข้อของ --</option>
+																@foreach($head_videos as $u)
+																<option value="{{$u->id}}">{{$u->head_name}}</option>
+																@endforeach
+											 </select>
+											</div>
+									</div>
+
+
+
+									<div class="form-group">
 										<label class="col-md-3 control-label" for="profileFirstName">ความยาววีดีโอ*</label>
 												<div class="col-md-8">
 														<input type="text" class="form-control" name="time_video" placeholder="30.25">
@@ -688,7 +834,7 @@
 																<span class="btn btn-default btn-file">
 																	<span class="fileupload-exists">Change</span>
 																	<span class="fileupload-new">Select file</span>
-																	<input type="file" name="file" required>
+																	<input type="file" name="file" >
 																</span>
 																<a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
 															</div>
@@ -697,7 +843,7 @@
 									</div>
 
 									<div class="form-group">
-										<label class="col-md-3 control-label" for="exampleInputEmail1">รูป วีดีโอคอร์ส*</label>
+										<label class="col-md-3 control-label" for="exampleInputEmail1">รูป วีดีโอคอร์ส ถ้าไม่มี Video ก็ไม่ต้องใส่</label>
 										<div class="col-md-8">
 
 										<div class="fileupload fileupload-new" data-provides="fileupload">
@@ -709,7 +855,7 @@
 																<span class="btn btn-default btn-file">
 																	<span class="fileupload-exists">Change</span>
 																	<span class="fileupload-new">Select file</span>
-																	<input type="file" name="image" required>
+																	<input type="file" name="image">
 																</span>
 																<a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
 															</div>
@@ -832,6 +978,9 @@
 											<td>{{$video_lists->time_video}} นาที</td>
 											<td style="text-align: left">{{$video_lists->course_video_name}}
 
+											</td>
+											<td>
+												{{$video_lists->name_op}}
 											</td>
 											<td>
 												<a style="float:left; margin:3px;" class="btn btn-primary btn-xs" href="{{url('video_course_edit/'.$video_lists->id)}}" role="button"><i class="fa fa-wrench"></i> </a>
@@ -959,6 +1108,39 @@ var notice = new PNotify({
           });
 </script>
 @endif
+
+
+@if ($message = Session::get('add_head_video'))
+
+<script type="text/javascript">
+
+  var stack_topleft = {"dir1": "down", "dir2": "right", "push": "top"};
+      var notice = new PNotify({
+            title: 'ทำการเพิ่มข้อมูล',
+            text: '{{$message}}',
+            type: 'success',
+            addclass: 'stack-topright'
+          });
+</script>
+@endif
+
+
+@if ($message = Session::get('del_header_course'))
+
+<script type="text/javascript">
+
+  var stack_topleft = {"dir1": "down", "dir2": "right", "push": "top"};
+      var notice = new PNotify({
+            title: 'ทำการลบข้อมูลสำเร็จ',
+            text: '{{$message}}',
+            type: 'success',
+            addclass: 'stack-topright'
+          });
+</script>
+@endif
+
+
+
 
 
 @if ($message = Session::get('success_edit_video'))

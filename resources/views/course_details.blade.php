@@ -116,7 +116,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <video controls crossorigin playsinline poster="{{url('assets/uploads/'.$u->thumbnail_img)}}" id="player" style="width:100%">
+                                                                    <video controls crossorigin playsinline poster="{{url('assets/uploads/'.$u->thumbnail_img)}}" id="player{{$u->id}}" style="width:100%">
                                                                         <!-- Video files -->
                                                                         <source src="{{url('assets/videos/'.$u->course_video)}}" type="video/mp4" size="576"/>
                                                                         <source src="{{url('assets/videos/'.$u->course_video)}}" type="video/mp4" size="720"/>
@@ -381,6 +381,20 @@ $('.photo_f').on('click', function () {
 swal("การซื้อคอร์สเรียน นักเรียน ต้องทำการ login เข้าสู่ระบบก่อน")
 
 });
+</script>
+
+
+<script>
+
+@if(isset($get_video))
+  @foreach($get_video as $u)
+
+    var player = new Plyr('#player{{$u->id}}');
+
+    @endforeach
+    @endif
+
+
 </script>
 
 @stop('scripts')

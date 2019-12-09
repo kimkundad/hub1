@@ -90,6 +90,21 @@
 														</div>
 												</div>
 
+
+												<div class="form-group">
+													<label class="col-md-3 control-label" for="profileAddress">การแสดงผลหน้าแรก*</label>
+													<div class="col-md-8">
+														<select name="index_status" class="form-control mb-md" required>
+															  <option value="0" @if( $courseinfo->index_status == 0)
+																	selected='selected'
+																	@endif>-- ไม่แสดง --</option>
+																  <option value="1" @if( $courseinfo->index_status == 1)
+																		selected='selected'
+																		@endif>-- แสดงหน้าแรก --</option>
+								                    </select>
+													</div>
+												</div>
+
 												<div class="form-group">
 													<label class="col-md-3 control-label" for="profileAddress">ระบบคอร์ส เติมเงิน / รายเดือน*</label>
 													<div class="col-md-8">

@@ -1024,7 +1024,9 @@ class HomeController extends Controller
             'slide_shows.*'
             )
             ->where('slide_status', 1)
-            ->first();
+            ->get();
+
+          //  dd($slide);
       $data['slide'] = $slide;
 
 
@@ -1040,7 +1042,7 @@ class HomeController extends Controller
           ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
           ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
           ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
-          ->whereIn('departments.id', [4, 5, 6])
+          ->Orderby('courses.id', 'desc')
           ->where('courses.ch_status', 1)
           ->inRandomOrder()
           ->limit(8)
@@ -1075,7 +1077,7 @@ class HomeController extends Controller
               ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
               ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
               ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
-              ->whereIn('departments.id', [7, 8])
+              ->where('courses.index_status', 1)
               ->where('courses.ch_status', 1)
               ->inRandomOrder()
               ->limit(8)
@@ -1095,34 +1097,7 @@ class HomeController extends Controller
 
 
 
-              $objs3 = DB::table('courses')
-                  ->select(
-                  'courses.*',
-                  'courses.id as A',
-                  'typecourses.*',
-                  'departments.*',
-                  'teachers.*'
-                  )
-                  ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
-                  ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
-                  ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
-                  ->whereIn('departments.id', [9])
-                  ->where('courses.ch_status', 1)
-                  ->inRandomOrder()
-                  ->limit(8)
-                  ->get();
 
-                  if(isset($objs3)){
-                    foreach($objs3 as $u){
-
-                      $count_video = DB::table('video_lists')
-                            ->where('course_id', $u->A)
-                            ->count();
-                            $u->count_video = $count_video;
-
-
-                    }
-                  }
 
 
           $pack = DB::table('package_products')
@@ -1135,7 +1110,6 @@ class HomeController extends Controller
       $data['get_cat'] = $get_cat;
       $data['objs'] = $objs;
       $data['objs2'] = $objs2;
-      $data['objs3'] = $objs3;
       return view('welcome', $data);
     }
 

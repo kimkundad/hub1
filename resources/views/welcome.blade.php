@@ -1,6 +1,7 @@
 @extends('layouts.template')
 @section('stylesheet')
-
+<link rel="stylesheet" href="{{url('css/owl.carousel.css')}}">
+<link rel="stylesheet" href="{{url('css/owl.theme.css')}}">
 <style>
 
 .category-area .category-wrapper .category-item:after {
@@ -12,6 +13,26 @@
 
   opacity: 0;
 }
+.sp-buttons {
+    top: -40px;
+}
+.p-slides {
+    top: -34px;
+}
+@media (max-width: 767px){
+
+.p-slides {
+    top: -42px;
+}
+}
+
+.owl-pagination{
+  display: none;
+}
+.owl-theme .owl-controls {
+    margin-top: -10px;
+    text-align: right;
+}
 </style>
 
 @stop('stylesheet')
@@ -19,44 +40,41 @@
 
 
 
+<div class="slider-pro slide_set_t" id="my-slider">
+  <div class="sp-slides">
+
+		@if(isset($slide))
+		@foreach($slide as $slide1)
+    <div class="sp-slide">
+      @if($slide1->btn_url != null)
+      <a href="{{$slide1->btn_url}}">
+      @else
+      <a href="#">
+      @endif
+
+        <img class="sp-image" src="{{url('assets/image/slide/'.$slide1->image_slide)}}" />
+      </a>
+    </div>
+		@endforeach
+		@endif
+
+
+  </div>
+</div>
+
+
 
 <!--================================
          START SLIDER AREA
 =================================-->
-<section class="slider-area slider-area2">
+<section class="p-slides slider-area slider-area2" >
     <div class="homepage-slide2">
-        <div class="single-slide-item slide-bg1" style="background-image: url({{url('assets/image/slide/'.$slide->image_slide)}});">
-            <div id="perticles-js-2"></div>
+        <div class="single-slide-item " style="padding-top: 0px;">
+
             <div class="slide-item-table">
                 <div class="slide-item-tablecell">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="slider-heading">
-                                    @if($slide->text_slide1 == null)
-                                    <h2 class="slider__title">&nbsp</h2>
-                                    @else
-                                    <h2 class="slider__title">{{$slide->text_slide1}}</h2>
-                                    @endif
 
-
-                                    @if($slide->text_slide1 == null)
-                                    <p class="slider__text" style="margin-bottom: 0px;">
-                                        &nbsp
-                                    </p>
-                                    @else
-                                    <p class="slider__text" style="margin-bottom: 0px;">
-                                        {{$slide->text_slide3}}
-                                    </p>
-                                    @endif
-
-
-
-                                </div>
-                            </div><!-- col-md-7 -->
-                        </div><!-- row -->
-                    </div><!-- container -->
-                    <div class="how-we-work-content">
+                    <div class="how-we-work-content" style="    margin-top: 0px;">
                         <span class="hw-circle"></span>
                         <span class="hw-circle"></span>
                         <span class="hw-circle"></span>
@@ -92,6 +110,10 @@
                             </div><!-- row -->
                         </div><!-- container -->
                     </div><!-- how-we-work-content -->
+
+
+
+
                 </div><!-- slide-item-tablecell -->
             </div><!-- slide-item-table -->
         </div><!-- end single-slide-item -->
@@ -110,44 +132,30 @@
         START COURSE AREA
 ======================================-->
 <section class="course-area course-area3">
-    <div class="course-wrapper">
+
+
+    <div class="course-content-wrapper" style="padding-bottom: 10px;">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="course-tab-wrap">
-                        <ul class="course-tab-list nav nav-tabs justify-content-center text-center" role="tablist" id="review">
-                            <li role="presentation">
-                                <a href="#tab1" role="tab" data-toggle="tab" class="active" aria-selected="true">
-                                    วิทยาศาสตร์
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#tab2" role="tab" data-toggle="tab" aria-selected="false">
-                                    เรียนภาษา
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#tab3" role="tab" data-toggle="tab" aria-selected="false">
-                                    เตรียมสอบ
-                                </a>
-                            </li>
-                        </ul>
-                    </div><!-- end course-tab-wrap -->
-                </div><!-- end col-lg-12 -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end course-wrapper -->
-    <div class="course-content-wrapper">
-        <div class="container">
+
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="button-shared">
+                      <h4 class="benefit__title">คอร์สใหม่ล่าสุด</h4>
+                  </div><!-- end button-shared -->
+              </div><!-- end col-lg-12 -->
+          </div><!-- end row -->
+
+
             <div class="row course-item-wrap">
                 <div class="col-lg-12">
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane fade show active" id="tab1">
                             <div class="row course-block">
 
+                              <div id="owl-demo" class="owl-carousel owl-theme">
                                 @if(isset($objs))
                                 @foreach($objs as $u)
-                                <div class="col-lg-3">
+                                <div class=" item" style="padding: 15px;">
                                     <div class="course-item">
                                         <div class="course-img">
                                             <a href="{{url('course_details/'.$u->A)}}" class="course__img"><img src="{{url('assets/uploads/'.$u->image_course)}}" alt="{{$u->title_course}}"></a>
@@ -210,162 +218,141 @@
                                 @endforeach
                                 @endif
 
-
+                                </div>
 
 
 
 
                             </div><!-- end course-block -->
                         </div><!-- end tab-pane -->
-                        <div role="tabpanel" class="tab-pane fade" id="tab2">
-                            <div class="row course-block">
-
-                              @if(isset($objs2))
-                              @foreach($objs2 as $u)
-                              <div class="col-lg-3">
-                                  <div class="course-item">
-                                      <div class="course-img">
-                                          <a href="course-details.html" class="course__img"><img src="{{url('assets/uploads/'.$u->image_course)}}" alt=""></a>
-                                        <!--  <div class="course-tooltip">
-                                              <span class="tooltip-label">bestseller</span>
-                                          </div> -->
-                                      </div><!-- end course-img -->
-                                      <div class="course-content">
-                                          <p class="course__label">
-                                            <span class="course__label-text">{{$u->name_department}}</span>
-                                            @if (Auth::guest())
-
-                                              <a href="#" class="photo_f course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
-                                                <span class="la la-heart-o"></span>
-                                              </a>
-
-                                            @else
-                                            <form id="cutproduct" class="" novalidate="novalidate" action="" method="post"  role="form">
-
-                                            <input class="user_id form hide" type="hidden" name="id" value="{{$u->A}}" />
-
-                                            <a href="#" class="course__collection-icon add_wishlist"  data-value="{{$u->A}}" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
-                                              <span class="la la-heart-o"></span>
-                                            </a>
-
-                                            </form>
-                                            @endif
-                                          </p>
-                                          <h3 class="course__title">
-                                              <a href="course-details.html">{{$u->title_course}}</a>
-                                          </h3>
-                                          <p class="course__author">
-                                              <a href="#">{{$u->te_name}}</a>
-                                          </p>
-                                          <div class="rating-wrap d-flex">
-
-                                          </div><!-- end rating-wrap -->
-                                          <div class="course-meta">
-                                              <ul class="course__list d-flex">
-                                                  <li>
-                                                      <span class="meta__date">
-                                                          <i class="la la-play-circle"></i> {{$u->count_video}} Video
-                                                      </span>
-                                                  </li>
-                                                  <li style="padding: 0px;">
-                                                    @if($u->price_course != 0)
-                                                      <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
-                                                    @else
-                                                      <span class="course__price text-danger">ดูฟรี</span>
-                                                    @endif
-                                                  </li>
-                                              </ul>
-                                          </div><!-- end course-meta -->
-
-                                      </div><!-- end course-content -->
-                                  </div><!-- end course-item -->
-                              </div><!-- end col-lg-4 -->
-                              @endforeach
-                              @endif
-
-                            </div><!-- end course-block -->
-                        </div><!-- end tab-pane -->
-                        <div role="tabpanel" class="tab-pane fade" id="tab3">
-                            <div class="row course-block">
 
 
-                              @if(isset($objs3))
-                              @foreach($objs3 as $u)
-                              <div class="col-lg-3">
-                                  <div class="course-item">
-                                      <div class="course-img">
-                                          <a href="course-details.html" class="course__img"><img src="{{url('assets/uploads/'.$u->image_course)}}" alt=""></a>
-                                        <!--  <div class="course-tooltip">
-                                              <span class="tooltip-label">bestseller</span>
-                                          </div> -->
-                                      </div><!-- end course-img -->
-                                      <div class="course-content">
-                                          <p class="course__label">
-                                            <span class="course__label-text">{{$u->name_department}}</span>
-                                            @if (Auth::guest())
-
-                                              <a href="#" class="photo_f course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
-                                                <span class="la la-heart-o"></span>
-                                              </a>
-
-                                            @else
-                                            <form id="cutproduct" class="" novalidate="novalidate" action="" method="post"  role="form">
-
-                                            <input class="user_id form hide" type="hidden" name="id" value="{{$u->A}}" />
-
-                                            <a href="#" class="course__collection-icon add_wishlist"  data-value="{{$u->A}}" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
-                                              <span class="la la-heart-o"></span>
-                                            </a>
-
-                                            </form>
-                                            @endif
-
-                                          </p>
-                                          <h3 class="course__title">
-                                              <a href="course-details.html">{{$u->title_course}}</a>
-                                          </h3>
-                                          <p class="course__author">
-                                              <a href="#">{{$u->te_name}}</a>
-                                          </p>
-                                          <div class="rating-wrap d-flex">
-
-                                          </div><!-- end rating-wrap -->
-                                          <div class="course-meta">
-                                              <ul class="course__list d-flex">
-                                                  <li>
-                                                      <span class="meta__date">
-                                                          <i class="la la-play-circle"></i> {{$u->count_video}} Video
-                                                      </span>
-                                                  </li>
-                                                  <li style="padding: 0px;">
-                                                    @if($u->price_course != 0)
-                                                      <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
-                                                    @else
-                                                      <span class="course__price text-danger">ดูฟรี</span>
-                                                    @endif
-                                                  </li>
-                                              </ul>
-                                          </div><!-- end course-meta -->
-
-                                      </div><!-- end course-content -->
-                                  </div><!-- end course-item -->
-                              </div><!-- end col-lg-4 -->
-                              @endforeach
-                              @endif
 
 
-                            </div><!-- end course-block -->
-                        </div><!-- end tab-pane -->
+
                     </div><!-- end tab-content -->
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
-            <div class="row">
+
+        </div><!-- end container -->
+    </div><!-- end course-content-wrapper -->
+</section><!-- end courses-area -->
+<!--======================================
+        END COURSE AREA
+======================================-->
+
+
+
+<hr />
+
+
+
+<!--======================================
+        START COURSE AREA
+======================================-->
+<section class="course-area course-area3">
+
+
+    <div class="course-content-wrapper" style="padding-bottom: 10px;">
+        <div class="container">
+
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="button-shared">
+                      <h4 class="benefit__title">คอร์สยอดนิยม</h4>
+                  </div><!-- end button-shared -->
+              </div><!-- end col-lg-12 -->
+          </div><!-- end row -->
+
+
+            <div class="row course-item-wrap">
                 <div class="col-lg-12">
-                    <div class="button-shared text-center">
-                        <a href="{{url('all_course')}}" class="theme-btn theme-btn2">คอร์สเรียนอื่นๆ</a>
-                    </div><!-- end button-shared -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade show active" id="tab1">
+                            <div class="row course-block">
+
+                              <div id="owl-demo2" class="owl-carousel owl-theme">
+                                @if(isset($objs2))
+                                @foreach($objs2 as $u)
+                                <div class=" item" style="padding: 15px;">
+                                    <div class="course-item">
+                                        <div class="course-img">
+                                            <a href="{{url('course_details/'.$u->A)}}" class="course__img"><img src="{{url('assets/uploads/'.$u->image_course)}}" alt="{{$u->title_course}}"></a>
+                                          <!--  <div class="course-tooltip">
+                                                <span class="tooltip-label">bestseller</span>
+                                            </div> -->
+                                        </div><!-- end course-img -->
+                                        <div class="course-content">
+                                            <p class="course__label">
+
+                                              @if (Auth::guest())
+                                                <span class="course__label-text">{{$u->name_department}}</span>
+                                                <a href="#" class="photo_f course__collection-icon" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                  <span class="la la-heart-o"></span>
+                                                </a>
+
+                                              @else
+                                              <form id="cutproduct" class="" novalidate="novalidate" action="" method="post"  role="form">
+                                              <span class="course__label-text">{{$u->name_department}}</span>
+                                              <input class="user_id form hide" type="hidden" name="id" value="{{$u->A}}" />
+
+                                              <a href="#" class="course__collection-icon add_wishlist"  data-value="{{$u->A}}" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                <span class="la la-heart-o"></span>
+                                              </a>
+
+                                              </form>
+                                              @endif
+
+
+                                            </p>
+                                            <h3 class="course__title">
+                                                <a href="{{url('course_details/'.$u->A)}}">{{$u->title_course}}</a>
+                                            </h3>
+                                            <p class="course__author">
+                                                <a href="{{url('course_details/'.$u->A)}}">{{$u->te_name}}</a>
+                                            </p>
+                                            <div class="rating-wrap d-flex">
+
+                                            </div><!-- end rating-wrap -->
+                                            <div class="course-meta">
+                                                <ul class="course__list d-flex">
+                                                    <li>
+                                                        <span class="meta__date" style="font-size:13px">
+                                                            <i class="la la-play-circle"></i> {{$u->count_video}} Classes
+                                                        </span>
+                                                    </li>
+                                                    <li style="padding: 0px;">
+                                                      @if($u->price_course != 0)
+                                                        <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
+                                                      @else
+                                                        <span class="course__price text-danger">ดูฟรี</span>
+                                                      @endif
+                                                    </li>
+                                                </ul>
+                                            </div><!-- end course-meta -->
+
+                                        </div><!-- end course-content -->
+                                    </div><!-- end course-item -->
+                                </div><!-- end col-lg-4 -->
+                                @endforeach
+                                @endif
+
+                                </div>
+
+
+
+
+                            </div><!-- end course-block -->
+                        </div><!-- end tab-pane -->
+
+
+
+
+
+                    </div><!-- end tab-content -->
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
+
         </div><!-- end container -->
     </div><!-- end course-content-wrapper -->
 </section><!-- end courses-area -->
@@ -426,6 +413,17 @@
     opacity: 0;
     visibility: hidden;
 }
+
+@media (max-width: 767px){
+  .category-area2 .category-wrapper .category-item .category-content .cat__title {
+    font-size: 16px;
+}
+.p-slides {
+    top: -40px;
+}
+}
+
+
 </style>
 
 <!--======================================
@@ -446,7 +444,7 @@
 
             @if(isset($get_cat))
             @foreach($get_cat as $u)
-            <div class="col-lg-3">
+            <div class="col-6 col-md-3">
                 <div class="category-item">
                     <div class="category-content">
                         <a href="{{url('course_department/'.$u->id)}}" style="padding-left: 10px;">
@@ -534,6 +532,19 @@
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
+
+
+$('#my-slider').sliderPro({
+    width: '100%',
+    autoHeight: true,
+    arrows: true,
+    visibleSize: '100%',
+    responsive:false,
+    imageScaleMode:'contain'
+  });
+
+
+
 $('.photo_f').on('click', function () {
 
 swal("การเก็บคอร์สเรียนที่ นักเรียนชื่นชอบ ต้องทำการ login เข้าสู่ระบบก่อน")
@@ -586,7 +597,41 @@ swal("การเก็บคอร์สเรียนที่ นักเ�
 
 
 
+        $(document).ready(function() {
 
+          var owl = $("#owl-demo");
+          var owl2 = $("#owl-demo2");
+
+  owl.owlCarousel({
+      items : 4, //10 items above 1000px browser width
+      itemsDesktop : [1000,5], //5 items between 1000px and 901px
+      itemsDesktopSmall : [900,3], // betweem 900px and 601px
+      itemsTablet: [600,2], //2 items between 600 and 0
+      itemsMobile : false, // itemsMobile disabled - inherit from itemsTablet option
+
+      navigation : true,
+    navigationText : ["prev","next"],
+    rewindNav : true,
+    scrollPerPage : false,
+
+  });
+
+
+  owl2.owlCarousel({
+      items : 4, //10 items above 1000px browser width
+      itemsDesktop : [1000,5], //5 items between 1000px and 901px
+      itemsDesktopSmall : [900,3], // betweem 900px and 601px
+      itemsTablet: [600,2], //2 items between 600 and 0
+      itemsMobile : false, // itemsMobile disabled - inherit from itemsTablet option
+
+      navigation : true,
+    navigationText : ["prev","next"],
+    rewindNav : true,
+    scrollPerPage : false,
+
+  });
+
+        });
 
 
 </script>

@@ -1155,6 +1155,7 @@ class CourseController extends Controller
            $obj->set_type_c = $request['set_type_c'];
            $obj->tags = $request['tags'];
            $obj->te_study = $request['te_study'];
+           $obj->index_status = $request['index_status'];
            $obj->save();
 
            return redirect(url('admin/course/'))->with('success_course','แก้ไขข้อมูล '.$request['name'].' สำเร็จ');
@@ -1192,6 +1193,7 @@ class CourseController extends Controller
            $obj->set_type_c = $request['set_type_c'];
            $obj->tags = $request['tags'];
            $obj->te_study = $request['te_study'];
+           $obj->index_status = $request['index_status'];
            $obj->save();
 
            return redirect(url('admin/course/'))->with('success_course','แก้ไขข้อมูล '.$request['name'].' สำเร็จ');

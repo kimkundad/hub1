@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{url('home/css/plyr.css')}}">
     <link rel="stylesheet" href="{{url('home/css/fancybox.css')}}">
     <link rel="stylesheet" href="{{url('home/css/style.css')}}">
+
+    <link rel="stylesheet" href="{{url('css/slider-pro.min.css')}}">
     <!-- end inject -->
 </head>
 <style>

@@ -58,7 +58,7 @@
                     <tr>
                       <th>#ลำดับ</th>
                       <th>คอร์สเรียน</th>
-
+                      <th>หน้าแรก</th>
                       <th>หมวดหมู่หลัก</th>
                       <th>หมวดหมู่ย่อย</th>
                       <th>เติมเงิน / รายเดือน</th>
@@ -72,7 +72,13 @@
                     <tr id="{{$u->id}}">
                       <td>{{$u->sort_corse}}</td>
                       <td>{{$u->title_course}}</td>
-
+                      <td>
+                        @if($u->index_status == 0)
+                        ไม่แสดง
+                        @else
+                        แสดงหน้าแรก
+                        @endif
+                      </td>
                       <td>@foreach($department as $departments)
                         @if($u->department_id == $departments->id)
                         {{$departments->name_department}}
@@ -107,7 +113,7 @@
                       </td>
 
                       <td>
-                      
+
                         @if($u->e_id)
                         <a style="float:left; margin:3px;" class="btn btn-success btn-xs" href="{{url('admin/course/'.$u->c_id)}}" role="button"><i class="fa fa-question-circle"></i> </a>
                         @endif

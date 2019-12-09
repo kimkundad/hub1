@@ -846,6 +846,7 @@ class HomeController extends Controller
                        }
                      }else{
                        $head_videos = null;
+                       $get_video == null
                      }
 
                      //dd($head_videos);

@@ -7,8 +7,8 @@
 
         <div class="header-menu-content">
             <div class="container-fluid">
-                <div class="row align-items-center main-menu-content">
-                    <div class="col-lg-3">
+                <div class="row align-items-center main-menu-content ">
+                    <div class="col-lg-3 set_res">
                         <div class="logo-box">
                             <a href="{{url('/')}}" class="logo" title="Aduca"><img src="{{url('home/images/logo_v2.png')}}" alt="logo"></a>
                             <div class="header-category">
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                     </div><!-- end col-lg-3 -->
-                    <div class="col-lg-9">
+                    <div class="col-lg-9 set_res">
                         <div class="menu-wrapper">
                             <div class="contact-form-action">
                                 <!--Contact Form-->

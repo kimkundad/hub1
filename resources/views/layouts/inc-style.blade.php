@@ -21,6 +21,15 @@
     <!-- end inject -->
 </head>
 <style>
+
+@media (max-width: 767px){
+  .set_res{
+    top: -20px;
+  }
+}
+
+
+
 .menu__bar:nth-child(1), .menu__bar:nth-child(2) {
     margin-bottom: 5px;
 }

@@ -1046,7 +1046,13 @@ class CourseController extends Controller
            ->where('id', $j->head_id)
            ->first();
 
-           $j->name_op = $head_videos->head_name;
+           if($head_videos != null){
+             $j->name_op = $head_videos->head_name;
+           }else{
+             $j->name_op = null;
+           }
+
+
 
         }
 

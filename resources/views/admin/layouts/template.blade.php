@@ -23,7 +23,7 @@
 
 </head>
 
-<body class="loading-overlay-showing" data-loading-overlay>
+<body >
         <span class="loading-overlay dark">
             <span class="loader white"></span>
         </span>

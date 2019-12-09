@@ -81,16 +81,23 @@
                                 <span class="curriculum-total__hours"><strong>เวลาทั้งหมด:</strong> {{$objs->time_course_text}}</span>
                             </div>
                         </div><!-- end curriculum-header -->
-                        <div class="curriculum-content">
+
+
+
+
+
+                        @if(isset($head_videos))
+                        @foreach($head_videos as $u)
+
+                        <div class="curriculum-content" {{$s = 0}}>
                             <div class="accordion course-accordion" id="accordionExample">
                                 <div class="card">
                                     <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
                                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                <i class="la la-angle-up"></i>
-                                                <i class="la la-angle-down"></i>
-                                                รายชื่อของ Video
-                                                <span class="btn-text">{{$objs->count_video}} Video </span>
+                                                
+                                                {{$u->head_name}}
+                                                <span class="btn-text">{{$u->option_count}} Video </span>
                                             </button>
                                         </h2>
                                     </div><!-- end card-header -->
@@ -99,39 +106,17 @@
                                         <div class="card-body">
                                             <ul class="card-list">
 
-                                              @if(isset($get_video))
-                                                @foreach($get_video as $u)
+                                              @if(isset($u->option))
+                                                @foreach($u->option as $j)
                                                 <li class="card-list-item">
-                                                    <span class="course-duration">{{$u->time_video}}</span>
-                                                    <button type="button" class="preview-link" data-toggle="modal" data-target="#exampleModalCenter-{{$u->id}}">
-                                                        <i class="la la-play-circle-o course-play__icon"></i> {{$u->course_video_name}}
+                                                    <span class="course-duration">{{$j->time_video}}</span>
+                                                    <button type="button" class="preview-link">
+                                                        <i class="la la-play-circle-o course-play__icon"></i> {{$j->course_video_name}}
                                                     </button>
-                                                    <div class="modal fade" id="exampleModalCenter-{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLongTitle">{{$u->course_video_name}}</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true" class="la la-close"></span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <video controls crossorigin playsinline poster="{{url('assets/uploads/'.$u->thumbnail_img)}}" id="player{{$u->id}}" style="width:100%">
-                                                                        <!-- Video files -->
-                                                                        <source src="{{url('assets/videos/'.$u->course_video)}}" type="video/mp4" size="576"/>
-                                                                        <source src="{{url('assets/videos/'.$u->course_video)}}" type="video/mp4" size="720"/>
-                                                                        <source src="{{url('assets/videos/'.$u->course_video)}}" type="video/mp4" size="1080"/>
 
-
-                                                                    </video>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- end modal -->
                                                 </li>
                                                   @endforeach
                                                 @endif
-
 
 
                                             </ul>
@@ -140,14 +125,24 @@
                                 </div><!-- end card -->
 
 
-
-
-
-
-
-
                             </div><!-- end accordion -->
                         </div><!-- end curriculum-content -->
+
+
+
+                        @endforeach
+                      @endif
+
+
+
+
+
+
+
+
+
+
+
                     </div><!-- end curriculum-wrap -->
 
 
@@ -248,8 +243,8 @@
 
                                         <ul class="preview-course-incentives__list">
                                             <li><span class="la la-clock-o"></span>{{$objs->time_course_text}}</li>
-                                            <li><span class="la la-play-circle-o"></span>{{$objs->count_video}} video {{$objs->time_course_text}}</li>
-                                            <li><span class="la la-file"></span>{{$objs->count_video}} Video</li>
+                                            <li><span class="la la-play-circle-o"></span>{{$objs->count_video}} video</li>
+                                            <li><span class="la la-file"></span>{{$filecourses_count}} เอกสาร Download</li>
                                             <li><span class="la la-key"></span>Full lifetime access</li>
                                             <li><span class="la la-television"></span>Access on mobile and TV</li>
                                             <li><span class="la la-certificate"></span>Certificate of Completion</li>

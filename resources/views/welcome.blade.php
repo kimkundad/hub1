@@ -419,7 +419,7 @@
     font-size: 16px;
 }
 .p-slides {
-    top: -40px;
+
 }
 }
 

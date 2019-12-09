@@ -21,6 +21,15 @@
     <!-- end inject -->
 </head>
 <style>
+.course-block .course-item .course-content .course__title a {
+    font-size: 17px;
+    color: #233d63;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
 .course-detail .curriculum-wrap .curriculum-content .course-accordion .card .card-header .btn-link {
     display: block;
     width: 100%;

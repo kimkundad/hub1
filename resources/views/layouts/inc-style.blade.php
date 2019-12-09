@@ -21,6 +21,22 @@
     <!-- end inject -->
 </head>
 <style>
+.menu__bar:nth-child(1), .menu__bar:nth-child(2) {
+    margin-bottom: 5px;
+}
+.menu__bar:nth-child(2) {
+    margin-bottom: 5px;
+}
+.menu__bar {
+    height: 2px;
+    background-color: #233d63;
+    display: block;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
 .course-block .course-item .course-content .course__title a {
     font-size: 17px;
     color: #233d63;

@@ -112,7 +112,7 @@
                               </div>
 
 
-                                <div class="side-menu-open">
+                                <div class="side-menu-open" style="float: right;">
                                     <span class="menu__bar"></span>
                                     <span class="menu__bar"></span>
                                     <span class="menu__bar"></span>

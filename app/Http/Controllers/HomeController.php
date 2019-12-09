@@ -874,7 +874,7 @@ class HomeController extends Controller
           $data['objs'] = $objs;
           $data['head_videos'] = $head_videos;
           $data['get_video_ex'] = $get_video_ex;
-          $data['get_video'] = $get_video;
+
 
           $data['filecourses'] = $filecourses;
           $data['filecourses_count'] = $filecourses_count;

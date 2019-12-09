@@ -27,6 +27,12 @@
     top: -20px;
   }
 }
+@media only screen and (max-width: 479px) and (min-width: 320px){
+  .footer-area {
+      padding-top: 120px;
+      background-color: #fff;
+  }
+}
 
 
 

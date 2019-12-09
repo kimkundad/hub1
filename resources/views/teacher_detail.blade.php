@@ -19,13 +19,8 @@
     <div class="container">
         <div class="row">
           <div class="col-lg-12">
-             <h3 class="instructor-all-course__title">ข้อมูลอาจารย์ผู้สอน : {{$objs->te_name}}</h3>
 
-             <ul class="breadcrumb__list">
-                        <li>ประจำสาขา : {{$objs->name_department}}</li>
-                    </ul>
-                    <br />
-                    <br />
+
           </div><!-- end col-lg-12 -->
             <div class="col-lg-4">
                 <div class="team-single-img">
@@ -37,7 +32,11 @@
                     <div class="tsd-box row">
                         <div class="col-lg-12">
                             <div class="tsd-item">
-                                <h3 class="tsdi__title">สาขาที่เชี่ยวชาญ</h3>
+                              <h3 class="instructor-all-course__title">ข้อมูลอาจารย์ผู้สอน : {{$objs->te_name}}</h3>
+
+                              <ul class="breadcrumb__list">
+                                         <li>ประจำสาขา : {{$objs->name_department}}</li>
+                                     </ul>
                                 <p>
                                   {!! $objs->te_exper !!}
                                 </p>

@@ -74,10 +74,10 @@
                     <div class="curriculum-wrap">
                         <div class="curriculum-header d-flex align-items-center">
                             <div class="curriculum-header-left">
-                                <h3 class="requirements__title course-detail__title">Video คอร์ส</h3>
+                                <h3 class="requirements__title course-detail__title">Video</h3>
                             </div>
                             <div class="curriculum-header-right ml-auto">
-                                <span class="curriculum-total__text"><strong>ทั้งหมด:</strong> {{$objs->count_video}} คอร์ส</span>
+                                <span class="curriculum-total__text"><strong>ทั้งหมด:</strong> {{$objs->count_video}} video</span>
                                 <span class="curriculum-total__hours"><strong>เวลาทั้งหมด:</strong> {{$objs->time_course_text}}</span>
                             </div>
                         </div><!-- end curriculum-header -->
@@ -95,7 +95,7 @@
                                     <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
                                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                
+
                                                 {{$u->head_name}}
                                                 <span class="btn-text">{{$u->option_count}} Video </span>
                                             </button>

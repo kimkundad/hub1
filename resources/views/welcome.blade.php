@@ -446,7 +446,7 @@
 
             @if(isset($get_cat))
             @foreach($get_cat as $u)
-            <div class="col-lg-3">
+            <div class="col-md-3 col-sm-6">
                 <div class="category-item">
                     <div class="category-content">
                         <a href="{{url('course_department/'.$u->id)}}" style="padding-left: 10px;">

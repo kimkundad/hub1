@@ -820,15 +820,45 @@ class HomeController extends Controller
                     ->count();
                     $objs->count_video = $count_video;
 
-                    $get_video = DB::table('video_lists')
-                          ->where('course_id', $objs->A)
-                          ->orderBy('order_sort', 'asc')
-                          ->get();
+                    $head_videos = DB::table('head_videos')
+                     ->where('course_id', $objs->A)
+                     ->get();
+
+                     if(isset($head_videos)){
+                       foreach($head_videos as $u){
+
+
+                         $get_video_count = DB::table('video_lists')
+                               ->where('course_id', $objs->A)
+                               ->where('head_id', $u->id)
+                               ->orderBy('order_sort', 'asc')
+                               ->count();
+
+                         $get_video = DB::table('video_lists')
+                               ->where('course_id', $objs->A)
+                               ->where('head_id', $u->id)
+                               ->orderBy('order_sort', 'asc')
+                               ->get();
+
+                               $u->option = $get_video;
+                               $u->option_count = $get_video_count;
+
+                       }
+                     }else{
+                       $head_videos = null;
+                     }
+
+                     //dd($head_videos);
 
 
                           $filecourses = DB::table('filecourses')
                                 ->where('course_id', $objs->A)
                                 ->get();
+
+
+                                $filecourses_count = DB::table('filecourses')
+                                      ->where('course_id', $objs->A)
+                                      ->count();
 
 
 
@@ -841,10 +871,12 @@ class HomeController extends Controller
 
 
           $data['objs'] = $objs;
+          $data['head_videos'] = $head_videos;
           $data['get_video_ex'] = $get_video_ex;
           $data['get_video'] = $get_video;
 
           $data['filecourses'] = $filecourses;
+          $data['filecourses_count'] = $filecourses_count;
 
 
 

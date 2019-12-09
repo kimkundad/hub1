@@ -19,6 +19,26 @@
     <!-- end inject -->
 </head>
 <style>
+.course-detail .curriculum-wrap .curriculum-content .course-accordion .card .card-header .btn-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    padding: 10px 20px 10px 20px;
+    border: none;
+    color: #233d63;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    font-weight: 500;
+}
+.course-detail .curriculum-wrap .curriculum-content .course-accordion .card .card-body .card-list .card-list-item {
+    position: relative;
+    border-bottom: 1px solid rgba(127, 136, 151, 0.2);
+    padding: 10px 20px 10px 30px;
+}
 .fixed-nav .header-menu-content {
     position: absolute;
 

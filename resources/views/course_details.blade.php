@@ -232,9 +232,25 @@
                                         <div class="buy-course-btn">
 
                                         @if (Auth::guest())
-                                        <button class="photo_f btn btn-primary border-none btn-block" href="/">ซื้อคอร์สนี้</button>
+
+                                        @if($objs->count_video == 0)
+                                        <button class="photo_f btn btn-danger border-none btn-block" href="#" style="color: azure;">เร็วๆ นี้</button>
                                         @else
-                                        <a class="btn btn-primary border-none btn-block" href="{{url('buy_course/'.$objs->A)}}">ซื้อคอร์สนี้</a>
+                                          <button class="photo_f btn btn-primary border-none btn-block" href="/">ซื้อคอร์สนี้</button>
+                                        @endif
+
+
+
+                                        @else
+
+                                        @if($objs->count_video == 0)
+                                        <a class="btn btn-danger border-none btn-block" style="color: azure;">เร็วๆ นี้</a>
+                                        @else
+                                          <a class="btn btn-primary border-none btn-block" href="{{url('buy_course/'.$objs->A)}}">ซื้อคอร์สนี้</a>
+                                        @endif
+
+
+
                                         @endif
 
 

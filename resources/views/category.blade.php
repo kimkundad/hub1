@@ -133,7 +133,11 @@
                                                       </span>
                                                   </li>
                                                   <li style="padding: 0px;">
+                                                    @if($u->count_video == 0)
+                                                    <span class="course__price text-success">เร็วๆ นี้</span>
+                                                    @else
                                                       <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
+                                                    @endif
                                                   </li>
                                               </ul>
                                           </div><!-- end course-meta -->

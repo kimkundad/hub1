@@ -82,7 +82,7 @@
                                           @if(Auth::user()->provider == 'email')
                                           <img class="avatar__img" style="border: 1px solid #007791;" src="{{url('assets/images/avatar/'.Auth::user()->avatar)}}" alt="{{Auth::user()->anme}}" title="{{Auth::user()->name}}"/>
                                           @else
-                                          <img class="avatar__img" style="border: 1px solid #007791;" src="{{$objs->avatar}}" alt="{{Auth::user()->name}}" title="{{$objs->name}}"/>
+                                          <img class="avatar__img" style="border: 1px solid #007791;" src="{{Auth::user()->avatar}}" alt="{{Auth::user()->name}}" title="{{Auth::user()->name}}"/>
                                           @endif
 
                                         </a>

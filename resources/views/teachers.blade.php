@@ -24,7 +24,7 @@
 <!-- ================================
     START BREADCRUMB AREA
 ================================= -->
-<section class="breadcrumb-area" style="background-image: url({{url('assets/images/breadcrumb-bg.jpg')}});">
+<section class="breadcrumb-area" style="background-image: url({{url('assets/images/Cover_Teacher_100.jpg')}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

@@ -21,6 +21,9 @@
     <!-- end inject -->
 </head>
 <style>
+.breadcrumb-area:before {
+    opacity: 0 !important;
+}
 .header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item {
   transition: all 0.5s; }
   .header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item li .sub-menu {

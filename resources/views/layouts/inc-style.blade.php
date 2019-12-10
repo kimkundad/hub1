@@ -21,6 +21,9 @@
     <!-- end inject -->
 </head>
 <style>
+.footer-area .footer-widget .footer-link li a:hover{
+  color: #2196F3;
+}
 .breadcrumb-area:before {
     opacity: 0 !important;
 }

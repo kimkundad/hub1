@@ -77,7 +77,7 @@
         <div class="row copyright-content align-items-center" style="margin-top: 20px;">
 
             <div class="col-lg-10">
-                <p class="copy__desc">&copy; 2019 Hubjung. All Rights Reserved. by <a href="#">Alphagram.</a></p>
+                <p class="copy__desc">&copy; 2019 Hubjung. All Rights Reserved. by <a href="#">Hubjung.</a></p>
             </div><!-- end col-lg-9 -->
             <div class="col-lg-2">
                 <div class="language-select">

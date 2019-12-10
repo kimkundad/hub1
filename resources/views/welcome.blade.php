@@ -200,7 +200,7 @@
                                                 <ul class="course__list d-flex">
                                                     <li>
                                                         <span class="meta__date" style="font-size:13px">
-                                                            <i class="la la-play-circle"></i> {{$u->count_video}} Classes
+                                                            <i class="la la-play-circle"></i> {{$u->count_video}} Video
                                                         </span>
                                                     </li>
                                                     <li style="padding: 0px;">
@@ -319,7 +319,7 @@
                                                 <ul class="course__list d-flex">
                                                     <li>
                                                         <span class="meta__date" style="font-size:13px">
-                                                            <i class="la la-play-circle"></i> {{$u->count_video}} Classes
+                                                            <i class="la la-play-circle"></i> {{$u->count_video}} Video
                                                         </span>
                                                     </li>
                                                     <li style="padding: 0px;">

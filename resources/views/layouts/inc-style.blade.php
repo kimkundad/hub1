@@ -21,7 +21,20 @@
     <!-- end inject -->
 </head>
 <style>
-
+.custom-checkbox .pass__desc {
+    color: #2196F3;
+    font-weight: 600;
+    float: right;
+}
+.form-shared .contact-form-action form .account-assist .account__desc a:hover {
+    color: #2196F3;
+}
+.form-shared .contact-form-action form .account-assist .account__desc a {
+    color: #2196F3;
+}
+.custom-checkbox label a {
+    color: #2196F3;
+}
 @media (max-width: 767px){
   .set_res{
     top: -20px;

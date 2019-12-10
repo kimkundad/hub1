@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+Route::get('oauth/{driver}', 'Auth\SocialAuthController@redirectToProvider')->name('social.oauth');
+Route::get('oauth/{driver}/callback', 'Auth\SocialAuthController@handleProviderCallback')->name('social.callback');
+
 Route::get('/examination', 'ExaminationController@index')->name('examination');
 Route::get('/examination_list/{id}', 'ExaminationController@examination_list')->name('examination_list');
 

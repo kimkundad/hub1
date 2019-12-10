@@ -10,7 +10,7 @@
                 <div class="row align-items-center main-menu-content ">
                     <div class="col-lg-3 set_res">
                         <div class="logo-box">
-                            <a href="{{url('/')}}" class="logo" title="Aduca"><img src="{{url('home/images/logo_v2.png')}}" alt="logo"></a>
+                            <a href="{{url('/')}}" class="logo" title="hubjung"><img src="{{url('home/images/logo_v2.png')}}" alt="logo"></a>
                             <div class="header-category">
                                 <ul>
                                     <li>

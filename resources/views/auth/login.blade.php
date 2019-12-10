@@ -20,20 +20,26 @@
                         <h3 class="form__title">เข้าสู่ระบบ <!-- {{Session::get('refer_code')}} --></h3>
                         <p class="form__desc">ผ่านโดย social network.</p>
                     </div>
-                    <!--Contact Form-->
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
-                        <div class="row">
+                    <form class="form-horizontal" name="social">
+                      <div class="row text-center">
+                        <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
+                            <a class="theme-btn sign-btn btn__facebook" href="{{ route('social.oauth', 'facebook') }}">
+                                <i class="fa fa-facebook"></i> Facebook
+                            </a>
+                        </div><!-- end col-lg-4 -->
                           <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
-                              <button class="theme-btn sign-btn btn__facebook" >
-                                  <i class="fa fa-facebook"></i> Facebook
+                              <button class="theme-btn sign-btn btn__google" >
+                                  <i class="fa fa-google"></i> Google
                               </button>
                           </div><!-- end col-lg-4 -->
-                            <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
-                                <button class="theme-btn sign-btn btn__google" >
-                                    <i class="fa fa-google"></i> Google
-                                </button>
-                            </div><!-- end col-lg-4 -->
+                      </div>
+                    </form>
+
+                    <!--Contact Form-->
+                    <form class="form-horizontal" role="form" method="POST" name="login" action="{{ url('/login') }}">
+                        {{ csrf_field() }}
+                        <div class="row">
+
 
 
                             <div class="col-lg-12 col-sm-12 col-xs-12 account-assist text-center">

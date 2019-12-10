@@ -21,6 +21,14 @@
     <!-- end inject -->
 </head>
 <style>
+.header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item {
+  transition: all 0.5s; }
+  .header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item li .sub-menu {
+    transition: all 0.5s;
+  }
+  .header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item {
+    top: 48px;
+}
 .custom-checkbox .pass__desc {
     color: #2196F3;
     font-weight: 600;

@@ -52,7 +52,7 @@ Author Email:   contact@techydevs.com
         var nav = document.querySelector('.header-menu-content');
         var topOfNav = nav.offsetTop;
 
-    
+
         $(document).on('click','#scroll-top', function () {
             $('html, body').animate({scrollTop:0},1000);
         });

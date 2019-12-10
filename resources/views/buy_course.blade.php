@@ -62,7 +62,8 @@
 
                          <div>
 
-                           <div class="writeinfo" style=" font-size: 16px;"></div>
+                           <div class="writeinfo text-success" style=" font-size: 16px;"></div>
+                           <div class="writeinfo_error text-danger" style=" font-size: 16px;"></div>
 
                              <div class="row">
                              <input type="hidden" name="course" class="course_ids" value="{{$objs->id}}" placeholder="">
@@ -233,31 +234,6 @@
                                  <a href="{{url('payment/'.$order_id)}}"  class="btn btn-primary">  แจ้งการชำระเงิน </a>
                              </div>
 
-                               <!--
-                               <form action="https://api.gbprimepay.com/gbp/gateway/qrcode" target="_blank" method="post">
-
-                                 {{ csrf_field() }}
-                                  <input type="hidden" class="form-control" id="gb_pay3" name="amount" value="{{$objs->price_course}}.00" readonly/>
-
-                                 <input type="hidden" class="form-control" name="detail" value="money" />
-                                 <input type="hidden" class="form-control" name="customerName" value="{{Auth::user()->name}}" />
-                                 <input type="hidden" class="form-control" name="customerEmail" value="{{Auth::user()->email}}" />
-                                 <input type="hidden" class="form-control" name="merchantDefined1" value="ซื้อ {{$objs->title_course}}" />
-                                 <input type="hidden" class="form-control" name="merchantDefined2" value="{{$order_id}}" />
-
-                                 <input type="hidden" class="form-control" name="referenceNo" value="{{date("Y")}}{{date("m")}}{{date("d")}}{{$rand}}" />
-                                 <input type="hidden" name="token" value="S4aW3NQXU56Sc9pEThEhKXa3sr2kkj39t44VCrMkJ7sqZLLuWSj1EGHHmB7JTN05TvPuQQXTdVK5DVnrRZXonzhoCKM+QTxIBEN/uKLdtZsNqMW70fK8b8zUQifTqVxWLQFRtrkRYy9PAPD3t1Fihmt6LguVMS5R6cKxx25bmYMMZ0bJ" />
-                                 <input type="hidden" name="payType" value="F" />
-
-                                 <div class="form-group">
-                                   <div class="col-md-8">
-                                 <button type="submit" class="btn btn-primary border-none"> ชำระผ่าน QR CODE </button>
-                                 </div>
-                                 </div>
-
-                               </form>
-
-                             -->
 
 
                                <br />
@@ -356,9 +332,11 @@ $(document).ready(function(){
                     dataType: 'JSON',
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) {
-                        $(".writeinfo").append(data.msg);
+
+
 
                         if(data.status == 'success'){
+                          $(".writeinfo").append(data.msg);
                           $(".writeinfo3").empty()
                           $(".writeinfo2").append('คุณได้รับส่วนลดจำนวน '+data.coupon);
 
@@ -374,12 +352,15 @@ $(document).ready(function(){
                           document.getElementById("gb_pay2").value = total_money
                           document.getElementById("gb_pay4").value = total_money
                           document.getElementById("gb_pay5").value = total_money
-                          document.getElementById("gb_pay3").value = total_money+'.00'
+
+                        }else{
+                          $(".writeinfo_error").append(data.msg);
                         }
 
                         setTimeout(function() {
                              $(".writeinfo").empty()
-                        }, 5000);
+                             $(".writeinfo_error").empty()
+                        }, 3000);
                     }
                 });
             });

@@ -32,20 +32,28 @@
 
                       <p class="form__desc">หรือผ่าน social network.</p>
                   </div>
+
+                  <form class="form-horizontal" name="social">
+                    <div class="row text-center">
+                      <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
+                          <a class="theme-btn sign-btn btn__facebook" href="{{ route('social.oauth', 'facebook') }}">
+                              <i class="fa fa-facebook"></i> Facebook
+                          </a>
+                      </div><!-- end col-lg-4 -->
+                        <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
+                            <a class="theme-btn sign-btn btn__google" href="{{ route('social.oauth', 'google') }}">
+                                <i class="fa fa-google"></i> Google
+                            </a>
+                        </div><!-- end col-lg-4 -->
+                    </div>
+                  </form>
+
+
                   <!--Contact Form-->
                   <form method="POST" action="{{ route('register') }}">
                       @csrf
                       <div class="row">
-                        <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
-                            <button class="theme-btn sign-btn btn__facebook" >
-                                <i class="fa fa-facebook"></i> Facebook
-                            </button>
-                        </div><!-- end col-lg-4 -->
-                          <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
-                              <button class="theme-btn sign-btn btn__google" >
-                                  <i class="fa fa-google"></i> Google
-                              </button>
-                          </div><!-- end col-lg-4 -->
+                        
 
 
                           <div class="col-lg-12 col-sm-12 col-xs-12 account-assist text-center">

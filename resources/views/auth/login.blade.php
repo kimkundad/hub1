@@ -28,9 +28,9 @@
                             </a>
                         </div><!-- end col-lg-4 -->
                           <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
-                              <button class="theme-btn sign-btn btn__google" >
+                              <a class="theme-btn sign-btn btn__google" href="{{ route('social.oauth', 'google') }}">
                                   <i class="fa fa-google"></i> Google
-                              </button>
+                              </a>
                           </div><!-- end col-lg-4 -->
                       </div>
                     </form>

@@ -29,6 +29,12 @@
   .header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item {
     top: 48px;
 }
+.header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item li a {
+    height: 38px;
+}
+.header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item li {
+    margin-bottom: 8px;
+}
 .custom-checkbox .pass__desc {
     color: #2196F3;
     font-weight: 600;

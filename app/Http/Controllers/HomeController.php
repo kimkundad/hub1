@@ -1047,7 +1047,7 @@ class HomeController extends Controller
     public function home()
     {
 
-      dd(Auth::user());
+    //  dd(Auth::user());
       session()->forget('coupon');
 
       $get_cat = DB::table('departments')

@@ -101,6 +101,8 @@ Route::group(['middleware' => ['UserRole:manager|employee|customer']], function(
     Route::get('my_friends', 'UserprofileController@my_friends');
 
 
+    Route::get('view_my_video/{id}', 'UserprofileController@view_my_video');
+
     Route::get('my_example', 'UserprofileController@my_example');
 
     Route::get('my_course', 'UserprofileController@my_course');

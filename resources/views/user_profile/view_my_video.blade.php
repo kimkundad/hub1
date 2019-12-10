@@ -182,94 +182,66 @@ ul {
 
 
 
-                  <h3 class="instructor-all-course__title " style="font-size: 1.25rem; margin-bottom:15px;"> คอร์สเรียนของฉัน &nbsp&nbsp<a class="comment__btn" href="#">
+                  <h3 class="instructor-all-course__title " style="font-size: 1.25rem; margin-bottom:15px;"> คอร์สเรียนของฉัน &nbsp&nbsp
+                    <a class="comment__btn" href="{{ url('my_course_video/'.$objs->A) }}">
                       @if(isset($objs))
-                                                    {{$objs->title_course}}
+                          {{$objs->title_course}}
                       @endif
-                                                </a> </h3>
+                    </a>
+                  </h3>
 
                   <div class="row">
                     <div class="col-md-12">
 
 
 
-                      @if(isset($filecourses))
 
-                      <div class="table-scrollable table-scrollable-borderless">
-                                           <table class="table table-hover table-light">
-                                            <thead class="uppercase">
-                                                <tr>
-                                                    <th>เอกสาร Download</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
+                      <div class="preview-course-video">
 
-                                            <tbody>
-
-                        @foreach($filecourses as $u)
-
-                              <tr>
-                                <td>
-                                  <a href="{{url('download_file_course/'.$u->id)}}"> {{$u->file_of_name}}</a>
-                                </td>
-                                <td class="text-right"><a href="#" >
-                                <a href="{{url('download_file_course/'.$u->id)}}">  <i class="fa fa-download"></i> ดาวน์โหลด</a>
-                                </td>
-                              </tr>
-
-                        @endforeach
-
-                        </tbody>
-                      </table>
-                    </div>
-                      @endif
+                        <video controls crossorigin playsinline style="width:100%"
+                               poster="{{url('assets/uploads/'.$get_video->thumbnail_img)}}" id="player">
+                            <!-- Video files -->
+                            <source src="{{url('assets/videos/'.$get_video->course_video)}}" type="video/mp4" size="576"/>
+                            <source src="{{url('assets/videos/'.$get_video->course_video)}}" type="video/mp4" size="720"/>
+                            <source src="{{url('assets/videos/'.$get_video->course_video)}}" type="video/mp4" size="1080"/>
 
 
 
-                      @if(isset($head_videos))
-                      @foreach($head_videos as $u)
-
-
-
-                      <div class="table-scrollable table-scrollable-borderless">
-                                           <table class="table table-hover table-light">
-                                            <thead class="uppercase">
-                                                <tr>
-                                                    <th>{{$u->head_name}}</th>
-                                                    <th class="text-right">{{$u->option_count}} Video</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-
-                                              @if(isset($u->option))
-                                                @foreach($u->option as $j)
-                                              <tr>
-                                                <td><a href="{{ url('view_my_video/'.$j->id) }}"><i class="fa fa-video-camera "></i> {{$j->course_video_name}}</a>  </td>
+                        </video>
+                      </div>
+                      <br />
+                      <div class="row">
 
 
 
 
-                                                <td class="text-right"><a href="{{ url('view_my_video/'.$j->id) }}" >
-                                                  <i class="fa fa-play-circle-o" style="font-size:18px; color:red"></i> {{$j->time_video}} / นาที</a>
-                                                </td>
+                        <div class="col-8" style="padding-left:20px;">
+                          <h4 style="font-size: 1.15rem; margin-bottom:5px;">{{$get_video->course_video_name}}</h4>
+                          <p style="font-size:12px;">
+                            การดู {{ number_format($get_video->view_video) }} ครั้ง, &nbsp&nbsp {{ DateThai($get_video->created_at) }}
+                          </p>
+                        </div>
 
-                                              </tr>
+                        <div class="col-4" style="margin-bottom:10px;">
+
+                          <img class="avatar__img" style="border: 1px solid #007791; margin-right: 10px;" src="{{url('assets/images/teachers/'.$objs->te_image)}}" alt="{{$objs->te_name}}" title="{{$objs->te_name}}"/>
+
+                          <h6 style="font-size:13px; margin-bottom:5px;">{{$objs->te_name}}</h6>
+
+                          <h6 style="font-size:13px;">สอนวิชา : {{$objs->name_department}}</h6>
+                        </div>
+
+                      </div>
 
 
-                                              @endforeach
-                                            @endif
 
+                      <hr />
+                      <p style="font-size:13px;">
 
-                                            </tbody>
-                                            </table>
-                                          </div>
-
-
-
-
-                      @endforeach
-                    @endif
+                        รายละเอียด<br />
+                        {{$get_video->course_video_detail}}
+                      </p>
+                      <hr />
 
                     </div>
                     </div>
@@ -322,78 +294,10 @@ ul {
 @endsection
 
 @section('scripts')
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script>
-$('.photo_f').on('click', function () {
-
-swal("นักเรียนต้องทำการ Login เข้าสู่ระบบก่อนซื้อ Pagkage")
-.then((value) => {
-  if(value == true){
-    window.location.href = "{{url('login')}}";
-  }
-});
-
-});
+var player = new Plyr('#player');
 </script>
 
-
-
-<script type="text/javascript">
-
-
-    $('.del_wishlist').click(function(e){
-          e.preventDefault();
-        //  var username = $('form#cutproduct input[name=id]').val();
-
-
-        var $form = $(this).closest("form#cutproduct");
-        var formData =  $form.serializeArray();
-        var userId =  $form.find(".user_id").val();
-
-        var del_obj = 'wish_'+userId;
-
-        console.log(del_obj);
-
-          if(userId){
-            $.ajax({
-              type: "POST",
-              url: "{{url('del_wishlist')}}",
-              headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
-              data: "id="+userId,
-              dataType: "json",
-           success: function(json){
-               if(json.status == 1001) {
-
-                 swal("ลบสำเร็จ!", "คุณทำการลบรายการที่ชื่นชอบ", "success");
-
-
-                 document.getElementById(del_obj).remove();
-
-
-                } else {
-
-
-                  swal("คอร์ส นี้อยู่ในรายการชื่นชอบอยุ่แล้ว");
-
-                }
-              },
-              failure: function(errMsg) {
-                alert(errMsg.Msg);
-              }
-            });
-          }else{
-
-
-
-
-          }
-        });
-
-
-
-
-
-
-</script>
 
 @stop('scripts')

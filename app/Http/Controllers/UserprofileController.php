@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Users;
 use App\wishlist;
+use App\video_list;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -130,62 +131,161 @@ class UserprofileController extends Controller
     }
 
 
+    public function view_my_video($id){
+
+      $package = video_list::find($id);
+      $package->view_video += 1;
+      $package->save();
+
+      $check = DB::table('video_lists')
+        ->where('id', $id)
+        ->count();
+
+        //dd($check);
+
+        // check step 1
+
+        if($check > 0){
+
+          $check_2 = DB::table('video_lists')
+            ->where('id', $id)
+            ->first();
+
+          // check step 2
+
+          $check_owner = DB::table('submitcourses')
+            ->where('course_id', $check_2->course_id)
+            ->where('user_id', Auth::user()->id)
+            ->where('status', 2)
+            ->count();
+
+            if($check_owner > 0){
+
+              $objs = DB::table('courses')
+                  ->select(
+                  'courses.*',
+                  'courses.id as A',
+                  'courses.created_at as created_ats',
+                  'typecourses.*',
+                  'departments.*',
+                  'teachers.*'
+                  )
+                  ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+                  ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
+                  ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
+                  ->where('courses.id', $check_2->course_id)
+                  ->where('courses.ch_status', 1)
+                  ->first();
+
+                  $get_video = DB::table('video_lists')
+                    ->where('id', $id)
+                    ->first();
+
+                    $head_videos = DB::table('head_videos')
+                     ->where('id', $get_video->head_id)
+                     ->first();
+
+                  //   dd($head_videos);
+
+            }else{
+
+              $objs = null;
+              $get_video = null;
+              $head_videos = null;
+
+            }
+        //  dd($check_owner);
+
+
+        }else{
+
+          $objs = null;
+          $get_video = null;
+          $head_videos = null;
+        }
+
+          $data['objs'] = $objs;
+          $data['get_video'] = $get_video;
+          $data['head_videos'] = $head_videos;
+
+          return view('user_profile.view_my_video', $data);
+
+
+    }
+
+
     public function my_course_video($id){
 
+      $check = DB::table('submitcourses')
+        ->where('course_id', $id)
+        ->where('user_id', Auth::user()->id)
+        ->where('status', 2)
+        ->count();
 
-      $objs = DB::table('courses')
-          ->select(
-          'courses.*',
-          'courses.id as A',
-          'courses.created_at as created_ats',
-          'typecourses.*',
-          'departments.*',
-          'teachers.*'
-          )
-          ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
-          ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
-          ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
-          ->where('courses.id', $id)
-          ->where('courses.ch_status', 1)
-          ->orderBy('sort_corse', 'asc')
-          ->first();
-
-        $man = explode(',', $objs->tags);
-        $count_tags = count($man);
-
-        $data['man'] = $man;
-        $data['count_tags'] = $count_tags;
-      //  dd($man);
+      if($check > 0){
 
 
-              $count_video = DB::table('video_lists')
-                    ->where('course_id', $objs->A)
-                    ->count();
-                    $objs->count_video = $count_video;
+        $objs = DB::table('courses')
+            ->select(
+            'courses.*',
+            'courses.id as A',
+            'courses.created_at as created_ats',
+            'typecourses.*',
+            'departments.*',
+            'teachers.*'
+            )
+            ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+            ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')
+            ->leftjoin('teachers', 'teachers.id', '=', 'courses.te_study')
+            ->where('courses.id', $id)
+            ->where('courses.ch_status', 1)
+            ->first();
 
-                    $get_video = DB::table('video_lists')
-                          ->where('course_id', $objs->A)
-                          ->get();
+        $head_videos = DB::table('head_videos')
+         ->where('course_id', $id)
+         ->get();
+
+         $filecourses = DB::table('filecourses')
+               ->where('course_id', $objs->A)
+               ->get();
+
+         if(isset($head_videos)){
+           foreach($head_videos as $u){
 
 
-                          $filecourses = DB::table('filecourses')
-                                ->where('course_id', $objs->A)
-                                ->get();
+             $get_video_count = DB::table('video_lists')
+                   ->where('course_id', $objs->A)
+                   ->where('head_id', $u->id)
+                   ->orderBy('order_sort', 'asc')
+                   ->count();
+
+             $get_video = DB::table('video_lists')
+                   ->where('course_id', $objs->A)
+                   ->where('head_id', $u->id)
+                   ->orderBy('order_sort', 'asc')
+                   ->get();
+
+                   $u->option = $get_video;
+                   $u->option_count = $get_video_count;
+
+           }
+         }else{
+
+         }
+
+      }else{
+        $objs = null;
+        $head_videos = null;
+        $filecourses = null;
+
+      }
 
 
 
-                          $get_video_ex = DB::table('example_videos')
-                                ->where('course_id', $objs->A)
-                                ->first();
-                              //  $objs->get_video_ex = $get_video_ex;
-
-                            //    dd($get_video_ex);
 
 
           $data['objs'] = $objs;
-          $data['get_video_ex'] = $get_video_ex;
-          $data['get_video'] = $get_video;
-
+          $data['head_videos'] = $head_videos;
           $data['filecourses'] = $filecourses;
 
 

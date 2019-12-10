@@ -20,7 +20,9 @@
     top: -34px;
 }
 @media (max-width: 767px){
-
+  .sp-buttons {
+      display: none;
+  }
 .p-slides {
     display: none;
     top: -42px;

@@ -53,6 +53,12 @@
   .set_res{
     top: -20px;
   }
+
+  .header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item {
+    transition: all 0.3s; }
+    .header-menu-area .main-menu-content .logo-box .header-category ul li .dropdown-menu-item li .sub-menu {
+      transition: all 0.3s;
+    }
 }
 @media only screen and (max-width: 479px) and (min-width: 320px){
   .footer-area {

@@ -454,7 +454,7 @@ class BuycourseController extends Controller
 
                  }catch(\Swift_TransportException $e){
                      $response = $e->getMessage() ;
-                     echo $response;
+                    // echo $response;
 
                  }
 

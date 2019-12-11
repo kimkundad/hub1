@@ -40,7 +40,7 @@
 ======================================-->
 <section class="blog-area4">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-md-center">
             <div class="col-lg-8 col-sm-12">
                 <div class="blog-content-wrap">
                     <div class="blog-item">
@@ -95,31 +95,8 @@
                     </div><!-- end blog-post-item -->
                 </div><!-- end blog-post-wrapper -->
             </div><!-- end col-md-8-->
-            <div class="col-lg-4 col-sm-12">
-                <div class="sidebar">
 
 
-
-
-
-
-
-
-
-
-                    <div class="sidebar-widget social-widget">
-                        <h3 class="widget__title">Follow Us</h3>
-                        <span class="section__divider"></span>
-                        <ul class="social__links">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        </ul>
-                    </div><!-- end sidebar-widget -->
-                </div><!-- end sidebar -->
-            </div><!-- end col-md-4 -->
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end blog-area -->

@@ -1141,7 +1141,7 @@ class HomeController extends Controller
               ->leftjoin('users', 'users.id', '=', 'blogs.admin_id')
                ->where('blogs.b_status', 1)
                ->orderBy('blogs.id', 'desc')
-               ->limit(6)
+               ->limit(8)
                ->get();
 
               $data['blog'] = $blog;

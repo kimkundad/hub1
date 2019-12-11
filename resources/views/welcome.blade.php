@@ -525,6 +525,73 @@
         END BENEFIT AREA
 ======================================-->
 
+<hr />
+
+<style>
+.blog-area .blog-post-wrapper .blog-post-item .post-body .blog-title {
+    margin-bottom: 1px;
+}.align-items-center {
+    font-size: 12px;
+}
+.blog-area .blog-post-wrapper .blog-post-item .post-body {
+    padding: 15px;
+}
+.blog-area .blog-post-wrapper .blog-post-item .blog-post-img:after {
+    display: none;
+}
+</style>
+
+<!-- ================================
+       START BLOG AREA
+================================= -->
+<section class="blog-area blog-area3">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="button-shared">
+                  <h4 class="benefit__title">บทความที่น่าสนใจ</h4>
+                  <br />
+              </div><!-- end button-shared -->
+          </div><!-- end col-lg-12 -->
+      </div><!-- end row -->
+        <div class="row blog-post-wrapper">
+
+          @if(isset($blog))
+          @foreach($blog as $u)
+            <div class="col-lg-3 blog-post-item">
+                <div class="blog-post-img">
+                  <a href="{{url('blog/'.$u->B)}}">
+                    <img src="{{url('assets/blog/'.$u->image)}}" alt="{{ $u->title_blog }}" class="blog__img">
+                    </a>
+                    <div class="blog__date">
+                        <span style="font-size: 13px;">{{DateThai($u->created_ats)}}</span>
+                    </div><!-- end blog__date -->
+                </div><!-- end blog-post-img -->
+                <div class="post-body">
+                    <div class="blog-title">
+                        <a href="{{url('blog/'.$u->B)}}" class="blog__title" style="height:56px; overflow: hidden; font-size:13px;">
+                            {{ $u->title_blog }}
+                        </a>
+                    </div>
+                    <ul class="blog__panel d-flex align-items-center">
+                        <li>โดย<a href="#" class="blog-admin-name">{{ $u->name }}</a></li>
+                        <li><span class="blog__panel-comment">{{ $u->view }} ยอดวิว</span></li>
+                    </ul>
+                </div><!-- end post-body -->
+            </div><!-- end blog-post-item -->
+            @endforeach
+            @endif
+
+
+        </div><!-- end row -->
+
+
+    </div><!-- end container -->
+</section><!-- end blog-area -->
+<!-- ================================
+       START BLOG AREA
+================================= -->
+
 
 
 <div class="section-divider"></div>

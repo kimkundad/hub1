@@ -15,12 +15,16 @@
     <link rel="stylesheet" href="{{url('home/css/magnific-popup.css')}}">
     <link rel="stylesheet" href="{{url('home/css/plyr.css')}}">
     <link rel="stylesheet" href="{{url('home/css/fancybox.css')}}">
-    <link rel="stylesheet" href="{{url('home/css/style.css')}}">
+    <link rel="stylesheet" href="{{url('home/css/style.css')}}?v1">
 
     <link rel="stylesheet" href="{{url('css/slider-pro.min.css')}}">
     <!-- end inject -->
 </head>
 <style>
+.blog-area .blog-post-wrapper .blog-post-item:hover .blog-post-img .blog__date {
+    background-color: #2196F3;
+    color: #fff;
+}
 .footer-area .footer-widget .footer-link li a:hover{
   color: #2196F3;
 }

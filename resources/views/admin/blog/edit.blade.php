@@ -130,11 +130,7 @@
                 </div>
 
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">คำบรรยายตอนใช้แชร์โพส ไม่ต้องยาวมาก</label>
-                  <textarea class="form-control" name="detail" rows="24" >{{ $objs->detail_blog }}</textarea>
-                </div>
-
+              
 
 
 

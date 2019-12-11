@@ -1131,7 +1131,20 @@ class HomeController extends Controller
               }
 
 
+              $blog = DB::table('blogs')
+              ->select(
+              'blogs.*',
+              'blogs.id as B',
+              'blogs.created_at as created_ats',
+              'users.*'
+              )
+              ->leftjoin('users', 'users.id', '=', 'blogs.admin_id')
+               ->where('blogs.b_status', 1)
+               ->orderBy('blogs.id', 'desc')
+               ->limit(6)
+               ->get();
 
+              $data['blog'] = $blog;
 
 
 

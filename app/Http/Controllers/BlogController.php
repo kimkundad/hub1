@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use App\blog;
+use Auth;
 use App\noti_package;
 
 class BlogController extends Controller
@@ -170,9 +171,8 @@ class BlogController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-           'image' => 'required|mimes:jpg,jpeg,png,gif|max:2048',
+           'image' => 'required',
            'title' => 'required',
-           'detail' => 'required',
            'detail_website' => 'required'
        ]);
 
@@ -190,14 +190,9 @@ class BlogController extends Controller
        $package->detail_blog_website = $request['detail_website'];
        $package->b_status = 1;
        $package->tags = $request['tags'];
+       $package->admin_id = Auth::user()->id;
        $package->save();
 
-       $package = new noti_package();
-       $package->user_id = 0;
-       $package->name_noti = "ครูพี่โฮม ได้เพิ่มบทความใหม่ เข้าไปอ่านกันเร็ว!";
-       $package->url_noti = "blog";
-       $package->new_status = 1;
-       $package->save();
 
        return redirect(url('admin/blog'))->with('success_blog','เพิ่มบทความสำเร็จแล้วค่ะ');
     }
@@ -296,7 +291,6 @@ class BlogController extends Controller
 
        $this->validate($request, [
             'title' => 'required',
-            'detail' => 'required',
             'detail_website' => 'required'
         ]);
 

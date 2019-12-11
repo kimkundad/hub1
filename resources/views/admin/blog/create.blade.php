@@ -114,10 +114,6 @@
                   <textarea class="form-control" name="detail_website" id="summernote" rows="20" required>{{old('detail_website')}}</textarea>
                 </div>
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">คำบรรยายตอนใช้แชร์โพส ไม่ต้องยาวมาก</label>
-                  <textarea class="form-control" name="detail"  rows="10" >{{old('detail')}}</textarea>
-                </div>
 
 
 

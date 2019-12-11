@@ -21,10 +21,29 @@
     <!-- end inject -->
 </head>
 <style>
+.blog-area4 .blog-content-wrap .blog-item .blog-content .tags-item ul.social__links li a {
+
+    background-color: #b6f5fd;
+    color: #2196F3;
+
+}
+.blog-area4 .blog-content-wrap .blog-item .blog-content .tags-item ul.social__links li a:hover {
+    background-color: #2196F3;
+    color: #fff;
+}
+.blog-area4 .blog-content-wrap .blog-item .blog-img-box:after {
+    display: none;
+}
+.blog-area4 .blog-content-wrap .blog-item .blog-content .tags-item ul.tag__list li a {
+    color: #2196F3;
+}
 .blog-area .blog-post-wrapper .blog-post-item:hover .blog-post-img .blog__date {
     background-color: #2196F3;
     color: #fff;
 }
+.blog-area4 .blog-content-wrap .blog-item .blog-content .tags-item ul.tag__list li a:hover {
+  background-color: #2196F3;
+  color: #fff; }
 .footer-area .footer-widget .footer-link li a:hover{
   color: #2196F3;
 }

@@ -23,7 +23,7 @@
 
                     <h2 class="breadcrumb__title">{{$objs->title_course}}</h2>
                     <ul class="breadcrumb__list">
-                        <li>Created by <a href="teacher-detail.html">{{$objs->te_name}}</a></li>
+                        <li>สอนโดย <a href="{{ url('teacher_detail/'.$objs->te_id) }}">{{$objs->te_name}}</a></li>
 
 
                         <li>0 นักเรียนที่สมัครคอร์ส</li>

@@ -797,7 +797,8 @@ class HomeController extends Controller
           'courses.created_at as created_ats',
           'typecourses.*',
           'departments.*',
-          'teachers.*'
+          'teachers.*',
+          'teachers.id as te_id'
           )
           ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
           ->leftjoin('departments', 'departments.id', '=', 'courses.department_id')

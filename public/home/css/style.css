@@ -7479,18 +7479,18 @@ body {
   @media only screen and (min-width: 480px) and (max-width: 767px) {
     .footer-area {
       padding-top: 120px;
-      background-color: #233d63; } }
+      background-color: #fff; } }
   @media only screen and (min-width: 320px) and (max-width: 479px) {
     .footer-area {
       padding-top: 120px;
-      background-color: #233d63; } }
+      background-color: #fff; } }
   .footer-area .ocean {
     height: 67%;
     width: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
-    background-color: #233d63; }
+    background-color: #fff; }
     @media only screen and (min-width: 480px) and (max-width: 767px) {
       .footer-area .ocean {
         display: none; } }

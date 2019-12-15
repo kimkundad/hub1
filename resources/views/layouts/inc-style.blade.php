@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{url('home/css/magnific-popup.css')}}">
     <link rel="stylesheet" href="{{url('home/css/plyr.css')}}">
     <link rel="stylesheet" href="{{url('home/css/fancybox.css')}}">
-    <link rel="stylesheet" href="{{url('home/css/style.css')}}?v2.1">
+    <link rel="stylesheet" href="{{url('home/css/style.css')}}?v2.2">
 
     <link rel="stylesheet" href="{{url('css/slider-pro.min.css')}}">
     <!-- end inject -->

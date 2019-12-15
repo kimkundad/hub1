@@ -1051,7 +1051,7 @@
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="{{url('./assets/vendor/jquery-nestable/jquery.nestable.js')}}"></script>
 <script src="{{url('./assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js')}}"></script>
-<script src="{{url('js/bootstrap-uploadprogress.js')}}?v4"></script>
+<script src="{{url('js/bootstrap-uploadprogress.js')}}?v5.1"></script>
 
 <script>
 

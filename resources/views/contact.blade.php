@@ -2,11 +2,62 @@
 @section('stylesheet')
 
 
-
+<style>
+.section-heading .section__meta {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #007bff;
+    background-color: #bdd8f5;
+    padding: 5px 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    letter-spacing: 0.6px;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+.section-heading .section__divider {
+    display: inline-block;
+    position: relative;
+    height: 5px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-color: #007bff;
+    width: 90px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    overflow: hidden;
+}
+.contact-area .contact-form-wrap .section-heading .section__list li a {
+    color: #007bff;
+}
+.contact-area .contact-form-wrap .section-heading .section__list li a i {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #dcedff;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.contact-area .contact-form-wrap .section-heading .section__list li a:hover i {
+  background-color: #007bff;
+  color: #fff; }
+</style>
 
 @stop('stylesheet')
-@section('content')
 
+
+
+@section('content')
 
 
 
@@ -50,7 +101,19 @@
                 <div class="contact-form-action">
                     <!--Contact Form-->
 
+
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form >
+
                         <div class="row">
                             <div class="col-lg-12 col-sm-6 form-group">
                                 <input class="name form-control" type="text" name="name" placeholder="Your Name">

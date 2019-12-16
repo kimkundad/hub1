@@ -17,6 +17,8 @@ Route::get('/', 'HomeController@home');
 Route::auth();
 Auth::routes();
 
+Route::post('/contact_user', 'HomeController@contact_user');
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('oauth/{driver}', 'Auth\SocialAuthController@redirectToProvider')->name('social.oauth');
@@ -235,6 +237,7 @@ Route::group(['middleware' => ['UserRole:manager|employee']], function() {
         Route::get('admin/logsys', 'LogController@logsys');
 
         Route::get('admin/setting', 'SettingController@index');
+        Route::post('admin/post_setting', 'SettingController@post_setting');
 
 
   });

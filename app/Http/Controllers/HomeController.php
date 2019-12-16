@@ -39,6 +39,47 @@ class HomeController extends Controller
     }
 
 
+
+    public function contact_user(Request $request)
+      {
+        $this->validate($request, [
+             'name' => 'required',
+             'email' => 'required',
+             'detail' => 'required',
+             'g-recaptcha-response' => 'required'
+         ]);
+         $token = $request->input('g-recaptcha-response');
+
+         if ($token) {
+
+
+         $obj = DB::table('contacts')->insert(
+             [
+               'name' => $request['name'],
+               'email' => $request['email'],
+               'phone' => $request['phone'],
+               'detail' => $request['detail'],
+               'created_at' => new \DateTime()
+             ]
+           );
+
+
+
+
+
+
+
+           return redirect(url('contact_success'));
+       	} else {
+       		echo "No";
+       	}
+    }
+
+    public function contact_success(){
+      return view('contact_success');
+    }
+
+
     public function search_course(Request $request){
 
         $search_text = $request['search'];

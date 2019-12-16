@@ -481,7 +481,7 @@
         <div class="row">
             <div class="col-lg-6">
 
-                <iframe style="width:100%" height="350" src="https://www.youtube.com/embed/j1-utpFMkms" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe style="width:100%" height="350" src="{{ setting()->youyube_index }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div><!-- end col-lg-6 -->
             <div class="col-lg-6">
                 <div class="benefit-heading">

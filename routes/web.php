@@ -234,5 +234,7 @@ Route::group(['middleware' => ['UserRole:manager|employee']], function() {
         Route::post('admin/admin_message_sender', 'MassageController@admin_message_sender');
         Route::get('admin/logsys', 'LogController@logsys');
 
+        Route::get('admin/setting', 'SettingController@index');
+
 
   });

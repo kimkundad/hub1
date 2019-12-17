@@ -309,6 +309,28 @@ class CourseController extends Controller
      }
 
 
+     public function add_cover_image(Request $request){
+
+       $image = $request->file('image');
+       $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+
+        $img = Image::make($image->getRealPath());
+        $img->resize(1920, 450, function ($constraint) {
+        $constraint->aspectRatio();
+        })->save('assets/uploads/'.$input['imagename']);
+
+        $id = $request['course_id'];
+
+    $obj = course::find($id);
+    $obj->image_cover = $input['imagename'];
+    $obj->save();
+
+    return redirect(url('admin/course/'.$request['course_id'].'/edit'))->with('add_head_video','แก้ไขข้อมูล ข้อมูล สำเร็จ');
+
+
+     }
+
+
      public function add_head_video(Request $request){
 
       $course_id = $request['course_id'];

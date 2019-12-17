@@ -17,6 +17,8 @@ Route::get('/', 'HomeController@home');
 Route::auth();
 Auth::routes();
 
+Route::post('/contact_user', 'HomeController@contact_user');
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('oauth/{driver}', 'Auth\SocialAuthController@redirectToProvider')->name('social.oauth');
@@ -173,6 +175,7 @@ Route::group(['middleware' => ['UserRole:manager|employee']], function() {
       Route::post('post_edit_video_course', 'CourseController@post_edit_video_course');
       Route::post('post_edit_video_course2', 'CourseController@post_edit_video_course2');
 
+      Route::post('admin/add_cover_image', 'CourseController@add_cover_image');
 
 
         Route::resource('admin/sub_department', 'SubDeController');
@@ -235,6 +238,7 @@ Route::group(['middleware' => ['UserRole:manager|employee']], function() {
         Route::get('admin/logsys', 'LogController@logsys');
 
         Route::get('admin/setting', 'SettingController@index');
+        Route::post('admin/post_setting', 'SettingController@post_setting');
 
 
   });

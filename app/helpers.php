@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
-
+use App\setting;
 
 function get_menu(){
 
@@ -36,6 +36,11 @@ function get_menu(){
 
 
       return $menu_web;
+}
+
+function setting(){
+  $setting = setting::find(1);
+  return $setting;
 }
 
 

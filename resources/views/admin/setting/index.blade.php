@@ -43,19 +43,94 @@
 
                 <div class="row">
 
-
-
+                  <form action="{{ url('admin/post_setting') }}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
 
 
                   <div class="col-md-6">
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">youtube หน้าแรก</label>
+                      <input type="text" class="form-control" name="youyube_index"  value="{{ $objs->youyube_index }}" >
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email website</label>
+                      <input type="text" class="form-control" name="email"  value="{{ $objs->email }}" >
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Phone number website</label>
+                      <input type="text" class="form-control" name="phone"  value="{{ $objs->phone }}" >
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Address website</label>
+                      <input type="text" class="form-control" name="address"  value="{{ $objs->address }}" >
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">เวลาติดต่อ</label>
+                      <input type="text" class="form-control" name="time_open"  value="{{ $objs->time_open }}" >
+
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">line</label>
+                      <input type="text" class="form-control" name="line"  value="{{ $objs->line }}" >
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">line_url</label>
+                      <input type="text" class="form-control" name="line_url"  value="{{ $objs->line_url }}" >
+
+                    </div>
 
 
                   </div>
 
                   <div class="col-md-6">
 
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">facebook</label>
+                      <input type="text" class="form-control" name="facebook"  value="{{ $objs->facebook }}" >
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">IG</label>
+                      <input type="text" class="form-control" name="ig"  value="{{ $objs->ig }}" >
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">title_website</label>
+                      <input type="text" class="form-control" name="title_website"  value="{{ $objs->title_website }}" >
+
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">google_analytics</label>
+                      <textarea class="form-control" name="google_analytics" rows="4" >{{old('google_analytics')}}</textarea>
+                    </div>
+
+
 
                   </div>
+
+                  <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-default pull-right">อัพเดทข้อมูล</button>
+                  </div>
+
+
+                </form>
 
 
 
@@ -81,12 +156,12 @@
 
 
 
-@if ($message = Session::get('success_file_del'))
+@if ($message = Session::get('edit_success'))
 <script type="text/javascript">
 
   var stack_topleft = {"dir1": "down", "dir2": "right", "push": "top"};
       var notice = new PNotify({
-            title: 'ทำรายการสำเร็จ',
+            title: 'ทำการอัพเดทข้อมูลสำเร็จ',
             text: '{{$message}}',
             type: 'success',
             addclass: 'stack-topright'

@@ -155,7 +155,7 @@ ul {
 
 
                   <div class="alert alert-success" style="font-size:14px; margin-bottom:30px;">
-                  <strong>คัดลอก URL แนะนำเพื่อน </strong> <input type="text" class="form-control" value="http://localhost/hub1/public/refer/?code={{Auth::user()->code_user}}">
+                  <strong>คัดลอก URL แนะนำเพื่อน </strong> <input type="text" class="form-control" value="https://www.hubjung.com/refer/?code={{Auth::user()->code_user}}">
                 </div>
 
 

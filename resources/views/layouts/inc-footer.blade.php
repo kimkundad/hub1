@@ -17,11 +17,11 @@
                     </ul>
                     <ul class="footer-social">
                         <li>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="{{ setting()->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="{{ setting()->ig }}" target="_blank"><i class="fa fa-instagram"></i></a>
                         </li>
 
                         <li>
@@ -61,9 +61,9 @@
                     <h3 class="footer-title">ติดต่อสอบถาม</h3>
 
                     <ul class="footer-link">
-                        <li><a href="#"><i class="la la-envelope"></i> info@hubjung.com</a></li>
-                        <li><a href="#"><i class="la la-phone-square"></i> 063 529 9903 <br />(จันทร์ - ศุกร์ 9:00 - 17:00 น.)</a></li>
-                        <li><a href="#"><img src="{{url('assets/images/line_icon.png')}}" style="height:30px;" /> @HubJung Academy</a></li>
+                        <li><a href="#"><i class="la la-envelope"></i> {{ setting()->email }}</a></li>
+                        <li><a href="#"><i class="la la-phone-square"></i> {{ setting()->phone }} <br />{{ setting()->time_open }}</a></li>
+                        <li><a href="{{ setting()->line_url }}" target="_blank"><img src="{{url('assets/images/line_icon.png')}}" style="height:30px;" /> {{ setting()->line }}</a></li>
 
                     </ul>
                     <br />

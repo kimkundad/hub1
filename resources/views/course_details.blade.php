@@ -15,7 +15,15 @@
 <!-- ================================
     START BREADCRUMB AREA
 ================================= -->
+
+@if($objs->image_cover != null)
+<section class="breadcrumb-area breadcrumb-area2" style="background-image: url({{url('assets/uploads/'.$objs->image_cover)}});">
+@else
 <section class="breadcrumb-area breadcrumb-area2" style="background-image: url({{url('assets/images/breadcrumb-bg.jpg')}});">
+@endif
+
+
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -26,7 +34,7 @@
                         <li>สอนโดย <a href="{{ url('teacher_detail/'.$objs->te_id) }}">{{$objs->te_name}}</a></li>
 
 
-                        <li>0 นักเรียนที่สมัครคอร์ส</li>
+                      <!--  <li>0 นักเรียนที่สมัครคอร์ส</li> -->
 
                         <li>Last updated {{DateThai($objs->created_ats)}}</li>
                     </ul>

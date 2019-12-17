@@ -333,6 +333,60 @@
 
 
 
+						<div class="row">
+						<div class="col-md-2 col-lg-2">
+						</div>
+						<div class="col-md-8 col-lg-8">
+						<div class="tabs">
+							<div class="tab-content">
+								<h4 class="mb-xlg">รูป cover บน</h4>
+
+								@if($courseinfo->image_cover != null)
+								<img src="{{url('assets/uploads/'.$courseinfo->image_cover)}}" class="img-responsive">
+								@endif
+								<br><br>
+								<form class="form-horizontal" name="cover_image" action="{{url('admin/add_cover_image')}}" method="post" enctype="multipart/form-data">
+									{{ csrf_field() }}
+									<input type="hidden" class="form-control" name="course_id"  value="{{$courseinfo->id}}" >
+
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="exampleInputEmail1">รูป cover*</label>
+										<div class="col-md-8">
+
+										<div class="fileupload fileupload-new" data-provides="fileupload">
+															<div class="input-append">
+																<div class="uneditable-input">
+																	<i class="fa fa-file fileupload-exists"></i>
+																	<span class="fileupload-preview"></span>
+																</div>
+																<span class="btn btn-default btn-file">
+																	<span class="fileupload-exists">Change</span>
+																	<span class="fileupload-new">Select file</span>
+																	<input type="file" name="image">
+																</span>
+																<a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+															</div>
+														</div>
+														</div>
+									</div>
+
+
+									<div class="panel-footer">
+										<div class="row">
+											<div class="col-md-9 col-md-offset-3">
+												<button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+												<button type="reset" class="btn btn-default">Reset</button>
+											</div>
+										</div>
+									</div>
+								</form>
+								</div>
+					</div>
+					</div>
+					</div>
+
+
+
 
 
 

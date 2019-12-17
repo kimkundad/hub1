@@ -175,6 +175,7 @@ Route::group(['middleware' => ['UserRole:manager|employee']], function() {
       Route::post('post_edit_video_course', 'CourseController@post_edit_video_course');
       Route::post('post_edit_video_course2', 'CourseController@post_edit_video_course2');
 
+      Route::post('admin/add_cover_image', 'CourseController@add_cover_image');
 
 
         Route::resource('admin/sub_department', 'SubDeController');

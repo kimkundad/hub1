@@ -1,5 +1,5 @@
 @extends('admin.layouts.template')
-<meta name="csrf-token" content="{{ csrf_token() }}" />
+
 @section('admin.stylesheet')
 <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{{asset('./assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css')}}">

@@ -36,6 +36,13 @@
     margin-top: -10px;
     text-align: right;
 }
+.slider-area2 .single-slide-item .how-we-work-content {
+    background: #429b85;
+    background: -moz-linear-gradient(-45deg, #429b85 0%, #5f7b8c 100%);
+    background: -webkit-linear-gradient(-45deg, #429b85 0%, #5f7b8c 100%);
+    background: linear-gradient(135deg, #007bff 0%, #1e79b1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#429b85', endColorstr='#5f7b8c',GradientType=1 );
+}
 </style>
 
 @stop('stylesheet')
@@ -87,8 +94,8 @@
                                     <div class="how-we-work-item">
                                         <span class="la la-mouse-pointer"></span>
                                         <div class="how-work__text">
-                                            <h4 class="hww__sub-title">ความรู้ทั้งหมดจาก HubJung</h4>
-                                            <p class="hww__sub-desc">ฟรี !!!  ฉลองเปิดตัว</p>
+                                            <h4 class="hww__sub-title">ทบทวนซ้ำตลอดอายุคอร์ส</h4>
+                                            <p class="hww__sub-desc">ดูได้ไม่จำกัด</p>
                                         </div><!-- how-work__text -->
                                     </div><!-- how-we-work-item -->
                                 </div><!-- col-lg-4 -->
@@ -96,7 +103,7 @@
                                     <div class="how-we-work-item">
                                         <span class="la la-users"></span>
                                         <div class="how-work__text">
-                                            <h4 class="hww__sub-title">อัพเดท เนื้อหาใหม่ทุกวัน</h4>
+                                            <h4 class="hww__sub-title">อัพเดทเนื้อหาใหม่ทุกวัน</h4>
                                             <p class="hww__sub-desc">สอนโดยครูผู้เชี่ยวชาญ</p>
                                         </div><!-- how-work__text -->
                                     </div><!-- how-we-work-item -->
@@ -105,8 +112,8 @@
                                     <div class="how-we-work-item">
                                         <span class="la la-graduation-cap"></span>
                                         <div class="how-work__text">
-                                            <h4 class="hww__sub-title">เรียนได้ทุกที่ ตลอด 24 ชม</h4>
-                                            <p class="hww__sub-desc">ยกเลิกได้ทุกเมื่อ</p>
+                                            <h4 class="hww__sub-title">เรียนรู้ได้ทุกที่ ตลอด 24 ชม</h4>
+                                            <p class="hww__sub-desc">ทุกคอร์สเรียนออนไลน์</p>
                                         </div><!-- how-work__text -->
                                     </div><!-- how-we-work-item -->
                                 </div><!-- col-lg-4 -->
@@ -496,19 +503,19 @@
                             <div class="col-lg-4">
                                 <div class="benefit-item benefit-item1">
                                     <span class="la la-mouse-pointer benefit__icon"></span>
-                                    <h4 class="benefit__title">100,000 หลักสูตรออนไลน์</h4>
+                                    <h4 class="benefit__title">เทคนิคครบจากข้อสอบจริง</h4>
                                 </div><!-- end benefit-item -->
                             </div><!-- end col-lg-4 -->
                             <div class="col-lg-4">
                                 <div class="benefit-item benefit-item2">
                                     <span class="la la-bolt benefit__icon"></span>
-                                    <h4 class="benefit__title">การสอนโดยผู้เชี่ยวชาญ</h4>
+                                    <h4 class="benefit__title">หลักสูตร มากมาย อัพเดททุกวัน</h4>
                                 </div><!-- end benefit-item -->
                             </div><!-- end col-lg-4 -->
                             <div class="col-lg-4">
                                 <div class="benefit-item benefit-item3">
                                     <span class="la la-users benefit__icon"></span>
-                                    <h4 class="benefit__title">การเข้าถึงตลอดชีวิต</h4>
+                                    <h4 class="benefit__title">ภาพเสียง คมชัด Full HD</h4>
                                 </div><!-- end benefit-item -->
                             </div><!-- end col-lg-4 -->
                         </div><!-- end row -->

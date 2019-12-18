@@ -127,7 +127,7 @@ Route::group(['middleware' => ['UserRole:manager|employee|customer']], function(
     Route::post('/submit_buy_course','BuycourseController@submit_buy_course');
     Route::post('/submit_buy_course_2','BuycourseController@submit_buy_course_2');
 
-
+    Route::post('api/api_pay_status', 'UserpayController@api_pay_status');
 });
 
 
@@ -140,7 +140,9 @@ Route::group(['middleware' => ['UserRole:manager|employee']], function() {
 
 
       Route::resource('admin/user_pay', 'UserpayController');
-      Route::post('api/api_pay_status', 'UserpayController@api_pay_status');
+
+
+
 
       Route::post('api/api_depart_status', 'DepartmentController@api_depart_status');
       Route::post('api/api_subdepart_status', 'SubDeController@api_subdepart_status');

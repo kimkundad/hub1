@@ -95,7 +95,7 @@ class DepartmentController extends Controller
 
       $destinationPath = asset('assets/image/department/');
       $img = Image::make($image->getRealPath());
-      $img->resize(370, 247, function ($constraint) {
+      $img->resize(1920, 450, function ($constraint) {
       $constraint->aspectRatio();
       })->save('assets/image/department/'.$input['imagename']);
 
@@ -165,7 +165,7 @@ class DepartmentController extends Controller
 
          $destinationPath = asset('assets/image/department/');
          $img = Image::make($image->getRealPath());
-         $img->resize(370, 247, function ($constraint) {
+         $img->resize(1920, 450, function ($constraint) {
          $constraint->aspectRatio();
          })->save('assets/image/department/'.$input['imagename']);
 

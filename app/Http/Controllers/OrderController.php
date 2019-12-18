@@ -266,7 +266,6 @@ class OrderController extends Controller
       $this->validate($request, [
    'end_day' => 'required',
    'status' => 'required',
-   'hrcourse' => 'required',
    'course_tran' => 'required',
    'money_tran' => 'required'
     ]);

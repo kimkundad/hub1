@@ -174,12 +174,12 @@ return "$strDay $strMonthThai";
   											</div>
 
 
-                            <div class="form-group">
+                          <!--  <div class="form-group">
                               <label class="col-md-3 control-label" for="profileFirstName">จำนวน Coin*</label>
                                   <div class="col-md-8">
                                       <input type="text" class="form-control" name="hrcourse" placeholder="1500">
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
     													<label class="col-md-3 control-label" for="profileAddress">สถานะ*</label>

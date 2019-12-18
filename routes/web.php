@@ -117,6 +117,17 @@ Route::group(['middleware' => ['UserRole:manager|employee|customer']], function(
     Route::get('post_pay_package/{id}', 'PagkageControlle@post_pay_package');
 
 
+    Route::get('my_course_video/{id}', 'UserprofileController@my_course_video');
+
+    Route::get('bil_course', 'BuycourseController@bil_course');
+
+
+    Route::get('buy_course/{id}', 'BuycourseController@buy_course');
+    Route::post('/post_coupon','BuycourseController@post_coupon');
+    Route::post('/submit_buy_course','BuycourseController@submit_buy_course');
+    Route::post('/submit_buy_course_2','BuycourseController@submit_buy_course_2');
+
+
 });
 
 
@@ -136,15 +147,7 @@ Route::group(['middleware' => ['UserRole:manager|employee']], function() {
 
 
 
-      Route::get('my_course_video/{id}', 'UserprofileController@my_course_video');
 
-      Route::get('bil_course', 'BuycourseController@bil_course');
-
-
-      Route::get('buy_course/{id}', 'BuycourseController@buy_course');
-      Route::post('/post_coupon','BuycourseController@post_coupon');
-      Route::post('/submit_buy_course','BuycourseController@submit_buy_course');
-      Route::post('/submit_buy_course_2','BuycourseController@submit_buy_course_2');
 
 
       Route::post('add_video_course_example', 'CourseController@add_video_course_example');

@@ -2,14 +2,10 @@
 @section('admin.content')
 
 
-
-
-
-
         <section role="main" class="content-body">
 
           <header class="page-header">
-            <h2>{{$datahead}}</h2>
+            <h2>ค้นหา Order ของนักเรียน</h2>
 
             <div class="right-wrapper pull-right">
               <ol class="breadcrumbs">
@@ -19,7 +15,7 @@
                   </a>
                 </li>
 
-                <li><span>{{$datahead}}</span></li>
+                <li><span>ค้นหา Order ของนักเรียน</span></li>
               </ol>
 
               <a class="sidebar-right-toggle" data-open="sidebar-right" ><i class="fa fa-chevron-left"></i></a>
@@ -46,7 +42,7 @@
 
                 </div>
 
-                <h2 class="panel-title">{{$datahead}}</h2>
+                <h2 class="panel-title">ค้นหา Order ของนักเรียน</h2>
               </header>
               <div class="panel-body">
 
@@ -62,7 +58,7 @@
 
 											<div class="form-group row">
                         <div class="col-lg-9">
-                          <input type="text" class="form-control" name="q" id="q" placeholder="Search..." style="width:350px ;">
+                          <input type="text" class="form-control" name="q" id="q" placeholder="Search..." value="{{$search_text}}" style="width:350px ;">
                         </div>
 
                         <div class="col-lg-3">

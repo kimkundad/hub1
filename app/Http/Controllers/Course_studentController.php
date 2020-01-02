@@ -62,7 +62,8 @@ class Course_studentController extends Controller
         ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
         ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
         ->leftjoin('banks', 'banks.id', '=', 'submitcourses.bank_id')
-        ->get();
+        ->Orderby('submitcourses.id', 'desc')
+        ->paginate(15);
 
       $data['objs'] = $coursess;
       $data['datahead'] = "รายการสั่งซื้อทั้งหมด";
@@ -74,6 +75,55 @@ class Course_studentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+     public function search_ordersubmit(Request $request){
+
+
+
+
+     $search_text = $request['q'];
+
+
+     $cat = DB::table('submitcourses')
+       ->select(
+          'submitcourses.*',
+          'submitcourses.user_id as Uid',
+          'submitcourses.id as Oid',
+          'submitcourses.created_at as Dcre',
+          'users.*',
+          'users.id as Ustudent',
+          'courses.*',
+          'banks.*',
+          'courses.id as Ucourse'
+          )
+       ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
+       ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
+       ->leftjoin('banks', 'banks.id', '=', 'submitcourses.bank_id')
+       ->where('submitcourses.status', '>', 0)
+       ->Where('users.name','LIKE','%'.$search_text.'%')
+       ->orWhere('submitcourses.order_id','LIKE','%'.$search_text.'%')
+       ->orWhere('courses.title_course','LIKE','%'.$search_text.'%')
+       ->orderBy('submitcourses.id', 'desc')
+       ->paginate(15);
+
+
+
+       $data['objs'] = $cat;
+       $data['search_text'] = $search_text;
+
+       return view('admin.student_c.search', $data);
+
+       /*return view('admin.student_c.search', compact(['objs']))
+             ->with('count_message', $s)
+             ->with('message_user', $message_user)
+             ->with('search_text', $search_text); */
+
+
+    }
+
+
+
     public function create()
     {
         //

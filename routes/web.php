@@ -149,7 +149,7 @@ Route::group(['middleware' => ['UserRole:manager|employee']], function() {
 
 
 
-
+      Route::get('admin/search_ordersubmit', 'Course_studentController@search_ordersubmit');
 
 
       Route::post('add_video_course_example', 'CourseController@add_video_course_example');

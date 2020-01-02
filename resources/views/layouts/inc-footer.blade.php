@@ -1,4 +1,4 @@
-<section class="footer-area">
+<section class="footer-area" style="background-color: #f5f5f5;">
     <!--<div class="ocean">
         <div class="wave"></div>
         <div class="wave"></div>

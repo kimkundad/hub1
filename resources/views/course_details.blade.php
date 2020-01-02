@@ -116,11 +116,20 @@
 
                                               @if(isset($u->option))
                                                 @foreach($u->option as $j)
+
+
                                                 <li class="card-list-item">
                                                     <span class="course-duration">{{$j->time_video}}</span>
-                                                    <button type="button" class="preview-link">
+
+                                                    @if($can_see == 0)
+                                                    <a href="#" class="preview-link">
                                                         <i class="la la-play-circle-o course-play__icon"></i> {{$j->course_video_name}}
-                                                    </button>
+                                                    </a>
+                                                    @else
+                                                    <a href="{{url('view_my_video/'.$j->id)}}" target="_blank" class="preview-link">
+                                                        <i class="la la-play-circle-o course-play__icon"></i> {{$j->course_video_name}}
+                                                    </a>
+                                                    @endif
 
                                                 </li>
                                                   @endforeach

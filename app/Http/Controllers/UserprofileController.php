@@ -133,13 +133,23 @@ class UserprofileController extends Controller
 
     public function view_my_video($id){
 
-      $package = video_list::find($id);
-      $package->view_video += 1;
-      $package->save();
+
 
       $check = DB::table('video_lists')
         ->where('id', $id)
         ->count();
+
+
+
+        if($check > 0){
+
+          $package = video_list::find($id);
+          $package->view_video += 1;
+          $package->save();
+
+        }else{
+          return redirect(url('/'));
+        }
 
         //dd($check);
 
@@ -158,6 +168,8 @@ class UserprofileController extends Controller
             ->where('user_id', Auth::user()->id)
             ->where('status', 2)
             ->count();
+
+          //  dd($check_owner);
 
             if($check_owner > 0){
 
@@ -193,6 +205,8 @@ class UserprofileController extends Controller
               $get_video = null;
               $head_videos = null;
 
+              return redirect(url('/'));
+
             }
         //  dd($check_owner);
 
@@ -202,6 +216,8 @@ class UserprofileController extends Controller
           $objs = null;
           $get_video = null;
           $head_videos = null;
+
+          return redirect(url('/'));
         }
 
           $data['objs'] = $objs;

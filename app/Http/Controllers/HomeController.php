@@ -831,6 +831,54 @@ class HomeController extends Controller
 
     public function course_details($id){
 
+      if(Auth::guest()){
+
+        $data['can_see'] = 0;
+
+      }else{
+
+        $package = DB::table('submitcourses')
+          ->select(
+             'submitcourses.*',
+             'submitcourses.user_id as Uid',
+             'submitcourses.id as Oid',
+             'submitcourses.created_at as Dcre',
+             'users.*',
+             'users.id as Ustudent',
+             'courses.*',
+             'courses.id as id_cource'
+             )
+          ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
+          ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
+          ->where('submitcourses.user_id', Auth::user()->id)
+          ->where('courses.id', $id)
+          ->where('submitcourses.status', 2)
+          ->first();
+
+          if($package != null){
+
+
+            $date_now = date("Y-m-d");
+            if($package->end_day >= $date_now){
+              $data['can_see'] = 1;
+              $can_see_msg = 'นักเรียนสามารถดูได้';
+            }else{
+              $data['can_see'] = 0;
+              $can_see_msg = 'ไม่สามารถดูเนื้อหาได้ เนื่องจากผู้ใช้งานไม่มีสิทธิ์ในการเข้าถึงเนื้อหา';
+            }
+
+
+          }else{
+
+            $data['can_see'] = 0;
+
+          }
+
+      }
+
+      //dd($data['can_see']);
+
+
       $objs = DB::table('courses')
           ->select(
           'courses.*',

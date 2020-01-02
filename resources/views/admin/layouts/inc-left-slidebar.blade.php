@@ -46,12 +46,12 @@ html.no-overflowscrolling .nano > .nano-pane > .nano-slider {
 										</a>
 									</li>
 
-                  <li {{ (Request::is('admin/package_product*') ? 'class=nav-expanded' : '') }} >
+                <!--  <li {{ (Request::is('admin/package_product*') ? 'class=nav-expanded' : '') }} >
 										<a href="{{url('admin/package_product/')}}" >
 											<i class="fa fa-video-camera" aria-hidden="true"></i>
 											<span>Package รายเดือน</span>
 										</a>
-									</li>
+									</li> -->
 
                   <li {{ (Request::is('admin/order_package*') ? 'class=nav-expanded' : '') }} >
 										<a href="{{url('admin/order_package/')}}" >
@@ -123,17 +123,17 @@ html.no-overflowscrolling .nano > .nano-pane > .nano-slider {
 										</a>
 									</li> -->
 
-                  <li {{ (Request::is('admin/order_shop*') ? 'class=nav-expanded' : '') }} >
+                <!--  <li {{ (Request::is('admin/order_shop*') ? 'class=nav-expanded' : '') }} >
 										<a href="{{url('admin/order_shop/')}}" >
 											<i class="fa fa-external-link" aria-hidden="true"></i>
 											<span>รายการสั่งซื้อใหม่</span>
 										</a>
-									</li>
+									</li> -->
 
                   <li {{ (Request::is('admin/play_student*') ? 'class=nav-expanded' : '') }} >
 										<a href="{{url('admin/play_student/')}}" >
 											<i class="fa fa-address-book-o" aria-hidden="true"></i>
-											<span>คอร์ส-นักเรียน</span>
+											<span>รายการสั่งซื้อนักเรียน</span>
 										</a>
 									</li>
 

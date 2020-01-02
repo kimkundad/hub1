@@ -62,6 +62,9 @@
 
                     <ul class="footer-link">
                         <li><a href="#"><i class="la la-envelope"></i> {{ setting()->email }}</a></li>
+                        <li><a href="#"><i class="la la-phone-square"></i> 063 529 9903</a></li>
+                        <li><a href="#"><i class="la la-phone-square"></i> 063 529 9904</a></li>
+                        <li><a href="#"><i class="la la-phone-square"></i> 063 529 9905</a></li>
                         <li><a href="#"><i class="la la-phone-square"></i> {{ setting()->phone }} <br />{{ setting()->time_open }}</a></li>
                         <li><a href="{{ setting()->line_url }}" target="_blank"><img src="{{url('assets/images/line_icon.png')}}" style="height:30px;" /> {{ setting()->line }}</a></li>
 

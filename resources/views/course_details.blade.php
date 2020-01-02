@@ -122,7 +122,7 @@
                                                     <span class="course-duration">{{$j->time_video}}</span>
 
                                                     @if($can_see == 0)
-                                                    <a href="#" class="preview-link">
+                                                    <a href="#" class="photo_r preview-link">
                                                         <i class="la la-play-circle-o course-play__icon"></i> {{$j->course_video_name}}
                                                     </a>
                                                     @else
@@ -407,6 +407,12 @@
 $('.photo_f').on('click', function () {
 
 swal("การซื้อคอร์สเรียน นักเรียน ต้องทำการ login เข้าสู่ระบบก่อน")
+
+});
+
+$('.photo_r').on('click', function () {
+
+swal("ไม่สามารถดู Video ได้เนื่องจากยังไม่ได้ซื้อคอร์สเรียน หรือ เวลาของนักเรียนหมดแล้ว โปรดติดต่อเจ้าหน้าที่")
 
 });
 </script>

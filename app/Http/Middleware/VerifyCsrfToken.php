@@ -21,6 +21,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         //
         'admin/blog*',
-        'add_video_course'
+        'add_video_course',
+        'post_gb_pay'
     ];
 }

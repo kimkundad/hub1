@@ -40,8 +40,9 @@
     background: #429b85;
     background: -moz-linear-gradient(-45deg, #429b85 0%, #5f7b8c 100%);
     background: -webkit-linear-gradient(-45deg, #429b85 0%, #5f7b8c 100%);
-    background: linear-gradient(135deg, #007bff 0%, #1e79b1 100%);
+    background: linear-gradient(135deg, #003977 0%, #003977 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#429b85', endColorstr='#5f7b8c',GradientType=1 );
+
 }
 </style>
 

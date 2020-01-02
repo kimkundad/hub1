@@ -144,104 +144,115 @@
                            <br />
 
                            <div class="form_title">
-                              <h3 class="single_tour_desc "><strong>1</strong>โอนเงินผ่านธนาคาร</h3>
+                              <h3 class="single_tour_desc "><strong>1</strong>ชำระผ่าน QR CODE</h3>
                               <p style="font-size:13px; color: #999;">
-                                สามารถชำระเงินได้โดยผ่านทางธนาคาร จากนั้นกรุณาแจ้งการชำระเงินผ่านทาง <a href="{{url('payment')}}" target="_blank">ยืนยันการชำระเงิน</a>
+                               ทุกธุรกรรมผ่านบัตรเครดิตและบัตรเดบิตได้รับการรับรองความปลอดภัย ด้วยเทคโนโลยี <b style="color: #2196F3;">GB Prime ระบบชำระเงินออนไลน์</b><br />
+                               หลังจากชำระเงินเสร้จเรียบร้อยแล้ว ท่านสามารถแจ้ง <a href="{{url('payment')}}" target="_blank">ยืนยันการชำระเงิน</a>
                               </p>
                             </div>
 
+
+
+
+
                             <div class="step">
 
+                                <img src="{{url('assets/image/gb_payment2.png')}}" class="team__img img-thumbnail">
+
+
+                              <br /><br />
 
 
 
 
 
-
-
-
-                              <form action="{{url('submit_buy_course')}}" method="post" enctype="multipart/form-data" name="product1">
+                              <form action="{{url('submit_buy_course_2')}}" method="post" target="_blank" name="product_z">
                                 {{ csrf_field() }}
                                 <input class="form-control border-form-control" value="{{$order_id}}" name="order_id" type="hidden">
                                 <input class="form-control border-form-control" value="{{$objs->id}}" name="course_id" type="hidden">
-                                  <input type="hidden" id="gb_pay4" value="{{$objs->price_course}}" name="master_price" >
+                                  <input type="hidden" id="gb_pay5" value="{{$objs->price_course}}" name="master_price" >
                                 <div class="form-group col-md-8">
                                   <label class=" control-label" for="profileFirstName">ราคาคอร์ส</label>
-                                    <input type="text" id="gb_pay1" class="gb_pay1 form-control" value="{{$objs->price_course}}" >
+                                    <input type="text" id="gb_pay2" class="gb_pay1 form-control" value="{{$objs->price_course}}" >
                                 </div>
 
 
                                 <div class="form-group">
-                                  <div class="col-md-8">
-                                <button type="submit" class="btn btn-primary border-none">  เลือกชำระโอนเงินผ่านธนาคาร </button>
+                                  <div class="col-md-6">
+                                <button type="submit" id="btn-show" class=" btn btn-primary border-none">  ชำระผ่าน QR CODE </button>
                                 </div>
+
+
+
                                 </div>
                               </form>
+
+
+
+                              <div id="myDIV" class="col-md-12 btn-sss">
+                                <br />
+
+                                  <p>เราได้สร้าง QR CODE เพื่อชำระเงินแล้ว ที่สามารถ Svae รุปเก็บไว้ชำระภายหลังได้ แล้วท่านสามารถเข้ามาแจ้งชำระเงินได้ที่ปุ่มด้านล่างนี้</p>
+                                  <br />
+
+                                <a href="{{url('payment/'.$order_id)}}"  class="btn btn-primary">  แจ้งการชำระเงิน </a>
+                            </div>
+
+
+
+                           <!--   <br />
+                              <br />
+
+
+                              <form id="checkout-form" action="{{url('post_gb_pay')}}" method="POST">
+                               <div id="gb-form" style="height: 600px;"></div>
+                              </form>
+
+                            -->
 
                             </div>
 
 
+
+
                             <div class="form_title">
-                               <h3 class="single_tour_desc "><strong>2</strong>ชำระผ่าน QR CODE</h3>
+                               <h3 class="single_tour_desc "><strong>2</strong>โอนเงินผ่านธนาคาร</h3>
                                <p style="font-size:13px; color: #999;">
-                                ทุกธุรกรรมผ่านบัตรเครดิตและบัตรเดบิตได้รับการรับรองความปลอดภัย ด้วยเทคโนโลยี <b style="color: #2196F3;">GB Prime ระบบชำระเงินออนไลน์</b><br />
-                                หลังจากชำระเงินเสร้จเรียบร้อยแล้ว ท่านสามารถแจ้ง <a href="" target="_blank">ยืนยันการชำระเงิน</a>
+                                 สามารถชำระเงินได้โดยผ่านทางธนาคาร จากนั้นกรุณาแจ้งการชำระเงินผ่านทาง <a href="{{url('payment')}}" target="_blank">ยืนยันการชำระเงิน</a>
                                </p>
                              </div>
 
 
-
                              <div class="step">
 
-                                 <img src="{{url('assets/image/gb_payment2.png')}}" class="team__img img-thumbnail">
-
-
-                               <br /><br />
 
 
 
 
 
-                               <form action="{{url('submit_buy_course_2')}}" method="post" target="_blank" name="product_z">
+
+
+
+                               <form action="{{url('submit_buy_course')}}" method="post" enctype="multipart/form-data" name="product1">
                                  {{ csrf_field() }}
                                  <input class="form-control border-form-control" value="{{$order_id}}" name="order_id" type="hidden">
                                  <input class="form-control border-form-control" value="{{$objs->id}}" name="course_id" type="hidden">
-                                   <input type="hidden" id="gb_pay5" value="{{$objs->price_course}}" name="master_price" >
+                                   <input type="hidden" id="gb_pay4" value="{{$objs->price_course}}" name="master_price" >
                                  <div class="form-group col-md-8">
                                    <label class=" control-label" for="profileFirstName">ราคาคอร์ส</label>
-                                     <input type="text" id="gb_pay2" class="gb_pay1 form-control" value="{{$objs->price_course}}" >
+                                     <input type="text" id="gb_pay1" class="gb_pay1 form-control" value="{{$objs->price_course}}" >
                                  </div>
 
 
                                  <div class="form-group">
-                                   <div class="col-md-6">
-                                 <button type="submit" id="btn-show" class=" btn btn-primary border-none">  ชำระผ่าน QR CODE </button>
+                                   <div class="col-md-8">
+                                 <button type="submit" class="btn btn-primary border-none">  เลือกชำระโอนเงินผ่านธนาคาร </button>
                                  </div>
-
-
-
                                  </div>
                                </form>
 
-
-
-                               <div id="myDIV" class="col-md-12 btn-sss">
-                                 <br />
-
-                                   <p>เราได้สร้าง QR CODE เพื่อชำระเงินแล้ว ที่สามารถ Svae รุปเก็บไว้ชำระภายหลังได้ แล้วท่านสามารถเข้ามาแจ้งชำระเงินได้ที่ปุ่มด้านล่างนี้</p>
-                                   <br />
-
-                                 <a href="{{url('payment/'.$order_id)}}"  class="btn btn-primary">  แจ้งการชำระเงิน </a>
                              </div>
 
-
-
-                               <br />
-
-
-
-
-                             </div>
 
 
                          </div>
@@ -250,7 +261,7 @@
 
 
 
-                </div><!-- end team-single-content -->
+                </div><!-- end team-single-content https://stackoverflow.com/questions/3080146/post-data-to-a-url-in-php-->
             </div><!-- end col-lg-8 -->
 
 
@@ -291,7 +302,7 @@
 
 @section('scripts')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+<script src="{{url('home/js/GBPrimePay.js')}}"></script>
 <script>
 $('.photo_f').on('click', function () {
 
@@ -307,6 +318,18 @@ swal("นักเรียนต้องทำการ Login เข้าส�
 
 
 $(document).ready(function(){
+
+  new GBPrimePay({
+  publicKey: '5RjrJwedCYzx1cvSPxuT8HhTz1co2O34',
+  gbForm: '#gb-form',
+  merchantForm: '#checkout-form',
+  amount: 1.00,
+  enableRememberCard: true,
+  customStyle: {
+  backgroundColor: 'transparent'
+  },
+  env: 'prd' // default prd | optional: test, prd
+  });
 
 
   $('#btn-show').click(function(){

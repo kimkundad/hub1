@@ -154,7 +154,7 @@ ul {
 
 
 
-                  <div class="alert alert-success" style="font-size:14px;">
+                  <div class="alert alert-primary" style="font-size:14px;">
                   <strong>กรอกข้อมูลให้ครบด้วยนะนักเรียน </strong> เพื่อผลประโยชน์ของนักเรียน ทางเจ้าหน้าที่จะมีการส่งของน่ารักๆหรือเอกสารไปให้นักเรียน
                 </div>
 

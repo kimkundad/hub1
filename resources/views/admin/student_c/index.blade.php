@@ -126,7 +126,7 @@
                         <a style="float:left; margin-right:4px;" class="btn btn-primary btn-xs" href="{{url('admin/play_student/'.$u->Oid.'/edit')}}"
                           role="button"><i class="fa fa-wrench"></i> </a>
 
-                          <a style="float:left; margin:0px 4px 4px 4px; " target="_blank" class="btn btn-warning btn-xs" href="{{url('admin/play_student/'.$u->Oid.'/print')}}" role="button"><i class="fa fa-print"></i> </a>
+                        
 
                           <form  action="{{url('admin/play_student/'.$u->Oid)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
                             <input type="hidden" name="_method" value="DELETE">

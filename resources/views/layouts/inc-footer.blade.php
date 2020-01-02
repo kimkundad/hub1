@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-3 col-sm-6">
                 <div class="footer-widget">
-                    <a href="index.html">
+                    <a href="/">
                         <img src="{{url('home/images/logo_v2.png')}}" alt="footer logo" class="footer__logo">
                     </a>
                     <ul class="footer-address">

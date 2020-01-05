@@ -372,7 +372,7 @@ $(document).ready(function(){
 
                           total_money = {{$objs->price_course}}-data.coupon;
 
-                          if(total_money < 0){
+                          if(total_money <= 0){
                             total_money = 0;
                             $('#hid_free').addClass('hidden');
                             $('#hid_free2').addClass('hidden');

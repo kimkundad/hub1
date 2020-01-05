@@ -304,6 +304,15 @@ class BuycourseController extends Controller
         $package->status = 2;
         $package->save();
 
+        DB::table('coupon_users')
+            ->select(
+            'coupon_users.*'
+            )
+            ->where('order_id', $request->order_id)
+            ->update(array(
+              'coupon_status' => 1
+            ));
+
       }else{
 
         $package = new submitcourse();

@@ -174,7 +174,7 @@
 
 
 											<div class="form-group">
-                        <label class="col-md-3 control-label" for="profileFirstName">ราคาส่วนลด* (ไม่ลดก็ใส่ 0 ไป)</label>
+                        <label class="col-md-3 control-label" for="profileFirstName">ราคาส่วนลด* (ราคาจริง + ราคาส่วนลด หรือ ไม่ลดก็ใส่ 0 ไป)</label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control" name="discount" value="{{ old('discount') }}" placeholder="500">
                           </div>

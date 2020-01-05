@@ -304,6 +304,11 @@ class Course_studentController extends Controller
     ]);
 
 
+    $get_data = DB::table('submitcourses')
+          ->where('id', $id)
+          ->first();
+
+
     $status_check = $request['status'];
 
 
@@ -324,7 +329,7 @@ class Course_studentController extends Controller
               ->select(
               'coupon_users.*'
               )
-              ->where('order_id', $id)
+              ->where('order_id', $get_data->order_id)
               ->update(array(
                 'coupon_status' => 1
               ));

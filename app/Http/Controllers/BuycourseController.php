@@ -293,14 +293,32 @@ class BuycourseController extends Controller
 
     public function submit_buy_course(Request $request){
 
-    //  dd($request->master_price);
-        session()->forget('coupon');
+    //  dd($request->value_money);
+
+      if($request->value_money == 0){
+
+        $package = new submitcourse();
+        $package->user_id = Auth::user()->id;
+        $package->course_id = $request->course_id;
+        $package->order_id = $request->order_id;
+        $package->status = 2;
+        $package->save();
+
+      }else{
 
         $package = new submitcourse();
         $package->user_id = Auth::user()->id;
         $package->course_id = $request->course_id;
         $package->order_id = $request->order_id;
         $package->save();
+
+      }
+
+
+    //  dd($request->master_price);
+        session()->forget('coupon');
+
+
 
 
         $coursess_de = DB::table('submitcourses')
@@ -366,10 +384,18 @@ class BuycourseController extends Controller
                           $coursess_de->discount_price = $send_price;
 
                          }
+                         $coursess_de->time_course;
 
+                          $start=date("Y-m-d",time());
+                          $startdatec=strtotime($start);
+                          $tod=$coursess_de->time_course*86400;
+                          $ndate=$startdatec+$tod; // นับบวกไปอีกตามจำนวนวันที่รับมา
+                          $df=date("Y-m-d",$ndate);
 
                          $package = submitcourse::find($package->id);
                          $package->discount = $send_price;
+                         $package->start = $start;
+                         $package->end_date = $df;
                          $package->save();
 
 
@@ -378,9 +404,17 @@ class BuycourseController extends Controller
 
                  $coursess_de->discount_price = 0;
 
+                 $start=date("Y-m-d",time());
+                 $startdatec=strtotime($start);
+                 $tod=$coursess_de->time_course*86400;
+                 $ndate=$startdatec+$tod; // นับบวกไปอีกตามจำนวนวันที่รับมา
+                 $df=date("Y-m-d",$ndate);
+
 
                  $package = submitcourse::find($package->id);
                  $package->discount = 0;
+                 $package->start = $start;
+                 $package->end_date = $df;
                  $package->save();
 
                }
@@ -504,14 +538,25 @@ class BuycourseController extends Controller
 
 
 
+               if($request->value_money == 0){
+
+                 return view('bil_course_free')->with([
+                 'objs' =>$coursess_de,
+                 'bill' =>"บิลเลขที่"
+               ]);
+
+               }else{
+
+                 return view('bil_course')->with([
+                 'objs' =>$coursess_de,
+                 'bill' =>"บิลเลขที่"
+               ]);
+
+               }
 
 
 
 
-               return view('bil_course')->with([
-               'objs' =>$coursess_de,
-               'bill' =>"บิลเลขที่"
-             ]);
 
 
 

@@ -195,6 +195,7 @@
 }
 .footer-area .footer-widget a {
     color: #666;
+    font-size: 13px;
 }
 .footer-area .footer-widget .footer-address li {
     color: #666;

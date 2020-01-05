@@ -236,9 +236,9 @@
 
 
 												<div class="form-group">
-	                        <label class="col-md-3 control-label" for="profileFirstName">ข้อมูลเวลาการเรียน (ไม่ต้องใส่ก็ได้)</label>
+	                        <label class="col-md-3 control-label" for="profileFirstName">เวลาที่ให้ (จำนวนวัน)</label>
 	                            <div class="col-md-8">
-	                                <textarea class="form-control" name="time_course_text" rows="3">{{ old('time_course_text') }}</textarea>
+																	<input type="text" class="form-control" name="time_course" value="{{ old('time_course') }}" placeholder="30">
 	                          </div>
 	                      </div>
 

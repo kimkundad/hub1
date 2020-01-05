@@ -34,7 +34,7 @@
 
 
                 <div class="section-heading text-center">
-                    <h3>คุณทำรายการสั่งซื้อสำเร็จ</h3>
+                    <h3>ทำรายการสำเร็จ สามารถเริ่มเรียนได้ทันที</h3>
                 </div>
                 <br /><br />
 
@@ -68,15 +68,15 @@
                       </tr>
                       <tr>
                         <th >ยอดรวมที่ต้องจ่าย</th >
-                          <td class="text-right">
-                            @if($objs->price_course-$objs->discount_price <= 0)
-                            0
-                            @else
-                            {{$objs->price_course-$objs->discount_price}}
-                            @endif
+                        <td class="text-right">
+                          @if($objs->price_course-$objs->discount_price <= 0)
+                          0
+                          @else
+                          {{$objs->price_course-$objs->discount_price}}
+                          @endif
 
 
-                          </td>
+                        </td>
                       </tr>
 
 
@@ -87,10 +87,10 @@
 
                 <div class="text-center">
                     <p>
-                      หากท่านได้ทำการชำระเงินเรียบร้อยแล้ว สามารถนำหลักฐานการชำระเงิน กับหมายเลยสั่งซื้อ มาที่ ปุ่ม แจ้งชำระเงินที่อยู่ด้านล่างนี้ได้เลย
+                      คอร์สเรียนของนักเรียนพร้อมแล้ว สามารถเริ่มเรียนได้ทันที
                       <br /><br />
                     </p>
-                    <a class="btn btn-primary border-none btn-block" href="{{url('payment/'.$objs->order_id)}}"> แจ้งชำระเงินโอน</a>
+                    <a class="btn btn-primary border-none btn-block" href="{{url('my_pack/')}}"> เร่มเรียนกันได้เลย</a>
                 </div>
               </div>
 

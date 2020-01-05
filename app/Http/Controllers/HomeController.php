@@ -831,6 +831,8 @@ class HomeController extends Controller
 
     public function course_details($id){
 
+
+      $date_now = date("Y-m-d");
       if(Auth::guest()){
 
         $data['can_see'] = 0;
@@ -852,14 +854,17 @@ class HomeController extends Controller
           ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
           ->where('submitcourses.user_id', Auth::user()->id)
           ->where('courses.id', $id)
+          ->where('submitcourses.end_date', '>=', $date_now)
           ->where('submitcourses.status', 2)
           ->first();
+
+          //dd($package);
 
           if($package != null){
 
 
-            $date_now = date("Y-m-d");
-            if($package->end_day >= $date_now){
+
+            if($package->end_date >= $date_now){
               $data['can_see'] = 1;
               $can_see_msg = 'นักเรียนสามารถดูได้';
             }else{

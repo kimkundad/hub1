@@ -300,7 +300,6 @@ class Course_studentController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, [
-   'end_day' => 'required',
    'status' => 'required'
     ]);
 
@@ -314,7 +313,6 @@ class Course_studentController extends Controller
         )
         ->where('id', $id)
         ->update(array(
-          'end_day' => $request['end_day'],
           'status' => $request['status']
         ));
 

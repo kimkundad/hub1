@@ -134,6 +134,9 @@
 .btn-sss{
   display: none;
 }
+.hidden{
+  display: none;
+}
 
                          </style>
 
@@ -146,7 +149,7 @@
 
 
 
-                            <div class="form_title">
+                            <div class="form_title " id="hid_free">
                                <h3 class="single_tour_desc "><strong>1</strong>ชำระผ่าน QR CODE</h3>
                                <p style="font-size:13px; color: #999;">
                                 ทุกธุรกรรมผ่านบัตรเครดิตและบัตรเดบิตได้รับการรับรองความปลอดภัย ด้วยเทคโนโลยี <b style="color: #2196F3;">GB Prime ระบบชำระเงินออนไลน์</b><br />
@@ -156,7 +159,7 @@
 
 
 
-                             <div class="step">
+                             <div class="step" id="hid_free2">
 
                                  <img src="{{url('assets/image/gb_payment2.png')}}" class="team__img img-thumbnail">
 
@@ -190,7 +193,7 @@
 
 
 
-                               <div id="myDIV" class="col-md-12 btn-sss">
+                               <div id="myDIV" class="col-md-12 btn-sss " >
                                  <br />
 
                                    <p>เราได้สร้าง QR CODE เพื่อชำระเงินแล้ว ที่สามารถ Svae รุปเก็บไว้ชำระภายหลังได้ แล้วท่านสามารถเข้ามาแจ้งชำระเงินได้ที่ปุ่มด้านล่างนี้</p>
@@ -234,7 +237,7 @@
                                     <input type="hidden" id="gb_pay4" value="{{$objs->price_course}}" name="master_price" >
                                   <div class="form-group col-md-8">
                                     <label class=" control-label" for="profileFirstName">ราคาคอร์ส</label>
-                                      <input type="text" id="gb_pay1" class="gb_pay1 form-control" value="{{$objs->price_course}}" >
+                                      <input type="text" id="gb_pay1" class="gb_pay1 form-control" name="value_money" value="{{$objs->price_course}}" >
                                   </div>
 
 
@@ -384,6 +387,8 @@ $(document).ready(function(){
 
                           if(total_money < 0){
                             total_money = 0;
+                            $('#hid_free').addClass('hidden');
+                            $('#hid_free2').addClass('hidden');
                           }
 
                           document.getElementById("gb_pay1").value = total_money;

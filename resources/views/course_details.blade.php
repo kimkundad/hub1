@@ -275,7 +275,7 @@
                                         </div>
 
                                         <ul class="preview-course-incentives__list">
-                                            <li><span class="la la-clock-o"></span>{{$objs->time_course_text}}</li>
+                                            <li><span class="la la-clock-o"></span>คอร์ส มีอายุ {{$objs->time_course}} วัน</li>
                                             <li><span class="la la-play-circle-o"></span>{{$objs->count_video}} video</li>
                                             <li><span class="la la-file"></span>{{$filecourses_count}} เอกสาร Download</li>
                                             <li><span class="la la-key"></span>Full lifetime access</li>

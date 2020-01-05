@@ -60,7 +60,7 @@
                 <div class="footer-widget">
                     <h3 class="footer-title">ติดต่อสอบถาม</h3>
 
-                    <ul class="footer-link">
+                  <!--  <ul class="footer-link">
                         <li><a href="#"><i class="la la-envelope"></i> {{ setting()->email }}</a></li>
                         <li><a href="#"><i class="la la-phone-square"></i> 063 529 9903</a></li>
                         <li><a href="#"><i class="la la-phone-square"></i> 063 529 9904</a></li>
@@ -69,8 +69,8 @@
                         <li><a href="{{ setting()->line_url }}" target="_blank"><img src="{{url('assets/images/line_icon.png')}}" style="height:30px;" /> {{ setting()->line }}</a></li>
 
                     </ul>
-                    <br />
-                    <div class="fb-page" data-href="https://www.facebook.com/hubjungacademy/" data-tabs="timeline" data-width="" data-height="70" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <br /> -->
+                    <div class="fb-page" data-href="https://www.facebook.com/hubjungacademy/" data-tabs="timeline" data-width="" data-height="350" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                       <blockquote cite="https://www.facebook.com/hubjungacademy/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/hubjungacademy/">HubJung</a></blockquote></div>
                 </div><!-- end footer-widget -->
             </div><!-- end col-lg-3 -->

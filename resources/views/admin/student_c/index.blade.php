@@ -102,7 +102,7 @@
                       </td>
                       <td><a href="{{url('admin/student/'.$u->Ustudent.'/edit')}}" target="_blank">{{$u->name}}</a></td>
                       <td><a href="{{url('admin/course/'.$u->Ucourse.'/edit')}}" target="_blank">{{$u->title_course}}</a></td>
-                      <td><?php echo DateThai($u->end_day); ?></td>
+                      <td><?php echo DateThai($u->end_date); ?></td>
 
                       <td>{{$u->order_id}}
                         <br>
@@ -126,7 +126,7 @@
                         <a style="float:left; margin-right:4px;" class="btn btn-primary btn-xs" href="{{url('admin/play_student/'.$u->Oid.'/edit')}}"
                           role="button"><i class="fa fa-wrench"></i> </a>
 
-                        
+
 
                           <form  action="{{url('admin/play_student/'.$u->Oid)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
                             <input type="hidden" name="_method" value="DELETE">

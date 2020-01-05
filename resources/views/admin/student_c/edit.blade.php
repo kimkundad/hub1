@@ -151,22 +151,7 @@
                             {{ csrf_field() }}
                             <input type="hidden" class="form-control" name="id"  value="{{$courseinfo->Oid}}" >
 
-                            <div class="form-group">
-  												<label class="col-md-3 control-label">วันหมดอายุ</label>
-  												<div class="col-md-6">
-  																										<div class="input-group">
-  														<span class="input-group-addon">
-  															<i class="fa fa-calendar"></i>
-  														</span>
-                              @if($courseinfo->end_day == NULL)
-                              <input type="text" data-plugin-datepicker="" name="end_day" class="form-control">
-                              @else
-                              <input type="text" data-plugin-datepicker="" name="end_day" value="{{$courseinfo->end_day}}" class="form-control">
-                              @endif
 
-  													</div>
-  												</div>
-  											</div>
 
                           <!--  <div class="form-group">
                               <label class="col-md-3 control-label" for="profileFirstName">จำนวนชั่วโมง*</label>
@@ -183,7 +168,7 @@
     								                      <option value="">-- เลือกสถานะ --</option>
                                           <option value="1" @if( $courseinfo->status == 1 || $courseinfo->status == 0)
                                             selected='selected'
-                                            @endif>ยังไม่อนุมัต</option>
+                                            @endif>ยังไม่อนุมัติ</option>
                                           <option value="2" @if( $courseinfo->status == 2)
                                             selected='selected'
                                             @endif>อนุมัติแล้ว</option>

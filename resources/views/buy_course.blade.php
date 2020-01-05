@@ -65,6 +65,9 @@
                            <div class="writeinfo text-success" style=" font-size: 16px;"></div>
                            <div class="writeinfo_error text-danger" style=" font-size: 16px;"></div>
 
+
+
+
                              <div class="row">
                              <input type="hidden" name="course" class="course_ids" value="{{$objs->id}}" placeholder="">
                              <input type="hidden" name="order_id" class="order_id" value="{{$order_id}}" placeholder="">
@@ -80,6 +83,10 @@
                            <div class="form-group col-md-4">
 
                              <button type="submit" style="margin-top: 30px;" class="postbutton btn btn-primary border-none">  เช็คคูปองส่วนลด </button>
+                             </div>
+
+                             <div class="col-md-12">
+                               <div class="writeinfo_free text-primary" style=" font-size: 16px;"></div>
                              </div>
 
                            </div>
@@ -374,6 +381,7 @@ $(document).ready(function(){
 
                           if(total_money <= 0){
                             total_money = 0;
+                            $(".writeinfo_free").append('นักเรียนได้สิทธิ์เรียนฟรี สามารถกดปุ่มเลือกชำระโอนเงินผ่านธนาคาร แล้วเริ่มเรียนได้เลย โดยไม่เสียเงิน');
                             $('#hid_free').addClass('hidden');
                             $('#hid_free2').addClass('hidden');
                           }
@@ -391,6 +399,10 @@ $(document).ready(function(){
                              $(".writeinfo").empty()
                              $(".writeinfo_error").empty()
                         }, 3000);
+
+                        setTimeout(function() {
+                             $(".writeinfo_free").empty()
+                        }, 12000);
                     }
                 });
             });

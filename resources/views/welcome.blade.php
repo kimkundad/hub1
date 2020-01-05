@@ -222,7 +222,7 @@
                                             <div class="course-price-wrap">
                                                 <span class="course__price">
                                                   @if($u->discount != 0)
-                                                  <span class="course__before-price">{{number_format($u->discount, 2)}}</span>
+                                                  <span class="course__before-price">{{number_format($u->discount+$u->price_course, 2)}}</span>
                                                   @endif
                                                   {{number_format($u->price_course, 2)}} บาท</span>
                                             </div>
@@ -345,7 +345,7 @@
                                             <div class="course-price-wrap">
                                                 <span class="course__price">
                                                   @if($u->discount != 0)
-                                                  <span class="course__before-price">{{number_format($u->discount, 2)}}</span>
+                                                  <span class="course__before-price">{{number_format($u->discount+$u->price_course, 2)}}</span>
                                                   @endif
                                                   {{number_format($u->price_course, 2)}} บาท</span>
                                             </div>

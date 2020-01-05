@@ -314,20 +314,7 @@
 
 @section('scripts')
 
-<script src="{{url('home/js/GBPrimePay.js')}}"></script>
-<script>
-new GBPrimePay({
-publicKey: '5RjrJwedCYzx1cvSPxuT8HhTz1co2O34',
-gbForm: '#gb-form',
-merchantForm: '#checkout-form',
-amount: 1.00,
-enableRememberCard: true,
-customStyle: {
-backgroundColor: 'transparent'
-},
-env: 'prd' // default prd | optional: test, prd
-});
-</script>
+
 
 
 
@@ -411,7 +398,20 @@ $(document).ready(function(){
 </script>
 
 
-
+<script src="{{url('home/js/GBPrimePay.js')}}"></script>
+<script>
+new GBPrimePay({
+publicKey: '5RjrJwedCYzx1cvSPxuT8HhTz1co2O34',
+gbForm: '#gb-form',
+merchantForm: '#checkout-form',
+amount: 1.00,
+enableRememberCard: true,
+customStyle: {
+backgroundColor: 'transparent'
+},
+env: 'prd' // default prd | optional: test, prd
+});
+</script>
 
 
 

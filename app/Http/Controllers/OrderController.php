@@ -218,7 +218,7 @@ class OrderController extends Controller
               'coupon_users.*'
               )
               ->where('user_id', $coursess->Uid)
-              ->where('order_id', $coursess->Oid)
+              ->where('order_id', $coursess->order_id)
               ->count();
 
               if($coupon_count > 0){
@@ -227,7 +227,7 @@ class OrderController extends Controller
                       'coupon_users.*'
                       )
                       ->where('user_id', $coursess->Uid)
-                      ->where('order_id', $coursess->Oid)
+                      ->where('order_id', $coursess->order_id)
                       ->first();
 
                       $coupon = DB::table('coupons')->select(
@@ -273,6 +273,11 @@ class OrderController extends Controller
     $status_check = $request['status'];
 
 
+    $get_data = DB::table('submitcourses')
+          ->where('id', $id)
+          ->first();
+
+
     date_default_timezone_set("Asia/Bangkok");
 
                $data_date = date("Y-m-d H:i:s");
@@ -296,7 +301,7 @@ class OrderController extends Controller
               ->select(
               'coupon_users.*'
               )
-              ->where('order_id', $id)
+              ->where('order_id', $get_data->order_id)
               ->update(array(
                 'coupon_status' => 1
               ));

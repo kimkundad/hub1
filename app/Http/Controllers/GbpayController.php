@@ -42,6 +42,8 @@ class GbpayController extends Controller
 
     public function post_gb_pay(Request $request){
 
+
+
       $secret_key = "uyWqinDLz1DBKSk4lOy2ujsdXZI61IBG";
       $gbToken = $request['gbToken'];
       $data = array(
@@ -52,7 +54,7 @@ class GbpayController extends Controller
         'card' => array(
           'token' => $gbToken,
         ),
-        'otp' => 'N',
+        'otp' => 'Y',
         "responseUrl" => "http://127.0.0.1:8000/get_all_post",
         "backgroundUrl" => "http://127.0.0.1:8000/get_all_post"
       );
@@ -60,9 +62,9 @@ class GbpayController extends Controller
       $payload = json_encode($data);
 
       $ch = curl_init('https://api.gbprimepay.com/v1/tokens/charge'); // Test env
-      curl_setopt($ch, CURLOPT_HEADER, 1);
+      curl_setopt($ch, CURLOPT_HEADER, 0);
       curl_setopt($ch, CURLOPT_USERPWD, $secret_key . ':');
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true );
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE );
       curl_setopt($ch, CURLOPT_POST, true);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
 
@@ -73,9 +75,55 @@ class GbpayController extends Controller
 
       $result = curl_exec($ch);
 
+
       curl_close($ch);
 
+      //var_dump(json_decode($result));
+      //$json = json_decode($result);
+      //print_r($json);
+      //echo $result;
+
+
+      $json = json_decode($result, true);
+
+
+      $gbpReferenceNo = $json['gbpReferenceNo'];
+      $public_key = "uyWqinDLz1DBKSk4lOy2ujsdXZI61IBG";
+
       echo $result;
+
+
+  /*    $data2 = array(
+        'publicKey' => $public_key,
+        'gbpReferenceNo' => $gbpReferenceNo
+      );
+
+      $payload2 = json_encode($data2);
+
+      $ch2 = curl_init('https://api.gbprimepay.com/v1/tokens/3d_secured'); // Test env
+      curl_setopt($ch2, CURLOPT_HEADER, 1);
+      curl_setopt($ch2, CURLOPT_USERPWD, $secret_key . ':');
+      curl_setopt($ch2, CURLOPT_RETURNTRANSFER, TRUE );
+      curl_setopt($ch2, CURLOPT_POST, true);
+      curl_setopt($ch2, CURLOPT_POSTFIELDS, $payload2);
+
+      curl_setopt($ch2, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/x-www-form-urlencoded',
+        'Content-Length: ' . strlen($payload2))
+      );
+
+      $result_2 = curl_exec($ch2);
+
+
+      curl_close($ch2);
+
+      echo $result_2; */
+
+
+    //  parse_str($result, $output);
+    //  print_r($output);
+
+
 
     }
 

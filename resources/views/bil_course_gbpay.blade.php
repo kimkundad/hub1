@@ -36,7 +36,7 @@
                 <input type="hidden" class="form-control" name="merchantDefined2" value="{{$order_id}}" />
 
                 <input type="hidden" class="form-control" name="referenceNo" value="{{date("Y")}}{{date("m")}}{{date("d")}}{{$rand}}" />
-                <input type="hidden" name="token" value="S4aW3NQXU56Sc9pEThEhKXa3sr2kkj39t44VCrMkJ7sqZLLuWSj1EGHHmB7JTN05TvPuQQXTdVK5DVnrRZXonzhoCKM+QTxIBEN/uKLdtZsNqMW70fK8b8zUQifTqVxWLQFRtrkRYy9PAPD3t1Fihmt6LguVMS5R6cKxx25bmYMMZ0bJ" />
+                <input type="hidden" name="token" value="m6n3qO4wQRGFdhO31DM7Jz5uuRW62Px/aV/EF1jl97EGJ4OmlaKTHcUyiJsByF3XHr0oGoRL86FelOAStzfonlbiJZeNmtP3uOmZEvpUYX9AkrlI9wcrwlRryvPQthZ0wVhR7oYypzZdO8AMVpwtXD0Nyns=" />
                 <input type="hidden" name="payType" value="F" />
 
                 <div class="form-group">

@@ -47,10 +47,10 @@
 
 
                                 <tr>
-                                  <td><label class="control-label">ราคา {{$objs->price_course}} บาท</label></td>
+                                  <td><label class="control-label text-danger" style="font-size:18px;">ราคา {{$objs->price_course}} บาท</label></td>
                                 </tr>
                                 <tr>
-                                  <td><label class="control-label">อายุการใช้งาน {{$objs->time_course_text}} </label></td>
+                                  <td><label class="control-label text-danger" style="font-size:18px;">อายุการใช้งาน {{$objs->time_course_text}} </label></td>
                                 </tr>
 
 
@@ -143,46 +143,11 @@
                            <h3 class="single_tour_desc ">เลือกวิธีการชำระเงิน</h3>
                            <br />
 
-                           <div class="form_title">
-                              <h3 class="single_tour_desc "><strong>1</strong>โอนเงินผ่านธนาคาร</h3>
-                              <p style="font-size:13px; color: #999;">
-                                สามารถชำระเงินได้โดยผ่านทางธนาคาร จากนั้นกรุณาแจ้งการชำระเงินผ่านทาง <a href="{{url('payment')}}" target="_blank">ยืนยันการชำระเงิน</a>
-                              </p>
-                            </div>
 
-                            <div class="step">
-
-
-
-
-
-
-
-
-
-                              <form action="{{url('submit_buy_course')}}" method="post" enctype="multipart/form-data" name="product1">
-                                {{ csrf_field() }}
-                                <input class="form-control border-form-control" value="{{$order_id}}" name="order_id" type="hidden">
-                                <input class="form-control border-form-control" value="{{$objs->id}}" name="course_id" type="hidden">
-                                  <input type="hidden" id="gb_pay4" value="{{$objs->price_course}}" name="master_price" >
-                                <div class="form-group col-md-8">
-                                  <label class=" control-label" for="profileFirstName">ราคาคอร์ส</label>
-                                    <input type="text" id="gb_pay1" class="gb_pay1 form-control" value="{{$objs->price_course}}" >
-                                </div>
-
-
-                                <div class="form-group">
-                                  <div class="col-md-8">
-                                <button type="submit" class="btn btn-primary border-none">  เลือกชำระโอนเงินผ่านธนาคาร </button>
-                                </div>
-                                </div>
-                              </form>
-
-                            </div>
 
 
                             <div class="form_title">
-                               <h3 class="single_tour_desc "><strong>2</strong>ชำระผ่าน QR CODE</h3>
+                               <h3 class="single_tour_desc "><strong>1</strong>ชำระผ่าน QR CODE</h3>
                                <p style="font-size:13px; color: #999;">
                                 ทุกธุรกรรมผ่านบัตรเครดิตและบัตรเดบิตได้รับการรับรองความปลอดภัย ด้วยเทคโนโลยี <b style="color: #2196F3;">GB Prime ระบบชำระเงินออนไลน์</b><br />
                                 หลังจากชำระเงินเสร้จเรียบร้อยแล้ว ท่านสามารถแจ้ง <a href="" target="_blank">ยืนยันการชำระเงิน</a>
@@ -244,6 +209,61 @@
                              </div>
 
 
+
+                             <div class="form_title">
+                                <h3 class="single_tour_desc "><strong>2</strong>โอนเงินผ่านธนาคาร</h3>
+                                <p style="font-size:13px; color: #999;">
+                                  สามารถชำระเงินได้โดยผ่านทางธนาคาร จากนั้นกรุณาแจ้งการชำระเงินผ่านทาง <a href="{{url('payment')}}" target="_blank">ยืนยันการชำระเงิน</a>
+                                </p>
+                              </div>
+
+                              <div class="step">
+
+
+
+
+
+
+
+
+
+                                <form action="{{url('submit_buy_course')}}" method="post" enctype="multipart/form-data" name="product1">
+                                  {{ csrf_field() }}
+                                  <input class="form-control border-form-control" value="{{$order_id}}" name="order_id" type="hidden">
+                                  <input class="form-control border-form-control" value="{{$objs->id}}" name="course_id" type="hidden">
+                                    <input type="hidden" id="gb_pay4" value="{{$objs->price_course}}" name="master_price" >
+                                  <div class="form-group col-md-8">
+                                    <label class=" control-label" for="profileFirstName">ราคาคอร์ส</label>
+                                      <input type="text" id="gb_pay1" class="gb_pay1 form-control" value="{{$objs->price_course}}" >
+                                  </div>
+
+
+                                  <div class="form-group">
+                                    <div class="col-md-8">
+                                  <button type="submit" class="btn btn-primary border-none">  เลือกชำระโอนเงินผ่านธนาคาร </button>
+                                  </div>
+                                  </div>
+                                </form>
+
+                              </div>
+
+
+                              <!--
+                              <div class="form_title">
+                                 <h3 class="single_tour_desc "><strong>3</strong>ผ่านบัตรเครดิตและบัตรเดบิต GB Prime</h3>
+                                 <p style="font-size:13px; color: #999;">
+                                  ทุกธุรกรรมผ่านบัตรเครดิตและบัตรเดบิตได้รับการรับรองความปลอดภัย ด้วยเทคโนโลยี <b style="color: #2196F3;">GB Prime ระบบชำระเงินออนไลน์</b>
+                                 </p>
+                               </div>
+
+
+                               <div class="step">
+                                 <form id="checkout-form" action="{{url('post_gb_pay')}}" method="POST">
+                                   <div id="gb-form" style="height: 600px;"></div>
+                                 </form>
+                                </div>
+                              -->
+
                          </div>
                          <hr />
 
@@ -290,6 +310,24 @@
 @endsection
 
 @section('scripts')
+
+<script src="{{url('home/js/GBPrimePay.js')}}"></script>
+<script>
+new GBPrimePay({
+publicKey: '5RjrJwedCYzx1cvSPxuT8HhTz1co2O34',
+gbForm: '#gb-form',
+merchantForm: '#checkout-form',
+amount: 1.00,
+enableRememberCard: true,
+customStyle: {
+backgroundColor: 'transparent'
+},
+env: 'prd' // default prd | optional: test, prd
+});
+</script>
+
+
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>

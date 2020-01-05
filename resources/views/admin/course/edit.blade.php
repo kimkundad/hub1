@@ -197,7 +197,7 @@
 
 
 											<div class="form-group">
-                        <label class="col-md-3 control-label" for="profileFirstName">ราคาส่วนลด* (ให้ใส่ราคาเต็ม ก่อนลด ถ้าไม่ลดก็ใส่ 0 ไป)</label>
+                        <label class="col-md-3 control-label" for="profileFirstName">ราคาส่วนลด* (ถ้าไม่ลดก็ใส่ 0 ไป)</label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control" name="discount" value="{{$courseinfo->discount}}" placeholder="1500">
                           </div>

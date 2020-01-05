@@ -189,7 +189,7 @@
 
 
                       <div class="form-group">
-                        <label class="col-md-3 control-label" for="profileFirstName">ราคาคอร์ส* (ไม่มีให้ใส่ 0)</label>
+                        <label class="col-md-3 control-label" for="profileFirstName">ราคาคอร์ส* (ให้ใส่ราคาที่ลดแล้ว)</label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control" name="price" value="{{$courseinfo->price_course}}" placeholder="1500">
                           </div>
@@ -197,7 +197,7 @@
 
 
 											<div class="form-group">
-                        <label class="col-md-3 control-label" for="profileFirstName">ราคาส่วนลด* (ไม่มีให้ใส่ 0)</label>
+                        <label class="col-md-3 control-label" for="profileFirstName">ราคาส่วนลด* (ให้ใส่ราคาเต็ม ก่อนลด ถ้าไม่ลดก็ใส่ 0 ไป)</label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control" name="discount" value="{{$courseinfo->discount}}" placeholder="1500">
                           </div>
@@ -300,6 +300,14 @@
 	                        <label class="col-md-3 control-label" for="profileFirstName">เวลาที่ให้ (จำนวนวัน)</label>
 	                            <div class="col-md-8">
 																	<input type="text" class="form-control" name="time_course" value="{{ $courseinfo->time_course }}" placeholder="30">
+	                          </div>
+	                      </div>
+
+
+												<div class="form-group">
+	                        <label class="col-md-3 control-label" for="profileFirstName">ใส่เวลาทั้งหมดของคอร์สเรียน</label>
+	                            <div class="col-md-8">
+																	<input type="text" class="form-control" name="time_course_text" value="{{ $courseinfo->time_course_text }}" placeholder="3 hours 20 min หรือ คอร์ส มีอายุ 30 วัน">
 	                          </div>
 	                      </div>
 

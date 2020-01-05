@@ -214,14 +214,18 @@
                                                         </span>
                                                     </li>
                                                     <li style="padding: 0px;">
-                                                      @if($u->count_video == 0)
-                                                      <span class="course__price text-success">เร็วๆ นี้</span>
-                                                      @else
-                                                        <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
-                                                      @endif
+                                                      <span class="course__price">{{$u->time_course_text}} </span>
                                                     </li>
                                                 </ul>
                                             </div><!-- end course-meta -->
+                                            <br>
+                                            <div class="course-price-wrap">
+                                                <span class="course__price">
+                                                  @if($u->discount != 0)
+                                                  <span class="course__before-price">{{number_format($u->discount, 2)}}</span>
+                                                  @endif
+                                                  {{number_format($u->price_course, 2)}} บาท</span>
+                                            </div>
 
                                         </div><!-- end course-content -->
                                     </div><!-- end course-item -->
@@ -333,14 +337,18 @@
                                                         </span>
                                                     </li>
                                                     <li style="padding: 0px;">
-                                                      @if($u->count_video == 0)
-                                                      <span class="course__price text-success">เร็วๆ นี้</span>
-                                                      @else
-                                                        <span class="course__price">{{number_format($u->price_course, 2)}} <small>บาท</small></span>
-                                                      @endif
+                                                      <span class="course__price">{{$u->time_course_text}} </span>
                                                     </li>
                                                 </ul>
                                             </div><!-- end course-meta -->
+                                            <br>
+                                            <div class="course-price-wrap">
+                                                <span class="course__price">
+                                                  @if($u->discount != 0)
+                                                  <span class="course__before-price">{{number_format($u->discount, 2)}}</span>
+                                                  @endif
+                                                  {{number_format($u->price_course, 2)}} บาท</span>
+                                            </div>
 
                                         </div><!-- end course-content -->
                                     </div><!-- end course-item -->

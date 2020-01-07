@@ -17,7 +17,7 @@
 
 <script src="{{url('js/jquery.sliderPro.min.js')}}"></script>
 
-
+{{setting->google_analytics}}
 
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v4.0&appId=203219603796007&autoLogAppEvents=1"></script>

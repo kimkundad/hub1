@@ -39,6 +39,10 @@ class GbpayController extends Controller
       return $request->all();
     }
 
+    public function get_all_post2(Request $request){
+      return $request->all();
+    }
+
 
     public function post_gb_pay(Request $request){
 
@@ -55,7 +59,7 @@ class GbpayController extends Controller
           'token' => $gbToken,
         ),
         'otp' => 'Y',
-        "responseUrl" => "http://127.0.0.1:8000/get_all_post",
+        "responseUrl" => "http://127.0.0.1:8000/get_all_post2",
         "backgroundUrl" => "http://127.0.0.1:8000/get_all_post"
       );
 

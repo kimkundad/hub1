@@ -259,7 +259,7 @@
 
 
 
-                              <div class="form_title">
+                        <!--      <div class="form_title">
                                  <h3 class="single_tour_desc "><strong>3</strong>ผ่านบัตรเครดิตและบัตรเดบิต GB Prime</h3>
                                  <p style="font-size:13px; color: #999;">
                                   ทุกธุรกรรมผ่านบัตรเครดิตและบัตรเดบิตได้รับการรับรองความปลอดภัย ด้วยเทคโนโลยี <b style="color: #2196F3;">GB Prime ระบบชำระเงินออนไลน์</b>
@@ -271,7 +271,7 @@
                                  <form id="checkout-form" action="{{url('post_gb_pay')}}" method="POST">
                                    <div id="gb-form" style="height: 600px;"></div>
                                  </form>
-                                </div>
+                               </div> -->
 
 
                          </div>

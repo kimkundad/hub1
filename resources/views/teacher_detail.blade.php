@@ -48,12 +48,13 @@
 
                     </div><!-- end tsd-box -->
                     <div class="tsd-box tsd-box-3 row">
+                      <!--
                         <div class="col-lg-4">
                             <div class="tsd-item">
                                 <h3 class="tsdi__title">Total students</h3>
                                 <p class="tsdi__meta ">0</p>
-                            </div><!-- end tsd-item -->
-                        </div><!-- end col-lg-4 -->
+                            </div>
+                        </div>  -->
                         <div class="col-lg-4">
                             <div class="tsd-item">
                                 <h3 class="tsdi__title">Courses</h3>

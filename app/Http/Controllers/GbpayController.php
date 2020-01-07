@@ -87,10 +87,10 @@ class GbpayController extends Controller
       $json = json_decode($result, true);
 
 
-      $gbpReferenceNo = $json['gbpReferenceNo'];
-      $public_key = "uyWqinDLz1DBKSk4lOy2ujsdXZI61IBG";
+      $data['gbpReferenceNo'] = $json['gbpReferenceNo'];
+      $data['publicKey'] = "5RjrJwedCYzx1cvSPxuT8HhTz1co2O34";
 
-      echo $result;
+    //  echo $result;
 
 
   /*    $data2 = array(
@@ -124,6 +124,8 @@ class GbpayController extends Controller
     //  print_r($output);
 
 
+
+     return view('gbform_final', $data);
 
     }
 

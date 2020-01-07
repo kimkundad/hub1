@@ -118,7 +118,7 @@
 
                     <div class="form-group">
                       <label for="exampleInputEmail1">google_analytics</label>
-                      <textarea class="form-control" name="google_analytics" rows="4" >{{old('google_analytics')}}</textarea>
+                      <textarea class="form-control" name="google_analytics" rows="4" >{{$objs->google_analytics}}</textarea>
                     </div>
 
 

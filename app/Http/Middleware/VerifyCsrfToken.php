@@ -22,6 +22,7 @@ class VerifyCsrfToken extends Middleware
         //
         'admin/blog*',
         'add_video_course',
+        'get_all_post*',
         'post_gb_pay'
     ];
 }

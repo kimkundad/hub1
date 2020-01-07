@@ -31,6 +31,7 @@ Route::post('/post_ans_course2','ExaminationController@post_ans_course2');
 Route::get('/success_ans_package2/{id}', 'ExaminationController@success_ans_package2');
 
 
+Route::post('/get_all_post', 'GbpayController@get_all_post')->name('get_all_post');
 
 Route::get('/teachers', 'HomeController@teachers')->name('teachers');
 Route::post('add_video_course', 'CourseController@add_video_course');

@@ -79,7 +79,7 @@
                                 </ul>
                                 <ul class="social__links">
                                     <li><span>Share:</span></li>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                  <!--  <li><a href="#"><i class="fa fa-facebook"></i></a></li> -->
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>

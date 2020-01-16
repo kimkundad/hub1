@@ -378,7 +378,7 @@
                             <h3 class="widget__title">Share with</h3>
 
                             <ul class="social__links">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                              <!--  <li><a href="#"><i class="fa fa-facebook"></i></a></li> -->
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>

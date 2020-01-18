@@ -220,11 +220,11 @@
                                             </div><!-- end course-meta -->
                                             <br>
                                             <div class="course-price-wrap">
-                                                <span class="course__price">
+                                                <span class="course__price" style="color: #f00;">
                                                   @if($u->discount != 0)
-                                                  <span class="course__before-price">{{number_format($u->discount+$u->price_course, 2)}}</span>
+                                                  <span class="course__before-price">{{($u->discount+$u->price_course)}}</span>
                                                   @endif
-                                                  {{number_format($u->price_course, 2)}} บาท</span>
+                                                  {{($u->price_course)}} บาท</span>
                                             </div>
 
                                         </div><!-- end course-content -->
@@ -343,11 +343,11 @@
                                             </div><!-- end course-meta -->
                                             <br>
                                             <div class="course-price-wrap">
-                                                <span class="course__price">
+                                                <span class="course__price" style="color: #f00;">
                                                   @if($u->discount != 0)
-                                                  <span class="course__before-price">{{number_format($u->discount+$u->price_course, 2)}}</span>
+                                                  <span class="course__before-price">{{($u->discount+$u->price_course)}}</span>
                                                   @endif
-                                                  {{number_format($u->price_course, 2)}} บาท</span>
+                                                  {{($u->price_course)}} บาท</span>
                                             </div>
 
                                         </div><!-- end course-content -->

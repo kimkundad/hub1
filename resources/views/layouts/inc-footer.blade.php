@@ -50,7 +50,9 @@
                     <ul class="footer-link">
                         <li><a href="{{url('privacy_policy')}}">นโยบายความเป็นส่วนตัว</a></li>
                         <li><a href="{{url('payment')}}">ยืนยันการชำระเงิน</a></li>
+
                         <li><a href="{{url('terms_conditions')}}">ข้อตกลงและเงื่อนไข</a></li>
+                        <li><a href="{{url('returns_exchanges')}}">นโยบายการคืนเงิน</a></li>
                     </ul>
                 </div><!-- end footer-widget -->
             </div><!-- end col-lg-3 -->

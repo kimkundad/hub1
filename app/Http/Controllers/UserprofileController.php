@@ -169,7 +169,6 @@ class UserprofileController extends Controller
 
           $check_owner = DB::table('submitcourses')
             ->where('course_id', $check_2->course_id)
-            ->where('submitcourses.end_date', '>=', $date_now)
             ->where('user_id', Auth::user()->id)
             ->where('status', 2)
             ->count();
@@ -241,7 +240,6 @@ class UserprofileController extends Controller
 
       $check = DB::table('submitcourses')
         ->where('course_id', $id)
-        ->where('submitcourses.end_date', '>=', $date_now)
         ->where('user_id', Auth::user()->id)
         ->where('status', 2)
         ->count();
@@ -335,7 +333,6 @@ class UserprofileController extends Controller
            )
         ->where('submitcourses.user_id', Auth::user()->id)
         ->where('submitcourses.status', 2)
-        ->where('submitcourses.end_date', '>=', $date_now)
         ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
         ->Orderby('submitcourses.id', 'desc')
         ->groupBy('submitcourses.course_id')
